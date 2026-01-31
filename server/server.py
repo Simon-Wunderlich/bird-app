@@ -2,7 +2,11 @@ import json
 import re
 import requests
 
+from asgiref.wsgi import WsgiToAsgi
 from flask import Flask
+
+#TO START SERVER, RUN:
+#python3 -m hypercorn server:bird_app
 app = Flask(__name__)
 
 def getSessionID():
@@ -50,3 +54,4 @@ def getContent(user_id, recursions = 0):
 
 authenticate()
 # getContent("NDY0MTkyMQ")
+bird_app = WsgiToAsgi(app)
