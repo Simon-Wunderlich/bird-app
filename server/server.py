@@ -1,6 +1,7 @@
 import json
 import re
 import requests
+import os.path
 
 from asgiref.wsgi import WsgiToAsgi
 from flask import Flask
@@ -40,17 +41,67 @@ def authenticate():
 
 @app.route('/<user_id>', methods=["GET"])
 def getContent(user_id, recursions = 0):
-    if recursions > 10:
-        return "Failed 10 times in a row", 418
+    if recursions > 3:
+        return "Failed 3 times in a row", 418
     headers = { "Cookie" : f"_9bf17=d285996586e4f38a; EBIRD_SESSIONID={sessionID}; EBIRD_REGION_CONTEXT=%7B%22regionCode%22%3A%22AU%22%2C%22regionName%22%3A%22Australia%22%7D"}
 
     r = requests.get(f"https://ebird.org/prof/lists?r=world&username={user_id}", headers = headers, allow_redirects = False)
     if (r.status_code == 500):
         return "Invalid user id", 500
-    if (r.json == []):
+    if (r.json() == []):
         authenticate()
         return getContent(user_id, recursions + 1), 200
-    return r.text, 200
+
+     
+
+    return parseResults(r.json(), user_id), 200
+
+def parseResults(rawJson, user_id):
+    data = {
+        "checklists" : {},
+        "username" : rawJson[0]["userDisplayName"],
+        "birds" : {},
+        "locations" : {},
+    }
+    try:
+        with open(f"user_data/{user_id}.json", "r") as f:
+            data = json.load(f)
+    except:
+        pass
+    for x in rawJson:
+        if x["subId"] not in data["checklists"]:
+           bird = parseChecklist(x["subId"])
+
+           isValid = True
+           area = f"{round(x['loc']['lat'],3)},{round(x['loc']['lng'],3)}"
+           if (area in data["locations"]):
+               if bird in data["locations"][area]:
+                   isValid = False
+               else:
+                   data["locations"][area].append(bird)
+           else:
+               data["locations"][area] = [ bird ]
+
+           if bird not in data["birds"]:
+               data["birds"][bird] = 0
+
+           data["birds"][bird] += 1
+           data["checklists"][x["subId"]] = {"bird" : bird, "location" : x["loc"]["hierarchicalName"], "coordinates" : f"{x['loc']['lat']},{x['loc']['lng']}", "valid" : isValid}
+    
+    
+    with open(f"user_data/{user_id}.json", "w") as f:
+        json.dump(data, f)
+    return data
+
+def parseChecklist(cID):
+    r = requests.get(f"https://ebird.org/merlin/checklist/{cID}")
+
+    page = r.text
+
+    pattern = "<span class=\"Heading-main\"  >(.+?)</span>"
+    species = re.search(pattern, page).group(1)
+
+    return species
 
 authenticate()
 bird_app = WsgiToAsgi(app)
