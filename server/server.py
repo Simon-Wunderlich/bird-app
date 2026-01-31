@@ -39,7 +39,16 @@ def authenticate():
 
     requests.get(authUrl, headers = headers, allow_redirects = False)
 
-@app.route('/<user_id>', methods=["GET"])
+@app.route('/all')
+def getAllUsers():
+    files = os.listdir("user_data")
+    data = []
+    for fileName in files:
+        uId = fileName.split(".")[0]
+        data.append(getContent(uId)[0])
+    return data
+
+@app.route('/<user_id>')
 def getContent(user_id, recursions = 0):
     if recursions > 3:
         return "Failed 3 times in a row", 418
@@ -51,8 +60,6 @@ def getContent(user_id, recursions = 0):
     if (r.json() == []):
         authenticate()
         return getContent(user_id, recursions + 1), 200
-
-     
 
     return parseResults(r.json(), user_id), 200
 
@@ -86,7 +93,15 @@ def parseResults(rawJson, user_id):
                data["birds"][bird] = 0
 
            data["birds"][bird] += 1
-           data["checklists"][x["subId"]] = {"bird" : bird, "location" : x["loc"]["hierarchicalName"], "coordinates" : f"{x['loc']['lat']},{x['loc']['lng']}", "valid" : isValid}
+
+
+           data["checklists"][x["subId"]] = {
+                   "bird" : bird, 
+                   "date" : x["obsDt"],
+                   "location" : x["loc"]["hierarchicalName"], 
+                   "coordinates" : f"{x['loc']['lat']},{x['loc']['lng']}", 
+                   "valid" : isValid
+                   }
     
     
     with open(f"user_data/{user_id}.json", "w") as f:
