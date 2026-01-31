@@ -22,21 +22,19 @@ def getSessionID():
 
 def getAuthUrl():
 
-    headers = {'Content-Type': 'application/x-www-form-urlencoded', 'Cookie': 'XSRF-TOKEN=3e36144d-00c1-4b00-8715-f60522d5f118; _3a55c=5805372865580684; org.springframework.web.servlet.i18n.CookieLocaleResolver.LOCALE=en-US'}
-
+    headers = {'Content-Type': 'application/x-www-form-urlencoded', 'Cookie': 'XSRF-TOKEN=5aa50542-1f00-468b-8bf8-f0b8f3ac283b'}
     # EXECUTION MAY EXPIRE, IF SO: SCRAPE FROM https://secure.birds.cornell.edu/cassso/login
     with open("data", "r") as f:
         data = f.read()
     url = "https://secure.birds.cornell.edu/cassso/login"
-    r = requests.post(url, headers = headers, data = data, allow_redirects = False)
+    r = requests.post(url, headers = headers, data = data[:-1], allow_redirects = False)
     return r.headers["location"]
 
 def authenticate():
     getSessionID()
     authUrl = getAuthUrl()
 
-    headers = {'Cookie': f'_9bf17=d285996586e4f38a; EBIRD_SESSIONID={sessionID}; EBIRD_REGION_CONTEXT=%7B%22regionCode%22%3A%22AU%22%2C%22regionName%22%3A%22Australia%22%7D' }
-
+    headers = {'Cookie' : '_9bf17=490a770f203a8168; EBIRD_SESSIONID=01F20108635AE32B7C1D357FA64E8E3C'}
     requests.get(authUrl, headers = headers, allow_redirects = False)
 
 @app.route('/all')
@@ -51,17 +49,18 @@ def getAllUsers():
 @app.route('/<user_id>')
 def getContent(user_id, recursions = 0):
     if recursions > 3:
-        return "Failed 3 times in a row", 418
-    headers = { "Cookie" : f"_9bf17=d285996586e4f38a; EBIRD_SESSIONID={sessionID}; EBIRD_REGION_CONTEXT=%7B%22regionCode%22%3A%22AU%22%2C%22regionName%22%3A%22Australia%22%7D"}
+        return "Failed 3 times in a row"
+
+    headers = { 'Cookie' : f'_9bf17=490a770f203a8168; EBIRD_SESSIONID={sessionID}; EBIRD_REGION_CONTEXT=%7B%22regionCode%22%3A%22AU%22%2C%22regionName%22%3A%22Australia%22%7D'}
 
     r = requests.get(f"https://ebird.org/prof/lists?r=world&username={user_id}", headers = headers, allow_redirects = False)
     if (r.status_code == 500):
-        return "Invalid user id", 500
+        return "Invalid user id"
     if (r.json() == []):
         authenticate()
-        return getContent(user_id, recursions + 1), 200
+        return getContent(user_id, recursions + 1)
 
-    return parseResults(r.json(), user_id), 200
+    return parseResults(r.json(), user_id)
 
 def parseResults(rawJson, user_id):
     data = {
@@ -105,7 +104,7 @@ def parseResults(rawJson, user_id):
     
     
     with open(f"user_data/{user_id}.json", "w") as f:
-        json.dump(data, f)
+        json.dump(data, f, indent = 4)
     return data
 
 def parseChecklist(cID):
