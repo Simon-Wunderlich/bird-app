@@ -1,11 +1,26 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
 }
 
-.card
-{
-    width: 29vw;
+.card {
+    width: fit-content;
+    position: absolute;
+    top: 110px;
 }
+@media (max-width: 768px) {
+    .card {
+        scale: 0.8;
+        width: fit-content;
+        position: absolute;
+        top: 70px;
+    }
+}
+
+ul
+{
+    padding: 0
+}
+
