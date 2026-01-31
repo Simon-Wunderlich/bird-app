@@ -1,0 +1,29 @@
+li
+{
+  padding: 0 15px;
+  margin-bottom: 10px; 
+  display: flex;
+  align-items: center;
+  background-color: #1a1a1a;
+}
+
+.flex-container {
+    display: flex;
+    gap: 10px;
+}
+
+.spacer {
+    flex-grow: 5;
+}
+
+.block {
+    display: flex;
+    gap: 10px;
+    height: fit-content;
+}
+
+.block *
+{
+    margin: 0;
+    align-content: end;
+}
