@@ -2,12 +2,13 @@ import json
 import re
 import requests
 import os.path
+from datetime import datetime
 
 from asgiref.wsgi import WsgiToAsgi
-from flask import Flask
+from flask import Flask, jsonify
 
 #TO START SERVER, RUN:
-#python3 -m hypercorn server:bird_app
+#python3 -m hypercorn --config python:config server:bird_app
 app = Flask(__name__)
 
 def getSessionID():
@@ -37,30 +38,46 @@ def authenticate():
     headers = {'Cookie' : '_9bf17=490a770f203a8168; EBIRD_SESSIONID=01F20108635AE32B7C1D357FA64E8E3C'}
     requests.get(authUrl, headers = headers, allow_redirects = False)
 
-@app.route('/all')
-def getAllUsers():
+@app.route('/all/<req_type>')
+def getAllUsers(req_type = "SLOW"):
     files = os.listdir("user_data")
     data = []
     for fileName in files:
         uId = fileName.split(".")[0]
-        data.append(getContent(uId)[0])
-    return data
+        if req_type == "QUICK":
+            with open("user_data/" + fileName, "r") as f:
+                file = json.load(f)
+                data.append(file)
+        else:
+            data.append(getContent(uId, internal = True))
+    response = jsonify(data)
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 @app.route('/<user_id>')
-def getContent(user_id, recursions = 0):
+def getContent(user_id, recursions = 0, internal = False):
     if recursions > 3:
-        return "Failed 3 times in a row"
+        response = jsonify(message = "Fail 3 times in a row")
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return response
 
     headers = { 'Cookie' : f'_9bf17=490a770f203a8168; EBIRD_SESSIONID={sessionID}; EBIRD_REGION_CONTEXT=%7B%22regionCode%22%3A%22AU%22%2C%22regionName%22%3A%22Australia%22%7D'}
 
     r = requests.get(f"https://ebird.org/prof/lists?r=world&username={user_id}", headers = headers, allow_redirects = False)
     if (r.status_code == 500):
-        return "Invalid user id"
+        response = jsonify(message = "Invalid user is")
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return response
     if (r.json() == []):
         authenticate()
         return getContent(user_id, recursions + 1)
 
-    return parseResults(r.json(), user_id)
+    if internal:
+        return parseResults(r.json(), user_id)
+
+    response = jsonify(parseResults(r.json(), user_id))
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 
 def parseResults(rawJson, user_id):
     data = {
@@ -68,6 +85,7 @@ def parseResults(rawJson, user_id):
         "username" : rawJson[0]["userDisplayName"],
         "birds" : {},
         "locations" : {},
+        "points" : 0
     }
     try:
         with open(f"user_data/{user_id}.json", "r") as f:
@@ -76,13 +94,17 @@ def parseResults(rawJson, user_id):
         pass
     for x in rawJson:
         if x["subId"] not in data["checklists"]:
-           bird = parseChecklist(x["subId"])
+           if "subnational2Code" in x["loc"]:
+               regCode = x["loc"]["subnational2Code"]
+           else:
+               regCode = x["loc"]["subnational1Code"]
+           bird, isRare, image = parseChecklist(x["subId"], regCode)
 
            isValid = True
            area = f"{round(x['loc']['lat'],3)},{round(x['loc']['lng'],3)}"
            if (area in data["locations"]):
                if bird in data["locations"][area]:
-                   isValid = False
+                   continue
                else:
                    data["locations"][area].append(bird)
            else:
@@ -99,15 +121,19 @@ def parseResults(rawJson, user_id):
                    "date" : x["obsDt"],
                    "location" : x["loc"]["hierarchicalName"], 
                    "coordinates" : f"{x['loc']['lat']},{x['loc']['lng']}", 
-                   "valid" : isValid
+                   "isRare" : isRare,
+                   "image" : image
                    }
-    
+           if isRare:
+               data["points"] += 5
+           else:
+               data["points"] += 1
     
     with open(f"user_data/{user_id}.json", "w") as f:
         json.dump(data, f, indent = 4)
     return data
 
-def parseChecklist(cID):
+def parseChecklist(cID, regCode):
     r = requests.get(f"https://ebird.org/merlin/checklist/{cID}")
 
     page = r.text
@@ -115,7 +141,40 @@ def parseChecklist(cID):
     pattern = "<span class=\"Heading-main\"  >(.+?)</span>"
     species = re.search(pattern, page).group(1)
 
-    return species
+    birds = {}
+    with open("birds.json", "r") as f:
+        birds = json.load(f)
+    
+    pattern = "/species/(.+?)\""
+    code = re.search(pattern, page).group(1)
+
+    if (code in birds and regCode in birds[code]):
+        freqs = birds[code][regCode]
+    else:
+        headers = {"X-eBirdApiToken" : "jfekjedvescr"}
+        r = requests.get(f"https://api.ebird.org/v2/product/barchart?spp={code}&regionCodes={regCode}", headers = headers)
+
+        freqs =r.json()["dataRows"][0]["values"] 
+
+    yrPercent = float(datetime.now().strftime('%-j'))/365
+    index = round((len(freqs) - 1) * yrPercent)
+    
+    rarity = freqs[index]
+    if code not in birds:
+        r = requests.get("https://ebird.org/species/" + code)
+        pattern = "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/(.+?)/"
+        image = re.search(pattern, r.text).group(1)
+        image = f"https://cdn.download.ams.birds.cornell.edu/api/v1/asset/{image}/360"
+        birds.update({code : {"image" : image, regCode : freqs}})
+    else:
+        image = birds[code]["image"]
+        if regCode not in birds[code]:
+            birds[code][regCode] = freqs
+    with open("birds.json", "w") as f:
+        json.dump(birds, f, indent = 4)
+
+
+    return species, rarity < 0.1, image
 
 authenticate()
 bird_app = WsgiToAsgi(app)

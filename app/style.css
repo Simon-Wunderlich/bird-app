@@ -1,0 +1,8 @@
+#base {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* place-items: center; */
+    text-align: center;
+    display: grid;
+    justify-items: center;
+}

@@ -1,19 +1,19 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%; /* Ensures ancestors have height for percentage-based children */
-  width: 100%;
-}
-
-#root {
-  height: 100vh; /* 100% of the viewport height */
-  width: 100vw;  /* 100% of the viewport width */
-}
-
-/* Optional: Additional styling for your main App component */
-.App {
-  min-height: 100%; /* The App component will now fill the root div */
-}
+/* html, body { */
+/*   margin: 0; */
+/*   padding: 0; */
+/*   height: 100%; /* Ensures ancestors have height for percentage-based children */ */
+/*   width: 100%; */
+/* } */
+/**/
+/* #root { */
+/*   height: 100vh; /* 100% of the viewport height */ */
+/*   width: 100vw;  /* 100% of the viewport width */ */
+/* } */
+/**/
+/* /* Optional: Additional styling for your main App component */ */
+/* .App { */
+/*   min-height: 100%; /* The App component will now fill the root div */ */
+/* } */
 
 
 :root {

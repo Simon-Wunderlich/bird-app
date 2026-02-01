@@ -5,70 +5,80 @@
             "date": "28 Jan 2026",
             "location": "R\u00edo Quijos EcoLodge, Napo, EC",
             "coordinates": "-0.3920634,-77.8162386",
-            "valid": true
+            "isRare": true,
+            "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/56433261/480"
         },
         "S296748429": {
             "bird": "Wattled Guan",
             "date": "27 Jan 2026",
             "location": "Yanayacu Biological Station, Napo, EC",
             "coordinates": "-0.5978643,-77.8918219",
-            "valid": true
+            "isRare": true,
+            "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/610668347/480"
         },
         "S296587090": {
             "bird": "Band-tailed Pigeon (White-necked)",
             "date": "27 Jan 2026",
             "location": "Rio Bermejo, Napo, Napo, EC",
             "coordinates": "-0.521,-77.8985",
-            "valid": true
+            "isRare": true,
+            "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/164025671/480"
         },
         "S296587146": {
             "bird": "Speckled Hummingbird (melanogenys Group)",
             "date": "27 Jan 2026",
             "location": "Cordillera Guacamayos--Mirador y alrededores inmediatos, Napo, EC",
             "coordinates": "-0.6232347,-77.8396843",
-            "valid": true
+            "isRare": false,
+            "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/56646081/480"
         },
         "S296587212": {
             "bird": "Wattled Guan",
             "date": "26 Jan 2026",
             "location": "Road south of San Isidro Lodge, Napo, EC",
             "coordinates": "-0.5908417,-77.8831924",
-            "valid": true
+            "isRare": true,
+            "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/610668347/480"
         },
         "S296478559": {
             "bird": "Gilded Barbet",
             "date": "26 Jan 2026",
             "location": "Loreto Road--km 13 (trail and Cliff Flycatcher spot), Napo, EC",
             "coordinates": "-0.712868,-77.740489",
-            "valid": true
+            "isRare": true,
+            "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/192441551/480"
         },
         "S296478634": {
             "bird": "Black Tinamou",
             "date": "26 Jan 2026",
             "location": "wildsumaco  - (-0.687, -77.602), Napo, EC",
             "coordinates": "-0.6867151,-77.6019661",
-            "valid": true
+            "isRare": true,
+            "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/157474611/480"
         },
         "S296478661": {
             "bird": "Common Pauraque",
             "date": "25 Jan 2026",
             "location": "WildSumaco Lodge, Napo, EC",
             "coordinates": "-0.6755082,-77.6010758",
-            "valid": true
+            "isRare": true,
+            "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/303965811/480"
         },
         "S296479146": {
             "bird": "Sickle-winged Guan",
             "date": "25 Jan 2026",
             "location": "Sumaco Road, Napo, EC",
             "coordinates": "-0.6843611,-77.6023611",
-            "valid": true
+            "isRare": true,
+            "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/56433261/480"
         },
         "S296587362": {
             "bird": "Plain-winged Antshrike",
             "date": "25 Jan 2026",
             "location": "FACE Trail, Napo, EC",
             "coordinates": "-0.681203,-77.597707",
-            "valid": true
+            "isRare": true,
+            "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/164864101/480"
         }
     },
     "username": "Marcelo Quipo",
@@ -113,5 +123,6 @@
         "-0.681,-77.598": [
             "Plain-winged Antshrike"
         ]
-    }
+    },
+    "points": 46
 }
