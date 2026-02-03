@@ -56,8 +56,8 @@ def getAllUsers(req_type = "SLOW"):
 
 @app.route('/<user_id>')
 def getContent(user_id, recursions = 0, internal = False):
-    if recursions > 3:
-        response = jsonify(message = "Fail 3 times in a row")
+    if recursions >= 3:
+        response = jsonify(message = "Failed 3 times in a row")
         response.headers.add("Access-Control-Allow-Origin", "*")
         return response
 
@@ -65,7 +65,7 @@ def getContent(user_id, recursions = 0, internal = False):
 
     r = requests.get(f"https://ebird.org/prof/lists?r=world&username={user_id}", headers = headers, allow_redirects = False)
     if (r.status_code == 500):
-        response = jsonify(message = "Invalid user is")
+        response = jsonify(message = "Invalid user id")
         response.headers.add("Access-Control-Allow-Origin", "*")
         return response
     if (r.json() == []):
@@ -160,11 +160,16 @@ def parseChecklist(cID, regCode):
     index = round((len(freqs) - 1) * yrPercent)
     
     rarity = freqs[index]
-    if code not in birds:
+
+    pattern = "data-src=\"(.+?)/160"
+    reg = re.search(pattern, page)
+    if (reg):
+        image = pattern.group(1) + "/480"
+    elif code not in birds:
         r = requests.get("https://ebird.org/species/" + code)
         pattern = "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/(.+?)/"
         image = re.search(pattern, r.text).group(1)
-        image = f"https://cdn.download.ams.birds.cornell.edu/api/v1/asset/{image}/360"
+        image = f"https://cdn.download.ams.birds.cornell.edu/api/v1/asset/{image}/480"
         birds.update({code : {"image" : image, regCode : freqs}})
     else:
         image = birds[code]["image"]

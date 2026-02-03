@@ -1,0 +1,116 @@
+{
+    "checklists": {
+        "S297217233": {
+            "bird": "White-tipped Dove",
+            "date": "31 Jan 2026",
+            "location": "Sendero del Yapacana Antbird (Ecoparque KENKE), Guain\u00eda, CO",
+            "coordinates": "3.812102,-67.842968",
+            "isRare": true,
+            "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/308136791/480"
+        },
+        "S297105816": {
+            "bird": "Neotropic Cormorant",
+            "date": "30 Jan 2026",
+            "location": "Cerros de Mavecure--Pajarito, Guain\u00eda, CO",
+            "coordinates": "3.4715613,-67.9754376",
+            "isRare": false,
+            "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/304392981/480"
+        },
+        "S297036482": {
+            "bird": "Orinoco Goose",
+            "date": "30 Jan 2026",
+            "location": "Ca\u00f1o La Rompida, Vichada, CO",
+            "coordinates": "3.9759238,-67.9769933",
+            "isRare": false,
+            "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/146037631/480"
+        },
+        "S296935217": {
+            "bird": "Smooth-billed Ani",
+            "date": "29 Jan 2026",
+            "location": "Ca\u00f1o Culebra Trail, Guain\u00eda, CO",
+            "coordinates": "3.8173825,-67.9124004",
+            "isRare": false,
+            "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/308431941/480"
+        },
+        "S296890430": {
+            "bird": "Common Ground Dove",
+            "date": "29 Jan 2026",
+            "location": "Comunidad Sabanitas, Guain\u00eda, CO",
+            "coordinates": "3.8808429,-67.8812131",
+            "isRare": true,
+            "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/66036551/480"
+        },
+        "S296778233": {
+            "bird": "Little Cuckoo",
+            "date": "28 Jan 2026",
+            "location": "Ca\u00f1o Cunub\u00e9n, Guain\u00eda, CO",
+            "coordinates": "3.8361443,-67.9734117",
+            "isRare": true,
+            "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/57291771/480"
+        },
+        "S296778491": {
+            "bird": "Yellow-tufted Woodpecker",
+            "date": "28 Jan 2026",
+            "location": "Hotel Fuente del Guainia, Guain\u00eda, CO",
+            "coordinates": "3.862602,-67.916236",
+            "isRare": false,
+            "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/147724391/480"
+        },
+        "S296726690": {
+            "bird": "Muscovy Duck",
+            "date": "28 Jan 2026",
+            "location": "Rio In\u00edrida--Matraca (V\u00e1rzea), Guain\u00eda, CO",
+            "coordinates": "3.86089,-67.96354",
+            "isRare": true,
+            "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/299692021/480"
+        },
+        "S296620962": {
+            "bird": "Pale-vented Pigeon",
+            "date": "27 Jan 2026",
+            "location": "Sendero del Yapacana Antbird (Ecoparque KENKE), Guain\u00eda, CO",
+            "coordinates": "3.812102,-67.842968",
+            "isRare": false,
+            "image": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/547610881/480"
+        }
+    },
+    "username": "Dave Horton",
+    "birds": {
+        "White-tipped Dove": 1,
+        "Neotropic Cormorant": 1,
+        "Orinoco Goose": 1,
+        "Smooth-billed Ani": 1,
+        "Common Ground Dove": 1,
+        "Little Cuckoo": 1,
+        "Yellow-tufted Woodpecker": 1,
+        "Muscovy Duck": 1,
+        "Pale-vented Pigeon": 1
+    },
+    "locations": {
+        "3.812,-67.843": [
+            "White-tipped Dove",
+            "Pale-vented Pigeon"
+        ],
+        "3.472,-67.975": [
+            "Neotropic Cormorant"
+        ],
+        "3.976,-67.977": [
+            "Orinoco Goose"
+        ],
+        "3.817,-67.912": [
+            "Smooth-billed Ani"
+        ],
+        "3.881,-67.881": [
+            "Common Ground Dove"
+        ],
+        "3.836,-67.973": [
+            "Little Cuckoo"
+        ],
+        "3.863,-67.916": [
+            "Yellow-tufted Woodpecker"
+        ],
+        "3.861,-67.964": [
+            "Muscovy Duck"
+        ]
+    },
+    "points": 25
+}
