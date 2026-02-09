@@ -100,7 +100,6 @@ def parseResults(rawJson, user_id):
            else:
                regCode = x["loc"]["subnational1Code"]
            checklist = parseChecklist(x["subId"], regCode)
-           print(checklist)
            for birdArr in checklist:
                bird, isRare, image = birdArr
                isValid = True
@@ -146,14 +145,14 @@ def parseChecklist(cID, regCode):
     page = r.text
 
     pattern = "data-media-commonname=\"(.+?)\""
-    species = list(set(re.findall(pattern, page)))
+    species = list(dict.fromkeys((re.findall(pattern, page))))
 
     birds = {}
     with open("birds.json", "r") as f:
         birds = json.load(f)
     
     pattern = "/species/(.+?)\""
-    codes = list(set(re.findall(pattern, page)))
+    codes = list(dict.fromkeys(re.findall(pattern, page)))
 
     birdList = []
 
@@ -165,8 +164,7 @@ def parseChecklist(cID, regCode):
 """ 
         reg = re.search(pattern, page)
         if (reg):
-            image = "https://cdn.download.ams.birds.cornell.edu/api/v2/asset/" + reg.group(1) + "/480"
-            print(image)
+            image = "https://cdn.download.ams.birds.cornell.edu/api/v2/asset/" + reg.group(1) + "/2400"
         else:
             continue
 

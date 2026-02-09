@@ -55,7 +55,7 @@ function DesktopApp() {
               <Grid templateColumns="repeat(3, 1fr)" gap="6" width="100%">
               {Object.keys(item.birds).map((bird, index) => (
                   <Card.Root flexDirection="row" size = "sm" align="center"  key = {index}>
-                    <Box aspectRatio="square" backgroundImage={"url(" + item.birds[index].image + ")"} backgroundPosition="bottom" backgroundSize="cover" borderRadius="0.375rem 0 0 0.375rem"/>
+                    <Box aspectRatio="square" backgroundImage={"url(" + item.birds[index].image + ")"} backgroundPosition="center" backgroundSize="cover" borderRadius="0.375rem 0 0 0.375rem"/>
                     <Card.Body>
                         <Card.Title mb="2" whiteSpace="nowrap" overflow = "hidden" display = "block" textOverflow = "ellipsis" width="250px">{item.birds[index].bird}</Card.Title>
                         <Card.Description whiteSpace= "nowrap" overflow = "hidden" display = "block" textOverflow = "ellipsis" width="250px">{item.birds[index].location}</Card.Description>

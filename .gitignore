@@ -1,2 +1,3 @@
 __pycache__
 server/data
+server/user_data/*

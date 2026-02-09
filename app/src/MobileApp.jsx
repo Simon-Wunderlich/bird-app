@@ -55,7 +55,7 @@ const MobileApp = () => {
               <Grid templateColumns="repeat(1, 1fr)" gap="6" width="100%">
               {Object.keys(item.birds).map((bird, index) => (
                   <Card.Root flexDirection="column" size = "sm" align="center"  key = {index}>
-                    <Box aspectRatio="square" backgroundImage={"url(" + item.birds[index].image + ")"} backgroundPosition="bottom" backgroundSize="cover" borderRadius="0.375rem 0.375rem 0 0"/>
+                    <Box aspectRatio="square" backgroundImage={"url(" + item.birds[index].image + ")"} backgroundPosition="center" backgroundSize="cover" borderRadius="0.375rem 0.375rem 0 0"/>
                     <Card.Body>
                         <Card.Title mb="2" whiteSpace= "wrap" overflow = "hidden" display = "block" textStyle="4xl" textOverflow = "ellipsis" width="auto">{item.birds[index].bird}</Card.Title>
                         <Card.Description whiteSpace= "nowrap" overflow = "hidden" display = "block" textStyle="2xl" textOverflow = "ellipsis" width="auto">{item.birds[index].location}</Card.Description>
