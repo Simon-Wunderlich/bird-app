@@ -10,6 +10,10 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
+  server: {
+    port: 8001, // Set your desired port number here
+    allowedHosts: ["base.sorry.horse"]
+  },
   plugins: [react()],
   resolve: {
     alias: {
