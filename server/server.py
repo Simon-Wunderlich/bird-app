@@ -82,8 +82,9 @@ def getContent(user_id, recursions = 0, internal = False):
 def parseResults(rawJson, user_id):
     data = {
         "checklists" : {},
+        "birds" : [],
         "username" : rawJson[0]["userDisplayName"],
-        "birds" : {},
+        "birdCounts" : {},
         "locations" : {},
         "points" : 0
     }
@@ -93,42 +94,48 @@ def parseResults(rawJson, user_id):
     except:
         pass
     for x in rawJson:
-        if x["subId"] not in data["checklists"]:
+        if x["subId"] not in data["checklists"] or x["numSpecies"] > data["checklists"][x["subId"]]:
            if "subnational2Code" in x["loc"]:
                regCode = x["loc"]["subnational2Code"]
            else:
                regCode = x["loc"]["subnational1Code"]
-           bird, isRare, image = parseChecklist(x["subId"], regCode)
-
-           isValid = True
-           area = f"{round(x['loc']['lat'],3)},{round(x['loc']['lng'],3)}"
-           if (area in data["locations"]):
-               if bird in data["locations"][area]:
-                   continue
+           checklist = parseChecklist(x["subId"], regCode)
+           print(checklist)
+           for birdArr in checklist:
+               bird, isRare, image = birdArr
+               isValid = True
+               area = f"{round(x['loc']['lat'],3)},{round(x['loc']['lng'],3)}"
+               if (area in data["locations"]):
+                   if bird in data["locations"][area]:
+                       continue
+                   else:
+                       data["locations"][area].append(bird)
                else:
-                   data["locations"][area].append(bird)
-           else:
-               data["locations"][area] = [ bird ]
+                   data["locations"][area] = [ bird ]
 
-           if bird not in data["birds"]:
-               data["birds"][bird] = 0
+               if bird not in data["birdCounts"]:
+                   data["birdCounts"][bird] = 0
 
-           data["birds"][bird] += 1
+               data["birdCounts"][bird] += 1
 
-
-           data["checklists"][x["subId"]] = {
-                   "bird" : bird, 
-                   "date" : x["obsDt"],
-                   "location" : x["loc"]["hierarchicalName"], 
-                   "coordinates" : f"{x['loc']['lat']},{x['loc']['lng']}", 
-                   "isRare" : isRare,
-                   "image" : image
-                   }
-           if isRare:
-               data["points"] += 5
-           else:
-               data["points"] += 1
+               if isRare:
+                   data["points"] += 5
+               else:
+                   data["points"] += 1
     
+               data["birds"].append({
+                       "bird" : bird, 
+                       "date" : x["obsDt"],
+                       "location" : x["loc"]["hierarchicalName"], 
+                       "coordinates" : f"{x['loc']['lat']},{x['loc']['lng']}", 
+                       "isRare" : isRare,
+                       "image" : image
+                       })
+               if x["subId"] in data["checklists"]:
+                    data["checklists"][x["subId"]] += 1
+               else:
+                    data["checklists"][x["subId"]] = 1
+                    
     with open(f"user_data/{user_id}.json", "w") as f:
         json.dump(data, f, indent = 4)
     return data
@@ -139,47 +146,61 @@ def parseChecklist(cID, regCode):
     page = r.text
 
     pattern = "<span class=\"Heading-main\"  >(.+?)</span>"
-    species = re.search(pattern, page).group(1)
+    species = list(set(re.findall(pattern, page)))
 
     birds = {}
     with open("birds.json", "r") as f:
         birds = json.load(f)
     
     pattern = "/species/(.+?)\""
-    code = re.search(pattern, page).group(1)
+    codes = list(set(re.findall(pattern, page)))
 
-    if (code in birds and regCode in birds[code]):
-        freqs = birds[code][regCode]
-    else:
-        headers = {"X-eBirdApiToken" : "jfekjedvescr"}
-        r = requests.get(f"https://api.ebird.org/v2/product/barchart?spp={code}&regionCodes={regCode}", headers = headers)
+    birdList = []
 
-        freqs =r.json()["dataRows"][0]["values"] 
+    for i, code in enumerate(codes):
 
-    yrPercent = float(datetime.now().strftime('%-j'))/365
-    index = round((len(freqs) - 1) * yrPercent)
-    
-    rarity = freqs[index]
+#         pattern = f""""^(.+?)alt="Laughing Kookaburra"
+# ^(.+?)data-image-lazy
+# ^(.+?)data-src="https://cdn.download.ams.birds.cornell.edu/api/v2/asset/(.+?)/160"""
+        pattern = f"""data-media-id="(.+?)"
+																data-media-obsid="(.+?)"
+																data-media-speciescode="{code}"
+""" 
+        reg = re.search(pattern, page)
+        if (reg):
+            image = "https://cdn.download.ams.birds.cornell.edu/api/v2/asset/" + reg.group(1) + "/480"
+            print(image)
+        else:
+            continue
 
-    pattern = "data-src=\"(.+?)/160"
-    reg = re.search(pattern, page)
-    if (reg):
-        image = pattern.group(1) + "/480"
-    elif code not in birds:
-        r = requests.get("https://ebird.org/species/" + code)
-        pattern = "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/(.+?)/"
-        image = re.search(pattern, r.text).group(1)
-        image = f"https://cdn.download.ams.birds.cornell.edu/api/v1/asset/{image}/480"
-        birds.update({code : {"image" : image, regCode : freqs}})
-    else:
-        image = birds[code]["image"]
-        if regCode not in birds[code]:
+        if (code in birds and regCode in birds[code]):
+            freqs = birds[code][regCode]
+        else:
+            headers = {"X-eBirdApiToken" : "jfekjedvescr"}
+            r = requests.get(f"https://api.ebird.org/v2/product/barchart?spp={code}&regionCodes={regCode}", headers = headers)
+            if code not in birds:
+                birds[code] = {regCode : []}
             birds[code][regCode] = freqs
-    with open("birds.json", "w") as f:
-        json.dump(birds, f, indent = 4)
+            with open("birds.json", "w") as f:
+                json.dump(birds, f, indent = 4)
+
+        yrPercent = float(datetime.now().strftime('%-j'))/365
+        index = round((len(freqs) - 1) * yrPercent)
+        
+        rarity = freqs[index]
+        birdList.append([species[i], rarity < 0.1, image])
+
+    # elif code not in birds:
+    #     r = requests.get("https://ebird.org/species/" + code)
+    #     pattern = "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/(.+?)/"
+    #     image = re.search(pattern, r.text).group(1)
+    #     image = f"https://cdn.download.ams.birds.cornell.edu/api/v1/asset/{image}/480"
+    #     birds.update({code : {"image" : image, regCode : freqs}})
+    # else:
+    #     image = birds[code]["image"]
 
 
-    return species, rarity < 0.1, image
+    return birdList
 
 authenticate()
 bird_app = WsgiToAsgi(app)

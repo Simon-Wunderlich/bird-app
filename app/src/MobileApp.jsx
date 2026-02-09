@@ -48,19 +48,19 @@ const MobileApp = () => {
                     <Text textStyle="2xl" alignSelf="end"> unique species</Text>
                   </div>
                   <div>
-                    <Text textStyle="5xl" fontWeight="bold">{allBirds(item.birds)}</Text>
+                    <Text textStyle="5xl" fontWeight="bold">{item.birds.length}</Text>
                     <Text textStyle="2xl" alignSelf="end"> total observations</Text>
                   </div>
               </Box>
               <Grid templateColumns="repeat(1, 1fr)" gap="6" width="100%">
-              {Object.keys(item.checklists).map((checklist, index) => (
+              {Object.keys(item.birds).map((bird, index) => (
                   <Card.Root flexDirection="column" size = "sm" align="center"  key = {index}>
-                    <Box aspectRatio="square" backgroundImage={"url(" + item[`checklists`][checklist].image + ")"} backgroundPosition="bottom" backgroundSize="cover" borderRadius="0.375rem 0.375rem 0 0"/>
+                    <Box aspectRatio="square" backgroundImage={"url(" + item.birds[index].image + ")"} backgroundPosition="bottom" backgroundSize="cover" borderRadius="0.375rem 0.375rem 0 0"/>
                     <Card.Body>
-                        <Card.Title mb="2" whiteSpace= "wrap" overflow = "hidden" display = "block" textStyle="4xl" textOverflow = "ellipsis" width="auto">{item["checklists"][checklist].bird}</Card.Title>
-                        <Card.Description whiteSpace= "nowrap" overflow = "hidden" display = "block" textStyle="2xl" textOverflow = "ellipsis" width="auto">{item["checklists"][checklist].location}</Card.Description>
+                        <Card.Title mb="2" whiteSpace= "wrap" overflow = "hidden" display = "block" textStyle="4xl" textOverflow = "ellipsis" width="auto">{item.birds[index].bird}</Card.Title>
+                        <Card.Description whiteSpace= "nowrap" overflow = "hidden" display = "block" textStyle="2xl" textOverflow = "ellipsis" width="auto">{item.birds[index].location}</Card.Description>
                     </Card.Body>
-                  <Show when={item["checklists"][checklist]["isRare"]}>
+                  <Show when={item.birds[index].isRare}>
                   <Badge variant="solid" colorPalette="blue" textStyle="4xl" padding="5px" width="fit-content" position = "absolute" top="0" left="0">
                   <HiStar />
                   Rare
@@ -79,19 +79,6 @@ const MobileApp = () => {
       </>
   );
 }
-
-function allBirds(birdDict)
-{
-    let birdCount = 0;
-    for (const bird of Object.values(birdDict)) {
-        birdCount+= bird;
-    }
-    return birdCount;
-}
-
-
-
-
 
 export default MobileApp
 

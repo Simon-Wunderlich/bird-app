@@ -44,23 +44,23 @@ function DesktopApp() {
               <Stack gap="2" align="center">
               <Box display="flex" spaceX="8">
                   <div>
-                    <Text textStyle="2xl" fontWeight="bold">{Object.values(item.birds).length}</Text>
+                    <Text textStyle="2xl" fontWeight="bold">{Object.values(item.birdCounts).length}</Text>
                     <Text textStyle="lg" alignSelf="end"> unique species</Text>
                   </div>
                   <div>
-                    <Text textStyle="2xl" fontWeight="bold">{allBirds(item.birds)}</Text>
+                    <Text textStyle="2xl" fontWeight="bold">{item.birds.length}</Text>
                     <Text textStyle="lg" alignSelf="end"> total observations</Text>
                   </div>
               </Box>
               <Grid templateColumns="repeat(3, 1fr)" gap="6" width="100%">
-              {Object.keys(item.checklists).map((checklist, index) => (
+              {Object.keys(item.birds).map((bird, index) => (
                   <Card.Root flexDirection="row" size = "sm" align="center"  key = {index}>
-                    <Box aspectRatio="square" backgroundImage={"url(" + item[`checklists`][checklist].image + ")"} backgroundPosition="bottom" backgroundSize="cover" borderRadius="0.375rem 0 0 0.375rem"/>
+                    <Box aspectRatio="square" backgroundImage={"url(" + item.birds[index].image + ")"} backgroundPosition="bottom" backgroundSize="cover" borderRadius="0.375rem 0 0 0.375rem"/>
                     <Card.Body>
-                        <Card.Title mb="2" whiteSpace="nowrap" overflow = "hidden" display = "block" textOverflow = "ellipsis" width="250px">{item["checklists"][checklist].bird}</Card.Title>
-                        <Card.Description whiteSpace= "nowrap" overflow = "hidden" display = "block" textOverflow = "ellipsis" width="250px">{item["checklists"][checklist].location}</Card.Description>
+                        <Card.Title mb="2" whiteSpace="nowrap" overflow = "hidden" display = "block" textOverflow = "ellipsis" width="250px">{item.birds[index].bird}</Card.Title>
+                        <Card.Description whiteSpace= "nowrap" overflow = "hidden" display = "block" textOverflow = "ellipsis" width="250px">{item.birds[index].location}</Card.Description>
                     </Card.Body>
-                  <Show when={item["checklists"][checklist]["isRare"]}>
+                  <Show when={item.birds[index].isRare}>
                   <Badge variant="solid" colorPalette="blue" position = "absolute" top="0" left="0">
                   <HiStar />
                   Rare
@@ -79,19 +79,6 @@ function DesktopApp() {
       </>
   );
 }
-
-function allBirds(birdDict)
-{
-    let birdCount = 0;
-    for (const bird of Object.values(birdDict)) {
-        birdCount+= bird;
-    }
-    return birdCount;
-}
-
-
-
-
 
 export default DesktopApp
 
