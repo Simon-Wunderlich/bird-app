@@ -26,7 +26,7 @@ const MobileApp = () => {
   return (
       <>
       <Stack gap="2" align="center">
-        <Heading size="7xl">Bird app</Heading>
+        <Heading size="7xl">Leaderbird</Heading>
         <Accordion.Root collapsible variant="enclosed">
           {users.map((item, index) => (
           <Accordion.Item key={index} value={item.username}>

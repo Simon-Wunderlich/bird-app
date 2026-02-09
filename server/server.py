@@ -178,6 +178,9 @@ def parseChecklist(cID, regCode):
         else:
             headers = {"X-eBirdApiToken" : "jfekjedvescr"}
             r = requests.get(f"https://api.ebird.org/v2/product/barchart?spp={code}&regionCodes={regCode}", headers = headers)
+
+            freqs =r.json()["dataRows"][0]["values"] 
+
             if code not in birds:
                 birds[code] = {regCode : []}
             birds[code][regCode] = freqs
@@ -189,16 +192,6 @@ def parseChecklist(cID, regCode):
         
         rarity = freqs[index]
         birdList.append([species[i], rarity < 0.1, image])
-
-    # elif code not in birds:
-    #     r = requests.get("https://ebird.org/species/" + code)
-    #     pattern = "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/(.+?)/"
-    #     image = re.search(pattern, r.text).group(1)
-    #     image = f"https://cdn.download.ams.birds.cornell.edu/api/v1/asset/{image}/480"
-    #     birds.update({code : {"image" : image, regCode : freqs}})
-    # else:
-    #     image = birds[code]["image"]
-
 
     return birdList
 

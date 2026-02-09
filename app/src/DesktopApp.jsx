@@ -26,7 +26,7 @@ function DesktopApp() {
   return (
       <>
       <Stack gap="2" align="center">
-        <Heading size="5xl">Bird app</Heading>
+        <Heading size="5xl">Leaderbird</Heading>
         <Accordion.Root collapsible variant="enclosed">
           {users.map((item, index) => (
           <Accordion.Item key={index} value={item.username}>
