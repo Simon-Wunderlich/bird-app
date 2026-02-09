@@ -145,7 +145,7 @@ def parseChecklist(cID, regCode):
 
     page = r.text
 
-    pattern = "<span class=\"Heading-main\"  >(.+?)</span>"
+    pattern = "data-media-commonname=\"(.+?)\""
     species = list(set(re.findall(pattern, page)))
 
     birds = {}
@@ -159,9 +159,6 @@ def parseChecklist(cID, regCode):
 
     for i, code in enumerate(codes):
 
-#         pattern = f""""^(.+?)alt="Laughing Kookaburra"
-# ^(.+?)data-image-lazy
-# ^(.+?)data-src="https://cdn.download.ams.birds.cornell.edu/api/v2/asset/(.+?)/160"""
         pattern = f"""data-media-id="(.+?)"
 																data-media-obsid="(.+?)"
 																data-media-speciescode="{code}"
