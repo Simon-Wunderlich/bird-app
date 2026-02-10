@@ -59,7 +59,7 @@ def getContent(user_id, recursions = 0, internal = False):
     if recursions >= 3:
         response = jsonify(message = "Failed 3 times in a row")
         response.headers.add("Access-Control-Allow-Origin", "*")
-        return response
+        return response, 400
 
     headers = { 'Cookie' : f'_9bf17=490a770f203a8168; EBIRD_SESSIONID={sessionID}; EBIRD_REGION_CONTEXT=%7B%22regionCode%22%3A%22AU%22%2C%22regionName%22%3A%22Australia%22%7D'}
 
@@ -67,7 +67,7 @@ def getContent(user_id, recursions = 0, internal = False):
     if (r.status_code == 500):
         response = jsonify(message = "Invalid user id")
         response.headers.add("Access-Control-Allow-Origin", "*")
-        return response
+        return response, 400
     if (r.json() == []):
         authenticate()
         return getContent(user_id, recursions + 1)
