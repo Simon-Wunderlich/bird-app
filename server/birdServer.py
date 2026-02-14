@@ -30,6 +30,24 @@ def options():
     res.headers['Access-Control-Allow-Headers'] = 'Content-Type'
     return res
 
+@app.route('/<file_name>', methods=['POST'])
+def submitImage(file_name):
+    imgData = json.loads(request.data)
+    data = ""
+    try:
+        with open("images/" + file_name + ".txt", "r") as f:
+            data = f.read()
+    except:
+        pass
+    data += imgData["img"]
+    with open("images/" + file_name + ".txt", "w") as f:
+        f.write(data)
+
+    response = jsonify(imgData["img"])
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
+
+
 @app.route('/', methods=['POST'])
 def submitBird():
     birdInfo = json.loads(request.data)
@@ -78,18 +96,23 @@ def submitBird():
     isRare = rarity < 0.1
     data["points"] += 5 if isRare else 1
     
+    with open("images/" + uid + ".txt", "r") as f:
+        birdImage = f.read()
     pattern = "data:image/(.+?);base64"
-    ftype = re.search(pattern, birdInfo["image"]).group(1)
-    response = urllib.request.urlopen(birdInfo["image"])
+    ftype = re.search(pattern, birdImage).group(1)
+    response = urllib.request.urlopen(birdImage)
     fileName = f"/{uid}{birdInfo['bird'][0]}{birdInfo['region']}.{ftype}"
     with open(f"../app/public{fileName}", "wb") as f:
         f.write(response.file.read())
+
+    with open("images/" + uid + ".txt", "w") as f:
+        f.write("")
 
     #Bird list
     data["birds"].append({
         "name" : birdInfo["bird"][1],
         "region" : birdInfo["regionName"],
-        "isRare" : isRare,
+        "isRare" : isRare
         "image" : fileName
         })
 
