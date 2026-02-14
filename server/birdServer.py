@@ -71,7 +71,7 @@ def submitBird():
     area = str(round(birdInfo['lat'],3)) + "," + str(round(birdInfo['long'],3))
     if area in data["locations"]:
         if birdInfo["bird"][1] in data["locations"][area]:
-            return f"Already found a {birdInfo['bird'][1]} here", 400
+            return {"message" : f"Already found a {birdInfo['bird'][1]} here" }
         else:
             data["locations"][area].append(birdInfo["bird"][1])
     else:
@@ -101,7 +101,7 @@ def submitBird():
     pattern = "data:image/(.+?);base64"
     ftype = re.search(pattern, birdImage).group(1)
     response = urllib.request.urlopen(birdImage)
-    fileName = f"/{uid}{birdInfo['bird'][0]}{birdInfo['region']}.{ftype}"
+    fileName = f"/{uid}{birdInfo['bird'][0]}{area}.{ftype}"
     with open(f"../app/public{fileName}", "wb") as f:
         f.write(response.file.read())
 
@@ -112,7 +112,7 @@ def submitBird():
     data["birds"].append({
         "name" : birdInfo["bird"][1],
         "region" : birdInfo["regionName"],
-        "isRare" : isRare
+        "isRare" : isRare,
         "image" : fileName
         })
 
@@ -129,7 +129,7 @@ def getFiles():
         with open("user_data/" + fileName, "r") as f:
             file = json.load(f)
             data.append(file)
-    response = jsonify(data)
+    response = jsonify("success")
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 

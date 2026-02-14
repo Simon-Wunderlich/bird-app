@@ -47,7 +47,7 @@ const MobileApp = () => {
 
     const refresh = async () => {
         setLoading(true);
-        fetchData();
+        await fetchData();
         setLoading(false)
     }
 
@@ -56,6 +56,7 @@ const MobileApp = () => {
       setImage('');
       setRegion('');
       setRegionInput('');
+      setSubmitBirdLoading(false);
       setBirdInput('');
   }, [openNewBird])
 
@@ -206,6 +207,14 @@ const MobileApp = () => {
         });
         const result = await response.json();
         console.log(typeof(result));
+	if (Object.keys(result).includes("message")) {
+             toaster.create({
+                description: result["message"],
+                type: "error",
+            });
+	    setOpenBird(false);
+            return; 
+	}
         result.sort((a,b) => b.points - a.points)
         setUsers(result);
 
