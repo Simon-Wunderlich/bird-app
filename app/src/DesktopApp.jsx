@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useAsync } from "react-use";
 import { Stack, Accordion, Heading, Text, Flex, Spacer, Box, Card, Image, Grid, Show, Badge, IconButton, Dialog, Portal, Link, Input, Button, FileUpload, Icon, InputGroup, Spinner, Field, Combobox, useListCollection, Span, useCombobox, HStack } from "@chakra-ui/react"
 import { Toaster, toaster } from "@/src/components/ui/toaster"
+import { FaCrow } from "react-icons/fa6"
 import { HiStar, HiOutlineRefresh, HiOutlinePlus, HiOutlineInformationCircle } from "react-icons/hi"
 import { LuUpload, LuSearch } from "react-icons/lu"
 import './App.css'
@@ -48,12 +49,12 @@ const DesktopApp = () => {
 
     const refresh = async () => {
         setLoading(true);
-        fetchData();
+        await fetchData();
         setLoading(false)
     }
 
   useEffect(() => {
-      setBird(['', '']);
+      setBird('');
       setImage('');
       setRegion('');
       setRegionInput('');
@@ -189,7 +190,6 @@ const DesktopApp = () => {
         }
 
         setSubmitBirdLoading(true);
-        await storeImage();
         const data = {
             bird: [birdCode, bird[0]],
             region: regCode,
@@ -207,9 +207,20 @@ const DesktopApp = () => {
         });
         const result = await response.json();
         console.log(typeof(result));
+	if (Object.keys(result).includes("message")) {
+             toaster.create({
+                description: result["message"],
+                type: "error",
+	    });
+	    setOpenBird(false);
+            setSubmitBirdLoading(false);
+            return; 
+	}
         result.sort((a,b) => b.points - a.points)
+        await storeImage();
         setUsers(result);
 
+	setOpenBird(false);
         setSubmitBirdLoading(false);
     }
     
@@ -356,7 +367,7 @@ const DesktopApp = () => {
         </Dialog.Root>
 
       <Button className="addBird" open={openNewBird} onClick = {() => setOpenBird(true)} position="absolute" bottom = "15px" right = "15px">
-       BIRD
+       < FaCrow />
       </Button>
       <Dialog.Root open = {openNewBird} onOpenChange={(e) => setOpenBird(e.openInfo)} size="lg">
         <Portal>

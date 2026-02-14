@@ -47,15 +47,16 @@ const MobileApp = () => {
 
     const refresh = async () => {
         setLoading(true);
-        fetchData();
+        await fetchData();
         setLoading(false)
     }
 
   useEffect(() => {
-      setBird(['', '']);
+      setBird("");
       setImage('');
       setRegion('');
       setRegionInput('');
+      setSubmitBirdLoading(false);
       setBirdInput('');
   }, [openNewBird])
 
@@ -206,6 +207,14 @@ const MobileApp = () => {
         });
         const result = await response.json();
         console.log(typeof(result));
+	if (Object.keys(result).includes("message")) {
+             toaster.create({
+                description: result["message"],
+                type: "error",
+            });
+	    setOpenBird(false);
+            return; 
+	}
         result.sort((a,b) => b.points - a.points)
         setUsers(result);
 
@@ -229,17 +238,17 @@ const MobileApp = () => {
   return (
       <>
       <Stack gap="2" align="center">
-        <Heading size="7xl">Leaderbird</Heading>
+        <Heading size="5xl">Leaderbird</Heading>
         <Accordion.Root collapsible variant="enclosed">
           {users.map((item, index) => (
           <Accordion.Item key={index} value={item.username}>
             <Accordion.ItemTrigger>
               <Flex gap ="1" width="100%" padding="15px 0">
-                <Text textStyle="5xl"> {index + 1}. </Text>
-                <Text textStyle="5xl" truncate> {item.username} </Text>
+                <Text textStyle="2xl"> {index + 1}. </Text>
+                <Text textStyle="2xl" truncate> {item.username} </Text>
                 <Spacer />
-                <Text textStyle="5xl" fontWeight="bold">{item.points}</Text>
-                <Text textStyle="2xl" alignSelf="end"> pts</Text>
+                <Text textStyle="2xl" fontWeight="bold">{item.points}</Text>
+                <Text textStyle="lg" alignSelf="end"> pts</Text>
                 <Accordion.ItemIndicator alignContent="center" />
               </Flex>
             </Accordion.ItemTrigger>
@@ -247,12 +256,12 @@ const MobileApp = () => {
               <Stack gap="2" align="center">
               <Box display="flex" spaceX="8">
                   <div>
-                    <Text textStyle="5xl" fontWeight="bold">{Object.values(item.birds).length}</Text>
-                    <Text textStyle="2xl" alignSelf="end"> unique species</Text>
+                    <Text textStyle="2xl" fontWeight="bold">{Object.values(item.birds).length}</Text>
+                    <Text textStyle="lg" alignSelf="end"> unique species</Text>
                   </div>
                   <div>
-                    <Text textStyle="5xl" fontWeight="bold">{item.birds.length}</Text>
-                    <Text textStyle="2xl" alignSelf="end"> total observations</Text>
+                    <Text textStyle="2xl" fontWeight="bold">{item.birds.length}</Text>
+                    <Text textStyle="lg" alignSelf="end"> total observations</Text>
                   </div>
               </Box>
               <Grid templateColumns="repeat(1, 1fr)" gap="6" width="100%">
@@ -275,11 +284,11 @@ const MobileApp = () => {
                         </Portal>
                       </Dialog.Root>
                     <Card.Body>
-                        <Card.Title mb="2" whiteSpace= "wrap" overflow = "hidden" display = "block" textStyle="4xl" textOverflow = "ellipsis" width="auto">{item.birds[index].name}</Card.Title>
-                        <Card.Description whiteSpace= "nowrap" overflow = "hidden" display = "block" textStyle="2xl" textOverflow = "ellipsis" width="auto">{item.birds[index].region}</Card.Description>
+                        <Card.Title mb="2" whiteSpace= "wrap" overflow = "hidden" display = "block" textOverflow = "ellipsis" width="auto">{item.birds[index].name}</Card.Title>
+                        <Card.Description whiteSpace= "nowrap" overflow = "hidden" display = "block" textOverflow = "ellipsis" width="auto">{item.birds[index].region}</Card.Description>
                     </Card.Body>
                   <Show when={item.birds[index].isRare}>
-                  <Badge variant="solid" colorPalette="blue" textStyle="4xl" padding="5px" width="fit-content" position = "absolute" top="0" left="0">
+                  <Badge variant="solid" colorPalette="blue" padding="5px" width="fit-content" position = "absolute" top="0" left="0">
                   <HiStar />
                   Rare
                   </Badge>
