@@ -20,12 +20,6 @@ app = Flask(__name__)
 # image
 #region
 @app.route('/', methods=['GET'])
-def handleGet():
-    req == submitBird()
-    response = jsonify(message = req[0])
-    response.headers.add("Access-Control-Allow-Origin", "*")
-    return response, req[1]
-
 def submitBird():
     birdInfo = json.loads(body)
 
@@ -85,8 +79,8 @@ def submitBird():
     with open(f"{uid}.json", "w") as f:
         json.dump(data, f, indent = 4)
 
-    return "Success", 200
+    return data
 
 
 if __name__ == "__main__":
-    app.run(ssl_context='adhoc', port = 8000, host='0.0.0.0')
+    app.run(port = 8000, host='0.0.0.0')
