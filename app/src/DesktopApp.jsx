@@ -4,7 +4,7 @@ import { Stack, Accordion, Heading, Text, Flex, Spacer, Box, Card, Image, Grid, 
 import { Toaster, toaster } from "@/src/components/ui/toaster"
 import { HiStar, HiOutlineRefresh, HiOutlinePlus, HiOutlineInformationCircle } from "react-icons/hi"
 import { LuUpload, LuSearch } from "react-icons/lu"
-
+import BirdImage from "./BirdImage.jsx"
 import './App.css'
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -26,7 +26,6 @@ const DesktopApp = () => {
         const result = await response.json();
         result.sort((a,b) => b.points - a.points)
         setUsers(result);
-        fetchData();
     };
 
     useEffect(() => {
@@ -194,13 +193,24 @@ const DesktopApp = () => {
         const data = {
             bird: [birdCode, bird[0]],
             region: regCode,
+            regionName: region[0],
             image: image,
             lat : location.latitude,
-            long : location.longitude
+            long : location.longitude,
+            uid : "markiplier",
         }
-        const response = await fetch('https://flask-hello-world-tau-dusky.vercel.app/submitBird/' + JSON.stringify(data), {
-            method: "POST",
+        const response = await fetch('https://flask-hello-world-tau-dusky.vercel.app/submitBird/', {
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json"
+            },
+            body : JSON.stringify(data),
         });
+        const result = await response.json();
+        console.log(typeof(result));
+        result.sort((a,b) => b.points - a.points)
+        setUsers(result);
+
         setSubmitBirdLoading(false);
     }
     
@@ -253,7 +263,7 @@ const DesktopApp = () => {
                   <Card.Root flexDirection="row" size = "sm" align="center"  key = {index} position="relative">
                     <Dialog.Root placement = "center" size="xs">
                         <Dialog.Trigger asChild>
-                            <Box aspectRatio="square" backgroundImage={"url(" + item.birds[index].image + ")"} backgroundPosition="center" backgroundSize="cover" borderRadius="0.375rem 0 0 0.375rem"/>
+                            <Box aspectRatio="square" backgroundImage={item.birds[index].image} backgroundPosition="center" backgroundSize="cover" borderRadius="0.375rem 0 0 0.375rem"/>
                         </Dialog.Trigger>
                         <Portal>
                             <Dialog.Backdrop />
