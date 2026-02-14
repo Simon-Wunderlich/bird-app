@@ -29,6 +29,21 @@ const DesktopApp = () => {
 
     useEffect(() => {
         fetchData();
+	    const successHandler = (position) => {
+		setLocation({
+		    latitude: position.coords.latitude,
+		    longitude: position.coords.longitude,
+		});
+	    };
+
+	    const errorHandler = (err) => {
+		console.log(err.message);
+		    setLocation({
+			latitude: 0,
+			longitude: 0,
+		    });
+	    };
+	    navigator.geolocation.getCurrentPosition(successHandler, errorHandler);
     }, [])
 
     const refresh = async () => {
@@ -132,21 +147,6 @@ const DesktopApp = () => {
     set(data)
   }
 
-    const successHandler = (position) => {
-        setLocation({
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
-        });
-    };
-
-    const errorHandler = (err) => {
-        console.log(err.message);
-            setLocation({
-                latitude: 0,
-                longitude: 0,
-            });
-    };
-    navigator.geolocation.getCurrentPosition(successHandler, errorHandler);
     const [location, setLocation] = useState(null);
     const [submitBirdLoading, setSubmitBirdLoading] = useState(false);
     const submitBird = async () => {
@@ -230,7 +230,6 @@ const DesktopApp = () => {
 
   return (
       <>
-	  <BirdImage fileName="markipliertruswaOM-BU.txt" />
       <Stack gap="2" align="center">
         <Heading size="5xl">Leaderbird</Heading>
         <Accordion.Root collapsible variant="enclosed">
@@ -263,7 +262,7 @@ const DesktopApp = () => {
                   <Card.Root flexDirection="row" size = "sm" align="center"  key = {index} position="relative">
                     <Dialog.Root placement = "center" size="xs">
                         <Dialog.Trigger asChild>
-                            <Box aspectRatio="square" backgroundImage={item.birds[index].image} backgroundPosition="center" backgroundSize="cover" borderRadius="0.375rem 0 0 0.375rem"/>
+                            <Box aspectRatio="square" backgroundImage={`url(${item.birds[index].image})`} backgroundPosition="center" backgroundSize="cover" borderRadius="0.375rem 0 0 0.375rem"/>
                         </Dialog.Trigger>
                         <Portal>
                             <Dialog.Backdrop />
@@ -278,8 +277,8 @@ const DesktopApp = () => {
                         </Portal>
                       </Dialog.Root>
                     <Card.Body>
-                        <Card.Title mb="2" whiteSpace="nowrap" overflow = "hidden" display = "block" textOverflow = "ellipsis" width="250px">{item.birds[index].bird}</Card.Title>
-                        <Card.Description whiteSpace= "nowrap" overflow = "hidden" display = "block" textOverflow = "ellipsis" width="250px">{item.birds[index].location}</Card.Description>
+                        <Card.Title mb="2" whiteSpace="nowrap" overflow = "hidden" display = "block" textOverflow = "ellipsis" width="250px">{item.birds[index].name}</Card.Title>
+                        <Card.Description whiteSpace= "nowrap" overflow = "hidden" display = "block" textOverflow = "ellipsis" width="250px">{item.birds[index].region}</Card.Description>
                     </Card.Body>
                   <Show when={item.birds[index].isRare}>
                       <Badge variant="solid" colorPalette="blue" position = "absolute" top="0" left="0">
