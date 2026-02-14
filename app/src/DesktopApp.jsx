@@ -189,11 +189,11 @@ const DesktopApp = () => {
         }
 
         setSubmitBirdLoading(true);
+        await storeImage();
         const data = {
             bird: [birdCode, bird[0]],
             region: regCode,
             regionName: region[0],
-            image: image,
             lat : location.latitude,
             long : location.longitude,
             uid : "markiplier",
@@ -227,6 +227,30 @@ const DesktopApp = () => {
             reader.readAsDataURL(uploadedFile);
         }
       };
+
+
+    const storeImage = async () => {
+        const batches = Math.ceil(image.length / 4500000)
+        console.log(image.length)
+        let start = 0;
+        for (let i = 0; i < batches; i++) {
+            const end = Math.min(image.length, Math.ceil((i+1) * image.length / batches))
+            console.log(start);
+            console.log(end);
+            const batch = image.slice(start, end)
+            start = end;
+            const data = {
+                img : batch
+            }
+            await fetch('https://flask-hello-world-tau-dusky.vercel.app/submitImage/markiplier', {
+                method : "POST",
+                headers : {
+                    "Content-Type" : "application/json"
+                },
+                body : JSON.stringify(data),
+            });
+        }
+    }
 
   return (
       <>
