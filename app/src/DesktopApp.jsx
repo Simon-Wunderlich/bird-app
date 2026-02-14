@@ -4,7 +4,6 @@ import { Stack, Accordion, Heading, Text, Flex, Spacer, Box, Card, Image, Grid, 
 import { Toaster, toaster } from "@/src/components/ui/toaster"
 import { HiStar, HiOutlineRefresh, HiOutlinePlus, HiOutlineInformationCircle } from "react-icons/hi"
 import { LuUpload, LuSearch } from "react-icons/lu"
-import BirdImage from "./BirdImage.jsx"
 import './App.css'
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -231,6 +230,7 @@ const DesktopApp = () => {
 
   return (
       <>
+	  <BirdImage fileName="markipliertruswaOM-BU.txt" />
       <Stack gap="2" align="center">
         <Heading size="5xl">Leaderbird</Heading>
         <Accordion.Root collapsible variant="enclosed">

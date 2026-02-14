@@ -1,4 +1,5 @@
 import json
+import urllib.request
 import re
 import requests
 import os.path
@@ -19,10 +20,19 @@ app = Flask(__name__)
 # bird code
 # image
 #region
-@app.route('/', methods=['GET'])
-def submitBird():
-    birdInfo = json.loads(body)
 
+@app.route('/', methods=['OPTIONS'])
+def options():
+    # Custom headers for CORS preflight
+    res = Response()
+    res.headers['Access-Control-Allow-Origin'] = '*'
+    res.headers['Access-Control-Allow-Methods'] = 'POST'
+    res.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    return res
+
+@app.route('/', methods=['POST'])
+def submitBird():
+    birdInfo = json.loads(request.data)
     uid = birdInfo["uid"]
 
     
@@ -40,21 +50,21 @@ def submitBird():
     except:
         pass
 
-    area = round(birdInfo['lat'],3) + "," + round(birdInfo['long'],3)
+    area = str(round(birdInfo['lat'],3)) + "," + str(round(birdInfo['long'],3))
     if area in data["locations"]:
-        if birdInfo["bird"][1] in data["locations"]["area"]:
+        if birdInfo["bird"][1] in data["locations"][area]:
             return f"Already found a {birdInfo['bird'][1]} here", 400
         else:
-            data["locations"]["area"].append(birdInfo["bird"][1])
+            data["locations"][area].append(birdInfo["bird"][1])
     else:
-        data["locations"]["area"] = [ birdInfo["bird"][1] ]
+        data["locations"][area] = [ birdInfo["bird"][1] ]
 
 
 
     # Bird count
     if birdInfo["bird"][1] not in data["birdCounts"]:
         data["birdCounts"][birdInfo["bird"][1]] = 0
-    data["birdCounts"][birdInfo["bird"][1]]
+    data["birdCounts"][birdInfo["bird"][1]] += 1
 
     # Rarity (needs bird code)
     headers = {"X-eBirdApiToken" : "jfekjedvescr"}
@@ -67,19 +77,39 @@ def submitBird():
     rarity = freqs[index]
     isRare = rarity < 0.1
     data["points"] += 5 if isRare else 1
+    
+    pattern = "data:image/(.+?);base64"
+    ftype = re.search(pattern, birdInfo["image"]).group(1)
+    response = urllib.request.urlopen(birdInfo["image"])
+    fileName = f"/{uid}{birdInfo['bird'][0]}{birdInfo['region']}.{ftype}"
+    with open(f"../app/public{fileName}", "wb") as f:
+        f.write(response.file.read())
 
     #Bird list
     data["birds"].append({
         "name" : birdInfo["bird"][1],
-        "region" : birdInfo["region"],
+        "region" : birdInfo["regionName"],
         "isRare" : isRare,
-        "image" : birdInfo["image"]
+        "image" : fileName
         })
 
-    with open(f"{uid}.json", "w") as f:
+    with open(f"user_data/{uid}.json", "w") as f:
         json.dump(data, f, indent = 4)
 
-    return data
+    return getFiles()
+
+@app.route("/", methods=["GET"])
+def getFiles():
+    files = os.listdir("user_data")
+    data = []
+    for fileName in files:
+        with open("user_data/" + fileName, "r") as f:
+            file = json.load(f)
+            data.append(file)
+    response = jsonify(data)
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
+
 
 
 if __name__ == "__main__":
