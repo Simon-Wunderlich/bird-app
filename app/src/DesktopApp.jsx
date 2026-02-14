@@ -22,7 +22,7 @@ const DesktopApp = () => {
     const [image, setImage] = useState('');
 
     const fetchData = async () => {
-        const response = await fetch('https://192.168.1.108:8000/');
+        const response = await fetch('https://base.sorry.horse:8000/');
         const result = await response.json();
         result.sort((a,b) => b.points - a.points)
         setUsers(result);
@@ -198,7 +198,7 @@ const DesktopApp = () => {
             lat : location.latitude,
             long : location.longitude
         }
-        const response = await fetch('https://192.168.1.108:8000/', {
+        const response = await fetch('https://base.sorry.horse:8000/', {
             method: "POST",
         });
         setSubmitBirdLoading(false);
