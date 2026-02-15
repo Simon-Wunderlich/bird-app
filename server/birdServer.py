@@ -31,7 +31,7 @@ def options():
     res.headers['Access-Control-Allow-Headers'] = 'Content-Type'
     return res
 
-@app.route('/<user_name>', methods=['GET'])
+@app.route('/register/<user_name>', methods=['GET'])
 def register(user_name):
     userId = random.randint(0, 9999999999)
 
