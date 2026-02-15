@@ -366,9 +366,6 @@ const DesktopApp = () => {
           </Portal>
         </Dialog.Root>
 
-      <Button className="addBird" open={openNewBird} onClick = {() => setOpenBird(true)} position="absolute" bottom = "15px" right = "15px">
-       < FaCrow />
-      </Button>
       <Dialog.Root open = {openNewBird} onOpenChange={(e) => setOpenBird(e.openInfo)} size="lg">
         <Portal>
             <Dialog.Backdrop />

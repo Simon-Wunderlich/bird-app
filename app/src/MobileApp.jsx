@@ -4,6 +4,7 @@ import { Stack, Accordion, Heading, Text, Flex, Spacer, Box, Card, Image, Grid, 
 import { Toaster, toaster } from "@/src/components/ui/toaster"
 import { HiStar, HiOutlineRefresh, HiOutlinePlus, HiOutlineInformationCircle } from "react-icons/hi"
 import { LuUpload, LuSearch } from "react-icons/lu"
+import { FaCrow } from "react-icons/fa6"
 import './App.css'
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -52,11 +53,10 @@ const MobileApp = () => {
     }
 
   useEffect(() => {
-      setBird("");
+      setBird('');
       setImage('');
       setRegion('');
       setRegionInput('');
-      setSubmitBirdLoading(false);
       setBirdInput('');
   }, [openNewBird])
 
@@ -189,11 +189,11 @@ const MobileApp = () => {
         }
 
         setSubmitBirdLoading(true);
+        await storeImage();
         const data = {
             bird: [birdCode, bird[0]],
             region: regCode,
             regionName: region[0],
-            image: image,
             lat : location.latitude,
             long : location.longitude,
             uid : "markiplier",
@@ -211,13 +211,15 @@ const MobileApp = () => {
              toaster.create({
                 description: result["message"],
                 type: "error",
-            });
+	    });
 	    setOpenBird(false);
+            setSubmitBirdLoading(false);
             return; 
 	}
         result.sort((a,b) => b.points - a.points)
         setUsers(result);
 
+	setOpenBird(false);
         setSubmitBirdLoading(false);
     }
     
@@ -235,6 +237,30 @@ const MobileApp = () => {
             reader.readAsDataURL(uploadedFile);
         }
       };
+
+
+    const storeImage = async () => {
+        const batches = Math.ceil(image.length / 4500000)
+        console.log(image.length)
+        let start = 0;
+        for (let i = 0; i < batches; i++) {
+            const end = Math.min(image.length, Math.ceil((i+1) * image.length / batches))
+            console.log(start);
+            console.log(end);
+            const batch = image.slice(start, end)
+            start = end;
+            const data = {
+                img : batch
+            }
+            await fetch('https://flask-hello-world-tau-dusky.vercel.app/submitImage/markiplier', {
+                method : "POST",
+                headers : {
+                    "Content-Type" : "application/json"
+                },
+                body : JSON.stringify(data),
+            });
+        }
+    }
   return (
       <>
       <Stack gap="2" align="center">
@@ -338,8 +364,8 @@ const MobileApp = () => {
           </Portal>
         </Dialog.Root>
 
-      <Button className="addBird" open={openNewBird} onClick = {() => setOpenBird(true)} position="absolute" bottom = "15px" right = "15px">
-       BIRD
+      <Button className="addBird" open={openNewBird} onClick = {() => setOpenBird(true)} position="fixed" bottom = "15px" right = "15px">
+       < FaCrow />
       </Button>
       <Dialog.Root open = {openNewBird} onOpenChange={(e) => setOpenBird(e.openInfo)} size="lg">
         <Portal>

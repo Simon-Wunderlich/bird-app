@@ -1,4 +1,5 @@
 import json
+import random
 import urllib.request
 import re
 import requests
@@ -30,6 +31,24 @@ def options():
     res.headers['Access-Control-Allow-Headers'] = 'Content-Type'
     return res
 
+@app.route('/<user_name>', methods=['GET'])
+def register(user_name):
+    userId = random.randint(0, 9999999999)
+
+    data = {
+        "birds" : [],
+        "username" : user_name,
+        "birdCounts" : {},
+        "locations" : {},
+        "points" : 0
+    }
+    with open(f"user_data/{userId}.json", "w") as f:
+        json.dump(data, f, indent = 4)
+
+    response = jsonify(userId)
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
+
 @app.route('/<file_name>', methods=['POST'])
 def submitImage(file_name):
     imgData = json.loads(request.data)
@@ -53,6 +72,7 @@ def submitBird():
     birdInfo = json.loads(request.data)
     uid = birdInfo["uid"]
 
+    print(birdInfo)
     
     data = {
         "birds" : [],
