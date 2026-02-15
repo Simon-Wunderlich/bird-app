@@ -5,6 +5,7 @@ import { Toaster, toaster } from "@/src/components/ui/toaster"
 import { FaCrow } from "react-icons/fa6"
 import { HiStar, HiOutlineRefresh, HiOutlinePlus, HiOutlineInformationCircle } from "react-icons/hi"
 import { LuUpload, LuSearch } from "react-icons/lu"
+import Login from "./Login.jsx"
 import './App.css'
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -20,6 +21,7 @@ const DesktopApp = () => {
     const [region, setRegion] = useState('');
     const [bird, setBird] = useState('');
     const [image, setImage] = useState('');
+    const [uid, setUid] = useState("");
 
     const fetchData = async () => {
         const response = await fetch('https://flask-hello-world-tau-dusky.vercel.app/data');
@@ -265,6 +267,7 @@ const DesktopApp = () => {
 
   return (
       <>
+      <Login setUid={setUid}/>
       <Stack gap="2" align="center">
         <Heading size="5xl">Leaderbird</Heading>
         <Accordion.Root collapsible variant="enclosed">
