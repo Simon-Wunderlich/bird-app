@@ -4,50 +4,76 @@
 // // https://vite.dev/config/
 // export default defineConfig({
 //   plugins: [react()],
+
 // })
+import { fileURLToPath } from "url";
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import mkcert from 'vite-plugin-mkcert'
 import { VitePWA } from 'vite-plugin-pwa'
 
-const manifest = {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default defineConfig({
+  server: {
+    port: 8001, // Set your desired port number here
+    allowedHosts: ["base.sorry.horse"]
+  },
+  plugins: [react(), mkcert(), VitePWA({
       registerType: "autoUpdate",
       includeAssets: [
-        "favicon.ico"
+        "favicon.ico",
+        "pwa144.png",
+        "pwa192.png",
+        "pwa512.png",
+        "maskable_icon_x512.png"
       ],
       manifest: {
         name: "Leaderbird",
         short_name: "Bird",
         start_url: "/",
+	scope: "/",	
+	id: "/",	
         display: "standalone",
         background_color: "#ffffff",
         theme_color: "#14329c", 
         icons: [
           {
-            src: "pwa144.png",
+            src: "/pwa144.png",
             sizes: "144x144",
             type: "image/png",
           },
           {
-            src: "pwa192.png",
+            src: "/pwa192.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "pwa512.png",
+            src: "/pwa512.png",
             sizes: "512x512",
             type: "image/png",
           },
           {
-            src: "maskable_icon_x512.png",
+            src: "/maskable_icon_x512.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "any maskable",
           },
         ],
-        screenshots: [
-        ],
+        screenshots: [          {
+            src: "/maskable_icon_x512.png",
+            sizes: "512x512",
+            type: "image/png",
+            form_factor: "wide",
+          }, 
+	{
+            src: "/maskable_icon_x512.png",
+            sizes: "512x512",
+            type: "image/png",
+            form_factor: "narrow",
+          }],
       },
       workbox: {
         navigateFallback: "/offline.html",
@@ -68,14 +94,8 @@ const manifest = {
           },
         ],
       },
-    }
-
-export default defineConfig({
-  server: {
-    port: 8001, // Set your desired port number here
-    allowedHosts: ["base.sorry.horse"]
-  },
-  plugins: [react(), mkcert(), VitePWA(mainfest)],
+    }),
+  ],
   resolve: {
     alias: {
       // This line defines the '@' alias

@@ -43,7 +43,7 @@ def submitImage(file_name):
     with open("images/" + file_name + ".txt", "w") as f:
         f.write(data)
 
-    response = jsonify(imgData["img"])
+    response = jsonify("success")
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
@@ -129,7 +129,7 @@ def getFiles():
         with open("user_data/" + fileName, "r") as f:
             file = json.load(f)
             data.append(file)
-    response = jsonify("success")
+    response = jsonify(data)
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
