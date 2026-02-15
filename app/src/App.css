@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+body {
+	height : 50vh;
+}
+
 .card {
     width: fit-content;
     position: absolute;

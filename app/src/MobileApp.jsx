@@ -56,6 +56,7 @@ const MobileApp = () => {
 
   useEffect(() => {
       setBird('');
+      setProgress(0);
       setImage('');
       setRegion('');
       setRegionInput('');
@@ -239,21 +240,20 @@ const MobileApp = () => {
             reader.readAsDataURL(uploadedFile);
         }
       };
-
-
+	
+    const [progress, setProgress] = useState(0);
     const storeImage = async () => {
         const batches = Math.ceil(image.length / 4500000)
         console.log(image.length)
         let start = 0;
         for (let i = 0; i < batches; i++) {
             const end = Math.min(image.length, Math.ceil((i+1) * image.length / batches))
-            console.log(start);
-            console.log(end);
             const batch = image.slice(start, end)
             start = end;
             const data = {
                 img : batch
             }
+	    increment(Math.round(100 * i / batches), Math.round(100 * (i+1) / batches));
             await fetch('https://flask-hello-world-tau-dusky.vercel.app/submitImage/markiplier', {
                 method : "POST",
                 headers : {
@@ -263,9 +263,15 @@ const MobileApp = () => {
             });
         }
     }
+    const increment = async (start, stop) => {
+	    const pause = 5000 / (stop - start);
+	    for(let i = start; i < stop; i++) {
+		    setProgress(i);
+		    await sleep(pause);
+	    }
+    }
   return (
       <>
-      <Login setUid={setUid}/>
       <Stack gap="2" align="center">
         <Heading size="5xl">Leaderbird</Heading>
         <Accordion.Root collapsible variant="enclosed">
@@ -381,6 +387,7 @@ const MobileApp = () => {
                         </Dialog.Title>
                     </Dialog.Header>
                     <Dialog.Body>
+		      <Login setUid={setUid}/>
                         <FileUpload.Root maxW="xl" alignItems="stretch" onChange={handleFileChange} accept={["image/png", "image/jpeg", "image/webp"]}>
                           <FileUpload.HiddenInput />
                           <FileUpload.Dropzone>
@@ -456,9 +463,12 @@ const MobileApp = () => {
                           </Combobox.Content>
                         </Combobox.Positioner>
                     </Combobox.Root>
-                        <Button loading={submitBirdLoading} onClick={submitBird}>
+                        <Button loading={submitBirdLoading} onClick={submitBird} style = {{ marginTop : "10px"}}>
                             SUBMIT
                         </Button>
+			  <Show when={progress > 0}>		
+				  <Text show display="inline" textStyle="sm" position="relative" top="5px" padding="10px">{progress}%</Text>
+	  		  </Show>
                 </Dialog.Body>
               </Dialog.Content>
           </Dialog.Positioner>

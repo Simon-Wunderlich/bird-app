@@ -5,6 +5,7 @@ import { Stack, Accordion, Heading, Text, Flex, Spacer, Box, Card, Image, Grid, 
 
 const Login = ({setUid}) => {
     const [open, setOpen] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [name, setName] = useState("")
 
     useEffect(() => {
@@ -15,6 +16,7 @@ const Login = ({setUid}) => {
     }, [])
 
     const submit = async () => {
+	    
         if (name === "") {
              toaster.create({
                 description: "Name cannot be blank",
@@ -22,11 +24,13 @@ const Login = ({setUid}) => {
             });
             return
         }
+	setLoading(true);
         const response = await fetch("https://flask-hello-world-tau-dusky.vercel.app/register/" + name)
         const result = await response.text();
         localStorage.setItem("uid", result)
         setUid(result)
         setOpen(false)
+	setLoading(false);
     }
 
     return (
@@ -43,7 +47,7 @@ const Login = ({setUid}) => {
                 </Dialog.Header>
                 <Dialog.Body>
                     <Input onChange={(event) => setName(event.target.value)}/>
-                    <Button onClick = {submit}>Go</Button>
+                    <Button loading={loading} onClick = {submit} style = {{ marginTop : "10px"}}>Go</Button>
                 </Dialog.Body>
               </Dialog.Content>
             </Dialog.Positioner>
