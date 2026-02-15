@@ -38,12 +38,15 @@ const MobileApp = () => {
 		});
 	    };
 
-	    const errorHandler = (err) => {
-		console.log(err.message);
+	    const errorHandler = async (err) => {
+		     console.log(err.message);
 		    setLocation({
 			latitude: 0,
 			longitude: 0,
 		    });
+		    const timer = setTimeout(() => {
+			  }, 100);
+			  return () => clearTimeout(timer);
 	    };
 	    navigator.geolocation.getCurrentPosition(successHandler, errorHandler);
     }, [])
@@ -167,11 +170,25 @@ const MobileApp = () => {
                 longitude: 0,
             });
         };
-        navigator.geolocation.getCurrentPosition(successHandler, errorHandler);
+	try {
+		await new Promise((successHandler, errorHandler) => { 
+			navigator.geolocation.getCurrentPosition(successHandler, errorHandler, {
+			      timeout: 10000, // Optional: set a timeout (10 seconds here)
+			      enableHighAccuracy: true
+			});	
+		});
+	}
+	catch {
+             toaster.create({
+                description: "Location is required",
+                type: "error",
+            });
+	    return;
+	}
         if (bird == "")    {
              toaster.create({
                 description: "Bird is required",
-                type: "error",
+                type: "error"
             });
             return; 
         }
@@ -387,7 +404,7 @@ const MobileApp = () => {
                         </Dialog.Title>
                     </Dialog.Header>
                     <Dialog.Body>
-		      <Login setUid={setUid}/>
+		      <Login setUid={setUid} setOpenBird={setOpenBird}/>
                         <FileUpload.Root maxW="xl" alignItems="stretch" onChange={handleFileChange} accept={["image/png", "image/jpeg", "image/webp"]}>
                           <FileUpload.HiddenInput />
                           <FileUpload.Dropzone>

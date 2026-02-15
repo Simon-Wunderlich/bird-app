@@ -3,7 +3,7 @@ import { Toaster, toaster } from "@/src/components/ui/toaster"
 import { Stack, Accordion, Heading, Text, Flex, Spacer, Box, Card, Image, Grid, Show, Badge, IconButton, Dialog, Portal, Link, Input, Button, FileUpload, Icon, InputGroup, Spinner, Field, Combobox, useListCollection, Span, useCombobox, HStack } from "@chakra-ui/react"
 
 
-const Login = ({setUid}) => {
+const Login = ({setUid, setOpenBird}) => {
     const [open, setOpen] = useState(false)
     const [loading, setLoading] = useState(false)
     const [name, setName] = useState("")
@@ -35,7 +35,7 @@ const Login = ({setUid}) => {
 
     return (
     <>
-      <Dialog.Root open={open}>
+      <Dialog.Root open={open} onOpenChange={(e) => setOpenBird(e.openInfo)}>
           <Portal>
             <Dialog.Backdrop/>
             <Dialog.Positioner>
