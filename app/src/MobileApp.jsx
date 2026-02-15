@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { useAsync } from "react-use";
 import { Stack, Accordion, Heading, Text, Flex, Spacer, Box, Card, Image, Grid, Show, Badge, IconButton, Dialog, Portal, Link, Input, Button, FileUpload, Icon, InputGroup, Spinner, Field, Combobox, useListCollection, Span, useCombobox, HStack } from "@chakra-ui/react"
+import Login from "./Login.jsx"
 import { Toaster, toaster } from "@/src/components/ui/toaster"
 import { HiStar, HiOutlineRefresh, HiOutlinePlus, HiOutlineInformationCircle } from "react-icons/hi"
 import { LuUpload, LuSearch } from "react-icons/lu"
@@ -18,6 +19,7 @@ const MobileApp = () => {
     const [region, setRegion] = useState('');
     const [bird, setBird] = useState('');
     const [image, setImage] = useState('');
+    const [uid, setUid] = useState("");
 
     const fetchData = async () => {
         const response = await fetch('https://flask-hello-world-tau-dusky.vercel.app/data');
@@ -237,6 +239,7 @@ const MobileApp = () => {
       };
   return (
       <>
+      <Login setUid={setUid}/>
       <Stack gap="2" align="center">
         <Heading size="5xl">Leaderbird</Heading>
         <Accordion.Root collapsible variant="enclosed">
