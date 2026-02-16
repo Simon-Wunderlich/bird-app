@@ -9,6 +9,8 @@ body {
 	height : 50vh;
 }
 
+#map { height: 180px; }
+
 .card {
     width: fit-content;
     position: absolute;

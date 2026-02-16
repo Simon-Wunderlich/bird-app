@@ -13,6 +13,9 @@ const Login = ({setUid, setOpenBird}) => {
         if (value == null) {
             setOpen(true);
         }
+	else {
+		setUid(value.replaceAll("\n", ""));
+	}
     }, [])
 
     const submit = async () => {

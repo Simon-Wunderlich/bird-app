@@ -353,7 +353,7 @@ const DesktopApp = () => {
                 <Dialog.Body>
                     <Heading marginTop = "30px">Rules</Heading>
                     <Text>
-                        Each bird is worth 1 point. Rare birds are worth 5 points. If you submit a bird within 100m of a bird of the same species that you have already submitted, it will not count. Likewise if you do not attatch a photo to your sighting via eBird it will not count.
+                        Each bird is worth 1 point. Rare birds are worth 5 points. If you submit a bird within 1km of a bird of the same species that you have already submitted, it will not count.
       </Text>
           <Heading>
           Resources
