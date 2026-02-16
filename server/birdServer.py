@@ -1,4 +1,5 @@
 import json
+import os
 import random
 import urllib.request
 import re
@@ -52,15 +53,25 @@ def register(user_name):
 @app.route('/<file_name>', methods=['POST'])
 def submitImage(file_name):
     imgData = json.loads(request.data)
+    txtFileName = file_name.split(".")[0] + ".txt"
     data = ""
-    try:
-        with open("images/" + file_name + ".txt", "r") as f:
-            data = f.read()
-    except:
-        pass
+    if (int(imgData["currentBatch"]) != 0):
+        try:
+            with open("images/" + txtFileName, "r") as f:
+                data = f.read()
+            print("read file")
+        except:
+            pass
     data += imgData["img"]
-    with open("images/" + file_name + ".txt", "w") as f:
+    with open("images/" + txtFileName, "w") as f:
         f.write(data)
+
+    if (int(imgData["currentBatch"]) == int(imgData["batches"]) - 1):
+        print("saving image")
+        response = urllib.request.urlopen(data)
+        with open(f"../app/public/{file_name}", "wb") as f:
+            f.write(response.file.read())
+        os.remove("images/" + txtFileName)
 
     response = jsonify("success")
     response.headers.add("Access-Control-Allow-Origin", "*")
@@ -88,7 +99,7 @@ def submitBird():
     except:
         pass
 
-    area = str(round(birdInfo['lat'],3)) + "," + str(round(birdInfo['long'],3))
+    area = str(round(birdInfo['lat'],2)) + "," + str(round(birdInfo['long'],2))
     if area in data["locations"]:
         if birdInfo["bird"][1] in data["locations"][area]:
             return {"message" : f"Already found a {birdInfo['bird'][1]} here" }
@@ -116,24 +127,12 @@ def submitBird():
     isRare = rarity < 0.1
     data["points"] += 5 if isRare else 1
     
-    with open("images/" + uid + ".txt", "r") as f:
-        birdImage = f.read()
-    pattern = "data:image/(.+?);base64"
-    ftype = re.search(pattern, birdImage).group(1)
-    response = urllib.request.urlopen(birdImage)
-    fileName = f"/{uid}{birdInfo['bird'][0]}{area}.{ftype}"
-    with open(f"../app/public{fileName}", "wb") as f:
-        f.write(response.file.read())
-
-    with open("images/" + uid + ".txt", "w") as f:
-        f.write("")
-
     #Bird list
     data["birds"].append({
         "name" : birdInfo["bird"][1],
         "region" : birdInfo["regionName"],
         "isRare" : isRare,
-        "image" : fileName
+        "image" : "/" + birdInfo["image"]
         })
 
     with open(f"user_data/{uid}.json", "w") as f:
@@ -146,9 +145,12 @@ def getFiles():
     files = os.listdir("user_data")
     data = []
     for fileName in files:
-        with open("user_data/" + fileName, "r") as f:
-            file = json.load(f)
-            data.append(file)
+        try:
+            with open("user_data/" + fileName, "r") as f:
+                file = json.load(f)
+                data.append(file)
+        except:
+            print(fileName)
     response = jsonify(data)
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response

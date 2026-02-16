@@ -12,6 +12,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import mkcert from 'vite-plugin-mkcert'
 import { VitePWA } from 'vite-plugin-pwa'
+import fs from 'fs'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -19,9 +20,13 @@ const __dirname = path.dirname(__filename);
 export default defineConfig({
   server: {
     port: 8001, // Set your desired port number here
-    allowedHosts: ["base.sorry.horse"]
+    allowedHosts: ["base.sorry.horse"],
+    https : {
+	    key : fs.readFileSync(path.resolve(__dirname, "certs/private.key")),
+	    cert : fs.readFileSync(path.resolve(__dirname, "certs/certificate.crt")),
+    }
   },
-  plugins: [react(), mkcert(), VitePWA({
+  plugins: [react(), VitePWA({
       registerType: "autoUpdate",
       includeAssets: [
         "favicon.ico",
@@ -32,13 +37,13 @@ export default defineConfig({
       ],
       manifest: {
         name: "Leaderbird",
-        short_name: "Bird",
+        short_name: "Leaderbird",
         start_url: "/",
 	scope: "/",	
 	id: "/",	
         display: "standalone",
-        background_color: "#ffffff",
-        theme_color: "#14329c", 
+        background_color: "#000000",
+        theme_color: "#000000", 
         icons: [
           {
             src: "/pwa144.png",

@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
+import { MapContainer, TileLayer, useMapEvents, Marker } from "react-leaflet"
 import { useAsync } from "react-use";
 import { Stack, Accordion, Heading, Text, Flex, Spacer, Box, Card, Image, Grid, Show, Badge, IconButton, Dialog, Portal, Link, Input, Button, FileUpload, Icon, InputGroup, Spinner, Field, Combobox, useListCollection, Span, useCombobox, HStack } from "@chakra-ui/react"
 import Login from "./Login.jsx"
 import { Toaster, toaster } from "@/src/components/ui/toaster"
 import { HiStar, HiOutlineRefresh, HiOutlinePlus, HiOutlineInformationCircle } from "react-icons/hi"
 import { LuUpload, LuSearch } from "react-icons/lu"
-import { FaCrow } from "react-icons/fa6"
+import { FaCrow, FaLocationDot } from "react-icons/fa6"
 import './App.css'
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -15,10 +16,12 @@ const MobileApp = () => {
     const [open, setOpen] = useState(false)
     const [openInfo, setOpenInfo] = useState(false)
     const [openNewBird, setOpenBird] = useState(false)
+    const [openMap, setOpenMap] = useState(false)
     const [regLoading, setRegLoading] = useState(false)
     const [birdLoading, setBirdLoading] = useState(false)
     const [region, setRegion] = useState('');
     const [bird, setBird] = useState('');
+    const [marker, setMarker] = useState([-37.8136, 144.9631])
     const [image, setImage] = useState('');
     const [uid, setUid] = useState("");
 
@@ -29,6 +32,14 @@ const MobileApp = () => {
         setUsers(result);
     };
 
+    const setLocationFromMarker = () => {
+	    console.log(marker);
+	setLocation({
+		latitude: marker.lat,
+		longitude: marker.lng
+	    });
+	    setOpenMap(false);
+    }
     useEffect(() => {
         fetchData();
 	    const successHandler = (position) => {
@@ -36,6 +47,7 @@ const MobileApp = () => {
 		    latitude: position.coords.latitude,
 		    longitude: position.coords.longitude,
 		});
+		setMarker([position.coords.latitude, position.coords.longitude]);
 	    };
 
 	    const errorHandler = async (err) => {
@@ -56,6 +68,13 @@ const MobileApp = () => {
         await fetchData();
         setLoading(false)
     }
+
+const handleClick = (event) => {
+    const { lat, lng } = event.latlng
+    console.log(lat);
+    setMarker([lat, lng]);
+  }
+
 
   useEffect(() => {
       setBird('');
@@ -170,20 +189,21 @@ const MobileApp = () => {
                 longitude: 0,
             });
         };
-	try {
-		await new Promise((successHandler, errorHandler) => { 
-			navigator.geolocation.getCurrentPosition(successHandler, errorHandler, {
-			      timeout: 10000, // Optional: set a timeout (10 seconds here)
-			      enableHighAccuracy: true
-			});	
-		});
-	}
-	catch {
-             toaster.create({
-                description: "Location is required",
-                type: "error",
-            });
-	    return;
+	if (marker == [-37.8136, 144.9631]) {
+		try {
+			await new Promise((successHandler, errorHandler) => { 
+				navigator.geolocation.getCurrentPosition(successHandler, errorHandler, {
+				      timeout: 10000, // Optional: set a timeout (10 seconds here)
+				      enableHighAccuracy: true
+				});	
+			});
+		}
+		catch {
+		     toaster.create({
+			description: "Locaion permissions are required",
+			type: "error",
+		    });
+		}
 	}
         if (bird == "")    {
              toaster.create({
@@ -207,16 +227,18 @@ const MobileApp = () => {
             });
             return; 
         }
-
+	
+	const fileType = image.match("data:image/(.+?);base64")[1];
+	const fileName = `${uid}${birdCode}${location.latitude}${location.longitude}`.replaceAll(".", "") + "." + fileType;
         setSubmitBirdLoading(true);
-        await storeImage();
         const data = {
             bird: [birdCode, bird[0]],
             region: regCode,
             regionName: region[0],
             lat : location.latitude,
             long : location.longitude,
-            uid : "markiplier",
+	    image : fileName,
+            uid : uid,
         }
         const response = await fetch('https://flask-hello-world-tau-dusky.vercel.app/submitBird/', {
             method : "POST",
@@ -225,6 +247,12 @@ const MobileApp = () => {
             },
             body : JSON.stringify(data),
         });
+	if (!response.ok) {
+             toaster.create({
+                description: "An error has occured, please refresh the page",
+                type: "error",
+	    });
+	}
         const result = await response.json();
         console.log(typeof(result));
 	if (Object.keys(result).includes("message")) {
@@ -237,6 +265,7 @@ const MobileApp = () => {
             return; 
 	}
         result.sort((a,b) => b.points - a.points)
+        await storeImage(fileName);
         setUsers(result);
 
 	setOpenBird(false);
@@ -259,7 +288,7 @@ const MobileApp = () => {
       };
 	
     const [progress, setProgress] = useState(0);
-    const storeImage = async () => {
+    const storeImage = async (fileName) => {
         const batches = Math.ceil(image.length / 4500000)
         console.log(image.length)
         let start = 0;
@@ -267,11 +296,14 @@ const MobileApp = () => {
             const end = Math.min(image.length, Math.ceil((i+1) * image.length / batches))
             const batch = image.slice(start, end)
             start = end;
-            const data = {
-                img : batch
+            let data = {
+                img : batch,
+		batches : batches,
+		currentBatch : i
             }
 	    increment(Math.round(100 * i / batches), Math.round(100 * (i+1) / batches));
-            await fetch('https://flask-hello-world-tau-dusky.vercel.app/submitImage/markiplier', {
+	    let url = 'https://flask-hello-world-tau-dusky.vercel.app/submitImage/' + fileName;
+            await fetch(url, {
                 method : "POST",
                 headers : {
                     "Content-Type" : "application/json"
@@ -376,7 +408,7 @@ const MobileApp = () => {
                 <Dialog.Body>
                     <Heading marginTop = "30px">Rules</Heading>
                     <Text>
-                        Each bird is worth 1 point. Rare birds are worth 5 points. If you submit a bird within 100m of a bird of the same species that you have already submitted, it will not count. Likewise if you do not attatch a photo to your sighting via eBird it will not count.
+                        Each bird is worth 1 point. Rare birds are worth 5 points. If you submit a bird within 1km of a bird of the same species that you have already submitted, it will not count.
       </Text>
           <Heading>
           Resources
@@ -449,6 +481,7 @@ const MobileApp = () => {
                           </Combobox.Content>
                         </Combobox.Positioner>
                     </Combobox.Root>
+	  <HStack alignItems = "end">
                         <Combobox.Root onInputValueChange={(e) => setRegionInput(e.inputValue)} onValueChange={(details) => setRegion(details.value)}>
                         <Combobox.Label>Region</Combobox.Label>
 
@@ -480,6 +513,36 @@ const MobileApp = () => {
                           </Combobox.Content>
                         </Combobox.Positioner>
                     </Combobox.Root>
+      <IconButton onClick = {() => setOpenMap(true)}>
+       < FaLocationDot />
+      </IconButton>
+
+      <Dialog.Root open = {openMap} onOpenChange={(e) => setOpenMap(e.openInfo)} size="lg">
+        <Portal>
+            <Dialog.Backdrop />
+            <Dialog.Positioner>
+                <Dialog.Content>
+                    <Dialog.Header>
+                        <Dialog.Title>
+                            Set your location manually
+                        </Dialog.Title>
+                    </Dialog.Header>
+                    <Dialog.Body>
+	  <MapContainer style={{ height: "400px" }}  center={marker} zoom={13} scrollWheelZoom={false} onClick={handleClick} >
+	      <TileLayer
+	      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+	      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+	    />
+	  <Marker position={marker} />
+	  <MapComponent setMarker={setMarker}/>
+	  </MapContainer>
+	  <Button onClick={setLocationFromMarker}>OK</Button>
+	  	    </Dialog.Body>
+	        </Dialog.Content>
+	    </Dialog.Positioner>
+         </Portal>
+       </Dialog.Root>
+	  </HStack>
                         <Button loading={submitBirdLoading} onClick={submitBird} style = {{ marginTop : "10px"}}>
                             SUBMIT
                         </Button>
@@ -496,5 +559,17 @@ const MobileApp = () => {
   );
 }
 
+function MapComponent({setMarker}) {
+  const map = useMapEvents({
+    click: (e) => {
+      setMarker(e.latlng);
+      map.locate();
+    },
+    locationfound: (location) => {
+      console.log('location found:', location)
+    },
+  });
+  return null;
+}
 export default MobileApp
 
