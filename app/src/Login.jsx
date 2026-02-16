@@ -28,7 +28,7 @@ const Login = ({setUid, setOpenBird}) => {
             return
         }
 	setLoading(true);
-        const response = await fetch("https://flask-hello-world-tau-dusky.vercel.app/register/" + name)
+        const response = await fetch("https://base.sorry.horse:8000/register/" + name)
         const result = await response.text();
         localStorage.setItem("uid", result)
         setUid(result)

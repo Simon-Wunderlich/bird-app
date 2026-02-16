@@ -8,20 +8,11 @@ import os.path
 from datetime import datetime
 
 from asgiref.wsgi import WsgiToAsgi
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, Response
 
 #TO START SERVER, RUN:
 #python3 -m hypercorn --config python:config server:bird_app
 app = Flask(__name__)
-
-
-#requires
-#uid
-# lat, long
-# bird Name
-# bird code
-# image
-#region
 
 @app.route('/', methods=['OPTIONS'])
 def options():
@@ -49,34 +40,6 @@ def register(user_name):
     response = jsonify(userId)
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
-
-@app.route('/<file_name>', methods=['POST'])
-def submitImage(file_name):
-    imgData = json.loads(request.data)
-    txtFileName = file_name.split(".")[0] + ".txt"
-    data = ""
-    if (int(imgData["currentBatch"]) != 0):
-        try:
-            with open("images/" + txtFileName, "r") as f:
-                data = f.read()
-            print("read file")
-        except:
-            pass
-    data += imgData["img"]
-    with open("images/" + txtFileName, "w") as f:
-        f.write(data)
-
-    if (int(imgData["currentBatch"]) == int(imgData["batches"]) - 1):
-        print("saving image")
-        response = urllib.request.urlopen(data)
-        with open(f"../app/public/{file_name}", "wb") as f:
-            f.write(response.file.read())
-        os.remove("images/" + txtFileName)
-
-    response = jsonify("success")
-    response.headers.add("Access-Control-Allow-Origin", "*")
-    return response
-
 
 @app.route('/', methods=['POST'])
 def submitBird():
@@ -126,13 +89,20 @@ def submitBird():
     rarity = freqs[index]
     isRare = rarity < 0.1
     data["points"] += 5 if isRare else 1
+
+    pattern = "data:image/(.+?);base64"
+    ftype = re.search(pattern, birdInfo["image"]).group(1)
+    response = urllib.request.urlopen(birdInfo["image"])
+    fileName = f"/{uid}{birdInfo['bird'][0]}{birdInfo['region']}.{ftype}"
+    with open(f"../app/public{fileName}", "wb") as f:
+        f.write(response.file.read())
     
     #Bird list
     data["birds"].append({
         "name" : birdInfo["bird"][1],
         "region" : birdInfo["regionName"],
         "isRare" : isRare,
-        "image" : "/" + birdInfo["image"]
+        "image" : fileName
         })
 
     with open(f"user_data/{uid}.json", "w") as f:
@@ -158,4 +128,4 @@ def getFiles():
 
 
 if __name__ == "__main__":
-    app.run(port = 8000, host='0.0.0.0')
+    app.run(port = 8000, host='0.0.0.0', ssl_context=("../app/certs/certificate.crt","../app/certs/private.key"))

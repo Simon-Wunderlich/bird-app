@@ -23,7 +23,7 @@ const DesktopApp = () => {
     const [uid, setUid] = useState("");
 
     const fetchData = async () => {
-        const response = await fetch('https://flask-hello-world-tau-dusky.vercel.app/data');
+        const response = await fetch('https://base.sorry.horse:8000');
         const result = await response.json();
         result.sort((a,b) => b.points - a.points)
         setUsers(result);

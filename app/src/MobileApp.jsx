@@ -26,7 +26,7 @@ const MobileApp = () => {
     const [uid, setUid] = useState("");
 
     const fetchData = async () => {
-        const response = await fetch('https://flask-hello-world-tau-dusky.vercel.app/data');
+        const response = await fetch('https://base.sorry.horse:8000');
         const result = await response.json();
         result.sort((a,b) => b.points - a.points)
         setUsers(result);
@@ -228,8 +228,6 @@ const handleClick = (event) => {
             return; 
         }
 	
-	const fileType = image.match("data:image/(.+?);base64")[1];
-	const fileName = `${uid}${birdCode}${location.latitude}${location.longitude}`.replaceAll(".", "") + "." + fileType;
         setSubmitBirdLoading(true);
         const data = {
             bird: [birdCode, bird[0]],
@@ -237,10 +235,10 @@ const handleClick = (event) => {
             regionName: region[0],
             lat : location.latitude,
             long : location.longitude,
-	    image : fileName,
+	    image : image,
             uid : uid,
         }
-        const response = await fetch('https://flask-hello-world-tau-dusky.vercel.app/submitBird/', {
+        const response = await fetch('https://base.sorry.horse:8000', {
             method : "POST",
             headers : {
                 "Content-Type" : "application/json"
@@ -265,7 +263,6 @@ const handleClick = (event) => {
             return; 
 	}
         result.sort((a,b) => b.points - a.points)
-        await storeImage(fileName);
         setUsers(result);
 
 	setOpenBird(false);
