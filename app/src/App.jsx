@@ -12,7 +12,7 @@ const App = () => {
 	    return <MobileApp />;
     }
     else {
-	    return <MobileApp />;
+	    return <DesktopApp />;
     }
 }
 
