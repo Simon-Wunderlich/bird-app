@@ -1,20 +1,16 @@
-import { useState, useEffect } from 'react'
-import './App.css'
-import MobileApp from './MobileApp.jsx'
-import DesktopApp from './DesktopApp.jsx'
+import { useState, useEffect } from 'react';
+import './App.css';
+import MobileApp from './MobileApp.jsx';
+import DesktopApp from './DesktopApp.jsx';
 import 'leaflet/dist/leaflet.css';
-import { isBrowser, isMobile } from 'react-device-detect';
-
-
+import { isMobile } from 'react-device-detect';
 
 const App = () => {
-    if (isMobile){
-	    return <MobileApp />;
-    }
-    else {
-	    return <DesktopApp />;
-    }
-}
+  if (isMobile) {
+    return <MobileApp />;
+  } else {
+    return <DesktopApp />;
+  }
+};
 
-export default App
-
+export default App;
