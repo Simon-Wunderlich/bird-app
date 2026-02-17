@@ -14,6 +14,9 @@ from flask import Flask, jsonify, request, Response
 #python3 -m hypercorn --config python:config server:bird_app
 app = Flask(__name__)
 
+VERSION = "v1.0"
+
+
 @app.route('/', methods=['OPTIONS'])
 def options():
     # Custom headers for CORS preflight
@@ -23,8 +26,24 @@ def options():
     res.headers['Access-Control-Allow-Headers'] = 'Content-Type'
     return res
 
+@app.route('/version', methods=['GET'])
+def getVersion():
+    response = jsonify(VERSION)
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
 @app.route('/register/<user_name>', methods=['GET'])
 def register(user_name):
+    files = os.listdir("user_data")
+    for fileName in files:
+        try:
+            with open("user_data/" + fileName) as f:
+                data = json.load(f)
+                if (user_name == data["username"]):
+                        response = jsonify(fileName.split(".")[0])
+                        response.headers.add("Access-Control-Allow-Origin", "*")
+                        return response
+        except:
+            pass
     userId = random.randint(0, 9999999999)
 
     data = {
@@ -93,7 +112,7 @@ def submitBird():
     pattern = "data:image/(.+?);base64"
     ftype = re.search(pattern, birdInfo["image"]).group(1)
     response = urllib.request.urlopen(birdInfo["image"])
-    fileName = f"/{uid}{birdInfo['bird'][0]}{birdInfo['region']}.{ftype}"
+    fileName = f"/{uid}{birdInfo['bird'][0]}{birdInfo['region']}{area}.{ftype}"
     with open(f"../app/public{fileName}", "wb") as f:
         f.write(response.file.read())
     

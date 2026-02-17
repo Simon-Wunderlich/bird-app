@@ -79,6 +79,10 @@ export default defineConfig({
             form_factor: "narrow",
           }],
       },
+      devOptions: {
+        enabled: true,
+        type: 'module',
+      },
       workbox: {
         navigateFallback: "/offline.html",
         globPatterns: [

@@ -312,7 +312,7 @@ const MobileApp = () => {
                   <Box display="flex" spaceX="8">
                     <div>
                       <Text textStyle="2xl" fontWeight="bold">
-                        {Object.values(item.birds).length}
+                        {Object.values(item.birdCounts).length}
                       </Text>
                       <Text textStyle="lg" alignSelf="end">
                         {' '}
@@ -342,7 +342,7 @@ const MobileApp = () => {
                             <Box
                               aspectRatio="square"
                               backgroundImage={
-                                'url(' + item.birds[index].image + ')'
+                                'url(https://base.sorry.horse:8002' + item.birds[index].image + ')'
                               }
                               backgroundPosition="center"
                               backgroundSize="cover"
@@ -352,10 +352,10 @@ const MobileApp = () => {
                           <Portal>
                             <Dialog.Backdrop />
                             <Dialog.Positioner>
-                              <Dialog.Content>
+                              <Dialog.Content width="75vw" >
                                 <Dialog.Header />
                                 <Dialog.Body>
-                                  <Image src={item.birds[index].image} />
+                                  <Image src={"https://base.sorry.horse:8002" + item.birds[index].image} />
                                 </Dialog.Body>
                               </Dialog.Content>
                             </Dialog.Positioner>

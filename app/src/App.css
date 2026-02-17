@@ -45,4 +45,8 @@ ul {
 
 [role='listbox'] {
   opacity: 100;
+} 
+
+[role='dialog'] {
+	width : 75vw;
 }

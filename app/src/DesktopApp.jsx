@@ -327,7 +327,7 @@ const DesktopApp = () => {
                           <Dialog.Trigger asChild>
                             <Box
                               aspectRatio="square"
-                              backgroundImage={`url(${item.birds[index].image})`}
+                              backgroundImage={`url(https://base.sorry.horse:8002${item.birds[index].image})`}
                               backgroundPosition="center"
                               backgroundSize="cover"
                               borderRadius="0.375rem 0 0 0.375rem"
@@ -339,7 +339,7 @@ const DesktopApp = () => {
                               <Dialog.Content>
                                 <Dialog.Header />
                                 <Dialog.Body>
-                                  <Image src={item.birds[index].image} />
+                                  <Image src={"https://base.sorry.horse:8002" + item.birds[index].image} />
                                 </Dialog.Body>
                               </Dialog.Content>
                             </Dialog.Positioner>
