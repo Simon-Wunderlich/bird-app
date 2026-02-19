@@ -60,6 +60,17 @@ def register(user_name):
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 
+
+
+@app.route('/region', methods=['GET'])
+def getRegion():
+    r = requests.get(f"https://maps.vec.vic.gov.au/api/electorates/summary?latitude={request.args.get('latitude')}&longitude={request.args.get('longitude')}")
+    data = r.json()
+    response = jsonify(data)
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
+
+
 @app.route('/', methods=['POST'])
 def submitBird():
     birdInfo = json.loads(request.data)
@@ -113,7 +124,7 @@ def submitBird():
     ftype = re.search(pattern, birdInfo["image"]).group(1)
     response = urllib.request.urlopen(birdInfo["image"])
     fileName = f"/{uid}{birdInfo['bird'][0]}{birdInfo['region']}{area}.{ftype}"
-    with open(f"../app/public{fileName}", "wb") as f:
+    with open(f"images{fileName}", "wb") as f:
         f.write(response.file.read())
     
     #Bird list
