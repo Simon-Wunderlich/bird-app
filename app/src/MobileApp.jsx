@@ -42,6 +42,7 @@ import {
 import { LuUpload, LuSearch } from 'react-icons/lu';
 import { FaCrow, FaLocationDot } from 'react-icons/fa6';
 import './App.css';
+
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const MobileApp = () => {
@@ -56,6 +57,7 @@ const MobileApp = () => {
   const [region, setRegion] = useState('');
   const [bird, setBird] = useState('');
   const [marker, setMarker] = useState([-37.8136, 144.9631]);
+  const [location, setLocation] = useState(null);
   const [image, setImage] = useState('');
   const [uid, setUid] = useState('');
 
@@ -80,7 +82,6 @@ const MobileApp = () => {
       });
       setMarker([position.coords.latitude, position.coords.longitude]);
     };
-
     const errorHandler = async (err) => {
       console.log(err.message);
       setLocation({ latitude: 0, longitude: 0 });
@@ -89,6 +90,36 @@ const MobileApp = () => {
     };
     navigator.geolocation.getCurrentPosition(successHandler, errorHandler);
   }, []);
+
+  const getRegionFromLoc = async () => {
+    const req = await fetch(
+     `https://base.sorry.horse:8000/region?latitude=${location.latitude}&longitude=${location.longitude}`
+    );
+    const council = (await req.json())['council'];
+    if (council == null) {
+      return;
+    }
+    const councilName = council['electorateName'].replaceAll(" Rural City Council", "").replaceAll(" Borough Council", "").replaceAll(
+      ' City Council',
+      ''
+    ).replaceAll(' Shire Council', '');
+    const response = await fetch(
+      `https://api.ebird.org/v2/ref/region/find?key=jfekjedvescr&q=${councilName}`
+    );
+    const data = await response.json();
+    if (data.length == 0) {
+      return;
+    }
+    const ebirdReg = data[0].name.split(', ');
+    if (ebirdReg[0] === councilName && ebirdReg[1] === 'Victoria') {
+      setRegion(data[0].name);
+      setRegCode(data[0].code);
+    }
+  };
+	
+	useEffect(() => {
+		getRegionFromLoc();
+	}, [location]);
 
   const refresh = async () => {
     setLoading(true);
@@ -106,7 +137,6 @@ const MobileApp = () => {
     setBird('');
     setProgress(0);
     setImage('');
-    setRegion('');
     setRegionInput('');
     setBirdInput('');
   }, [openNewBird]);
@@ -144,6 +174,9 @@ const MobileApp = () => {
     let data = await response.json();
     const data2 = data.map(({ name: value, ...rest }) => ({ value, ...rest }));
     data = data2.map(({ code: label, ...rest }) => ({ label, ...rest }));
+    data.forEach((obj) => {
+      obj.value = obj.value.split(' - ')[0];
+    });
     setBirdList(data);
   };
   const { collection, set } = useListCollection({
@@ -183,7 +216,6 @@ const MobileApp = () => {
     set(data);
   };
 
-  const [location, setLocation] = useState(null);
   const [submitBirdLoading, setSubmitBirdLoading] = useState(false);
   const submitBird = async () => {
     const successHandler = (position) => {
@@ -234,7 +266,7 @@ const MobileApp = () => {
     const data = {
       bird: [birdCode, bird[0]],
       region: regCode,
-      regionName: region[0],
+      regionName: region,
       lat: location.latitude,
       long: location.longitude,
       image: image,
@@ -342,7 +374,9 @@ const MobileApp = () => {
                             <Box
                               aspectRatio="square"
                               backgroundImage={
-                                'url(https://base.sorry.horse:8002' + item.birds[index].image + ')'
+                                'url(https://base.sorry.horse:8002' +
+                                item.birds[index].image +
+                                ')'
                               }
                               backgroundPosition="center"
                               backgroundSize="cover"
@@ -352,10 +386,19 @@ const MobileApp = () => {
                           <Portal>
                             <Dialog.Backdrop />
                             <Dialog.Positioner>
-                              <Dialog.Content width="75vw" >
-                                <Dialog.Header />
+                              <Dialog.Content width="75vw">
+                                <Dialog.Header>
+                                  <Dialog.Title>
+                                    {item.birds[index].name}
+                                  </Dialog.Title>
+                                </Dialog.Header>
                                 <Dialog.Body>
-                                  <Image src={"https://base.sorry.horse:8002" + item.birds[index].image} />
+                                  <Image
+                                    src={
+                                      'https://base.sorry.horse:8002' +
+                                      item.birds[index].image
+                                    }
+                                  />
                                 </Dialog.Body>
                               </Dialog.Content>
                             </Dialog.Positioner>
@@ -536,7 +579,7 @@ const MobileApp = () => {
                 <HStack alignItems="end">
                   <Combobox.Root
                     onInputValueChange={(e) => setRegionInput(e.inputValue)}
-                    onValueChange={(details) => setRegion(details.value)}
+                    onValueChange={(details) => setRegion(details.value[0])}
                   >
                     <Combobox.Label>Region</Combobox.Label>
 

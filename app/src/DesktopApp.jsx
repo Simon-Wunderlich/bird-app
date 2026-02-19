@@ -337,9 +337,18 @@ const DesktopApp = () => {
                             <Dialog.Backdrop />
                             <Dialog.Positioner>
                               <Dialog.Content>
-                                <Dialog.Header />
+                                <Dialog.Header>
+                                  <Dialog.Title>
+                                    {item.birds[index].name}
+                                  </Dialog.Title>
+                                </Dialog.Header>
                                 <Dialog.Body>
-                                  <Image src={"https://base.sorry.horse:8002" + item.birds[index].image} />
+                                  <Image
+                                    src={
+                                      'https://base.sorry.horse:8002' +
+                                      item.birds[index].image
+                                    }
+                                  />
                                 </Dialog.Body>
                               </Dialog.Content>
                             </Dialog.Positioner>
