@@ -40,8 +40,11 @@ const App = () => {
     }
   };
 
-  useEffect(() => {
-  }, []);
+useEffect(() => {
+	if (localStorage.getItem("uid") === "null") {
+		localStorage.removeItem("uid");
+	}
+}, [])
 
   if (isMobile) {
     return <MobileApp />;

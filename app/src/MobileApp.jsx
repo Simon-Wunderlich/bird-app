@@ -146,7 +146,8 @@ const MobileApp = () => {
   const [birdList, setBirdList] = useState([]);
   const [birdCode, setBirdCode] = useState('');
   const [regCode, setRegCode] = useState('');
-
+  const [sciName, setSciName] = useState("");
+ 
   useEffect(() => {
     if (birdInput != '') {
       getBirds();
@@ -158,6 +159,8 @@ const MobileApp = () => {
       const temp = birdList.find((_bird) => _bird.value === bird[0]);
       if (temp) {
         setBirdCode(temp.label);
+	console.log(temp.label);
+	setSciName(temp.sciName);
       }
     }
   }, [bird]);
@@ -175,6 +178,7 @@ const MobileApp = () => {
     const data2 = data.map(({ name: value, ...rest }) => ({ value, ...rest }));
     data = data2.map(({ code: label, ...rest }) => ({ label, ...rest }));
     data.forEach((obj) => {
+      obj.sciName = obj.value.split(" - ")[1];
       obj.value = obj.value.split(' - ')[0];
     });
     setBirdList(data);
@@ -264,7 +268,7 @@ const MobileApp = () => {
 
     setSubmitBirdLoading(true);
     const data = {
-      bird: [birdCode, bird[0]],
+      bird: [birdCode, bird[0], sciName],
       region: regCode,
       regionName: region,
       lat: location.latitude,
@@ -285,9 +289,8 @@ const MobileApp = () => {
     }
     const result = await response.json();
     console.log(typeof result);
-    if (Object.keys(result).includes('message')) {
-      toaster.create({ description: result['message'], type: 'error' });
-      setOpenBird(false);
+    if (typeof results != "string") {
+      toaster.create({ description: result, type: 'error' });
       setSubmitBirdLoading(false);
       return;
     }
@@ -307,7 +310,6 @@ const MobileApp = () => {
       reader.onload = async (event) => {
         const fileData = event.target.result;
         setImage(fileData);
-        console.log(image);
       };
       reader.readAsDataURL(uploadedFile);
     }
@@ -391,6 +393,7 @@ const MobileApp = () => {
                                   <Dialog.Title>
                                     {item.birds[index].name}
                                   </Dialog.Title>
+			    {item.birds[index].sciName}
                                 </Dialog.Header>
                                 <Dialog.Body>
                                   <Image

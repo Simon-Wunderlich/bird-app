@@ -76,7 +76,6 @@ def submitBird():
     birdInfo = json.loads(request.data)
     uid = birdInfo["uid"]
 
-    print(birdInfo)
     
     data = {
         "birds" : [],
@@ -95,7 +94,9 @@ def submitBird():
     area = str(round(birdInfo['lat'],2)) + "," + str(round(birdInfo['long'],2))
     if area in data["locations"]:
         if birdInfo["bird"][1] in data["locations"][area]:
-            return {"message" : f"Already found a {birdInfo['bird'][1]} here" }
+            response = jsonify(f"Already found a {birdInfo['bird'][1]} here")
+            response.headers.add("Access-Control-Allow-Origin", "*")
+            return response
         else:
             data["locations"][area].append(birdInfo["bird"][1])
     else:
@@ -130,6 +131,7 @@ def submitBird():
     #Bird list
     data["birds"].append({
         "name" : birdInfo["bird"][1],
+        "sciName" : birdInfo["bird"][2],
         "region" : birdInfo["regionName"],
         "isRare" : isRare,
         "image" : fileName
