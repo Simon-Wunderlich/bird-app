@@ -1,0 +1,124 @@
+  {
+    "birdCounts": {
+      "Australian Magpie": 1,
+      "Common Myna": 1,
+      "Eurasian Coot": 1,
+      "Little Wattlebird": 1,
+      "Magpie-lark": 1,
+      "Maned Duck": 1,
+      "Pacific Black Duck": 1,
+      "Rock Pigeon": 1,
+      "Silver Gull": 2,
+      "Superb Fairywren": 1
+    },
+    "birds": [
+      {
+        "area": "-37.78,144.96",
+        "image": "/7564317287ausmag2AU-VIC-YAR-37.78,144.96.jpeg",
+        "isRare": false,
+        "name": "Australian Magpie",
+        "region": "Yarra, Victoria, Australia (AU)",
+        "sciName": "Gymnorhina tibicen"
+      },
+      {
+        "area": "-37.83,144.98",
+        "image": "/7564317287pabduc1AU-VIC-MEL-37.83,144.98.jpeg",
+        "isRare": false,
+        "name": "Pacific Black Duck",
+        "region": "Melbourne, Victoria, Australia (AU)",
+        "sciName": "Anas superciliosa"
+      },
+      {
+        "area": "-37.83,144.98",
+        "image": "/7564317287manduc1AU-VIC-MEL-37.83,144.98.jpeg",
+        "isRare": false,
+        "name": "Maned Duck",
+        "region": "Melbourne, Victoria, Australia (AU)",
+        "sciName": "Chenonetta jubata"
+      },
+      {
+        "area": "-37.83,144.98",
+        "image": "/7564317287eurcooAU-VIC-MEL-37.83,144.98.jpeg",
+        "isRare": false,
+        "name": "Eurasian Coot",
+        "region": "Melbourne, Victoria, Australia (AU)",
+        "sciName": "Fulica atra"
+      },
+      {
+        "area": "-37.83,144.98",
+        "image": "/7564317287silgul2AU-VIC-MEL-37.83,144.98.jpeg",
+        "isRare": false,
+        "name": "Silver Gull",
+        "region": "Melbourne, Victoria, Australia (AU)",
+        "sciName": "Chroicocephalus novaehollandiae"
+      },
+      {
+        "area": "-37.83,144.98",
+        "image": "/7564317287commynAU-VIC-MEL-37.83,144.98.jpeg",
+        "isRare": false,
+        "name": "Common Myna",
+        "region": "Melbourne, Victoria, Australia (AU)",
+        "sciName": "Acridotheres tristis"
+      },
+      {
+        "area": "-37.83,144.98",
+        "image": "/7564317287maglar1AU-VIC-MEL-37.83,144.98.jpeg",
+        "isRare": false,
+        "name": "Magpie-lark",
+        "region": "Melbourne, Victoria, Australia (AU)"
+      },
+      {
+        "area": "-37.93,144.99",
+        "image": "/7564317287supfai1AU-VIC-BAY-37.93,144.99.jpeg",
+        "isRare": false,
+        "name": "Superb Fairywren",
+        "region": "Bayside, Victoria, Australia (AU)"
+      },
+      {
+        "area": "-37.93,144.99",
+        "image": "/7564317287silgul2AU-VIC-BAY-37.93,144.99.jpeg",
+        "isRare": false,
+        "name": "Silver Gull",
+        "region": "Bayside, Victoria, Australia (AU)",
+        "sciName": "Chroicocephalus novaehollandiae"
+      },
+      {
+        "area": "-37.93,144.99",
+        "image": "/7564317287bruwat1AU-VIC-BAY-37.93,144.99.jpeg",
+        "isRare": false,
+        "name": "Little Wattlebird",
+        "region": "Bayside, Victoria, Australia (AU)",
+        "sciName": "Anthochaera chrysoptera"
+      },
+      {
+        "area": "-37.93,144.99",
+        "image": "/7564317287rocpigAU-VIC-BAY-37.93,144.99.jpeg",
+        "isRare": false,
+        "name": "Rock Pigeon",
+        "region": "Bayside, Victoria, Australia (AU)",
+        "sciName": "Columba livia"
+      }
+    ],
+    "locations": {
+      "-37.78,144.96": [
+        "Australian Magpie"
+      ],
+      "-37.83,144.98": [
+        "Pacific Black Duck",
+        "Maned Duck",
+        "Eurasian Coot",
+        "Silver Gull",
+        "Common Myna",
+        "Magpie-lark"
+      ],
+      "-37.93,144.99": [
+        "Superb Fairywren",
+        "Silver Gull",
+        "Little Wattlebird",
+        "Rock Pigeon"
+      ]
+    },
+    "points": 11,
+    "uid": 7564317287,
+    "username": "SORB"
+  }

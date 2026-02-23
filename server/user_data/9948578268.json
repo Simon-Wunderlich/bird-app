@@ -1,0 +1,97 @@
+  {
+    "birdCounts": {
+      "Australian Magpie": 1,
+      "Crested Pigeon": 1,
+      "Eurasian Blackbird": 1,
+      "House Sparrow": 1,
+      "Laughing Kookaburra": 1,
+      "Little Wattlebird": 1,
+      "Masked Lapwing": 1,
+      "Rock Pigeon": 1
+    },
+    "birds": [
+      {
+        "area": "-37.82,145.03",
+        "image": "/9948578268ausmag2-3782111237186986614503748310723515.jpeg",
+        "isRare": false,
+        "name": "Australian Magpie",
+        "region": "Melbourne, Victoria, Australia (AU)",
+        "sciName": "Gymnorhina tibicen"
+      },
+      {
+        "area": "-37.82,145.04",
+        "image": "/9948578268rocpigAU-VIC-MEL-37.82,145.04.jpeg",
+        "isRare": false,
+        "name": "Rock Pigeon",
+        "region": "Melbourne, Victoria, Australia (AU)",
+        "sciName": "Columba livia"
+      },
+      {
+        "area": "-37.81,145.03",
+        "image": "/9948578268crepig1AU-VIC-MEL-37.81,145.03.jpeg",
+        "isRare": false,
+        "name": "Crested Pigeon",
+        "region": "Melbourne, Victoria, Australia (AU)",
+        "sciName": "Ocyphaps lophotes"
+      },
+      {
+        "area": "-38.38,144.83",
+        "image": "/9948578268laukoo1AU-VIC-MPE-38.38,144.83.jpeg",
+        "isRare": false,
+        "name": "Laughing Kookaburra",
+        "region": "Mornington Peninsula, Victoria, Australia (AU)",
+        "sciName": "Dacelo novaeguineae"
+      },
+      {
+        "area": "-38.38,144.83",
+        "image": "/9948578268maslap1AU-VIC-MPE-38.38,144.83.jpeg",
+        "isRare": false,
+        "name": "Masked Lapwing",
+        "region": "Port Phillip, Victoria, Australia (AU)",
+        "sciName": "Vanellus miles"
+      },
+      {
+        "area": "-38.38,144.83",
+        "image": "/9948578268houspaAU-VIC-MPE-38.38,144.83.jpeg",
+        "isRare": false,
+        "name": "House Sparrow",
+        "region": "Mornington Peninsula, Victoria, Australia (AU)",
+        "sciName": "Passer domesticus"
+      },
+      {
+        "area": "-38.38,144.83",
+        "image": "/9948578268eurblaAU-VIC-MPE-38.38,144.83.jpeg",
+        "isRare": false,
+        "name": "Eurasian Blackbird",
+        "region": "Mornington Peninsula, Victoria, Australia (AU)",
+        "sciName": "Turdus merula"
+      },
+      {
+        "area": "-38.38,144.83",
+        "image": "/9948578268bruwat1AU-VIC-MPE-38.38,144.83.jpeg",
+        "isRare": false,
+        "name": "Little Wattlebird",
+        "region": "Mornington Peninsula, Victoria, Australia (AU)",
+        "sciName": "Anthochaera chrysoptera"
+      }
+    ],
+    "locations": {
+      "-37.81,145.03": [
+        "Crested Pigeon"
+      ],
+      "-37.82,145.04": [
+        "Australian Magpie",
+        "Rock Pigeon"
+      ],
+      "-38.38,144.83": [
+        "Laughing Kookaburra",
+        "Masked Lapwing",
+        "House Sparrow",
+        "Eurasian Blackbird",
+        "Little Wattlebird"
+      ]
+    },
+    "points": 8,
+    "uid": 9948578268,
+    "username": "Kaylah :)"
+  }
