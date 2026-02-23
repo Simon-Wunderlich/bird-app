@@ -1,5 +1,4 @@
 __pycache__
 server/data
-server/user_data/*
 app/public/*
 app/certs

@@ -31,6 +31,35 @@ def getVersion():
     response = jsonify(VERSION)
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
+
+
+@app.route('/delete/<id>', methods=['GET'])
+def delete(id):
+    user_id = re.split("[a-z]", id)[0]
+
+    with open(f"user_data/{user_id}.json", "r") as f:
+        data = json.load(f)
+    
+    for x in data["birds"]:
+        if (id in x["image"]):
+            data["birdCounts"][x["name"]] -= 1
+            if data["birdCounts"][x["name"]] <= 0:
+                data["birdCounts"].pop(x["name"])
+            if x["isRare"]:
+                data["points"] -= 4
+            data["points"] -= 1
+            try:
+                data["locations"][x["area"]].remove(x["name"])
+            except: pass
+            data["birds"].remove(x)
+
+    with open(f"user_data/{user_id}.json", "w") as f:
+        json.dump(data, f, indent = 4)
+
+    response = jsonify(data)
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
+
 @app.route('/register/<user_name>', methods=['GET'])
 def register(user_name):
     files = os.listdir("user_data")
@@ -39,7 +68,7 @@ def register(user_name):
             with open("user_data/" + fileName) as f:
                 data = json.load(f)
                 if (user_name == data["username"]):
-                        response = jsonify(fileName.split(".")[0])
+                        response = jsonify(int(fileName.split(".")[0]))
                         response.headers.add("Access-Control-Allow-Origin", "*")
                         return response
         except:
@@ -51,7 +80,8 @@ def register(user_name):
         "username" : user_name,
         "birdCounts" : {},
         "locations" : {},
-        "points" : 0
+        "points" : 0,
+        "uid" : userId
     }
     with open(f"user_data/{userId}.json", "w") as f:
         json.dump(data, f, indent = 4)
@@ -89,7 +119,9 @@ def submitBird():
         with open(f"user_data/{uid}.json", "r") as f:
             data = json.load(f)
     except:
-        pass
+        response = jsonify(f"An error has occured")
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return response
 
     area = str(round(birdInfo['lat'],2)) + "," + str(round(birdInfo['long'],2))
     if area in data["locations"]:
@@ -134,7 +166,8 @@ def submitBird():
         "sciName" : birdInfo["bird"][2],
         "region" : birdInfo["regionName"],
         "isRare" : isRare,
-        "image" : fileName
+        "image" : fileName,
+        "area" : area
         })
 
     with open(f"user_data/{uid}.json", "w") as f:

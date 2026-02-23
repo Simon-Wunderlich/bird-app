@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useAsync } from 'react-use';
 import {
+  Float,
   Stack,
   Accordion,
   Heading,
@@ -29,9 +30,10 @@ import {
   Span,
   useCombobox,
   HStack,
+  VStack
 } from '@chakra-ui/react';
 import { Toaster, toaster } from '@/src/components/ui/toaster';
-import { FaCrow } from 'react-icons/fa6';
+import { FaCrow, FaTrashCan } from 'react-icons/fa6';
 import {
   HiStar,
   HiOutlineRefresh,
@@ -77,6 +79,10 @@ const DesktopApp = () => {
       setLocation({ latitude: 0, longitude: 0 });
     };
     navigator.geolocation.getCurrentPosition(successHandler, errorHandler);
+    const value = localStorage.getItem('uid');
+    if (value != null) {
+      setUid(value.replaceAll('\n', ''));
+    }
   }, []);
 
   const refresh = async () => {
@@ -267,12 +273,17 @@ const DesktopApp = () => {
     }
   };
 
+  const deleteBird = async (id, item) => {
+	await fetch("https://base.sorry.horse:8000/delete/" + id.slice(1));
+	await fetchData();
+  }
   return (
     <>
       <Stack gap="2" align="center">
         <Heading size="5xl">Leaderbird</Heading>
         <Accordion.Root collapsible variant="enclosed">
           {users.map((item, index) => (
+		  <Show when={item.points > 0} >
             <Accordion.Item key={index} value={item.username}>
               <Accordion.ItemTrigger>
                 <Flex gap="1" width="100%" padding="15px 0">
@@ -338,9 +349,14 @@ const DesktopApp = () => {
                             <Dialog.Positioner>
                               <Dialog.Content>
                                 <Dialog.Header>
+			    <VStack alignItems="start">
                                   <Dialog.Title>
                                     {item.birds[index].name}
                                   </Dialog.Title>
+			    <Text>
+			    {item.birds[index].sciName}
+			    </Text>
+			    </VStack>
                                 </Dialog.Header>
                                 <Dialog.Body>
                                   <Image
@@ -387,6 +403,13 @@ const DesktopApp = () => {
                             Rare
                           </Badge>
                         </Show>
+			    <Show when = {uid == item.uid} >
+			    <Float offsetX="4" offsetY="4">
+			    	<IconButton variant="surface" onClick={() => deleteBird(item.birds[index].image, item)}>
+			    		<FaTrashCan />
+			    	</IconButton>
+			    </Float>
+			    </Show>
                       </Card.Root>
                     ))}
                   </Grid>
@@ -394,6 +417,7 @@ const DesktopApp = () => {
                 <Accordion.ItemBody />
               </Accordion.ItemContent>
             </Accordion.Item>
+		  </Show>
           ))}
         </Accordion.Root>
       </Stack>

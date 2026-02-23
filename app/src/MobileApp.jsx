@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, useMapEvents, Marker } from 'react-leaflet';
 import { useAsync } from 'react-use';
 import {
+	Float,
   Stack,
   Accordion,
   Heading,
@@ -30,6 +31,7 @@ import {
   Span,
   useCombobox,
   HStack,
+  VStack
 } from '@chakra-ui/react';
 import Login from './Login.jsx';
 import { Toaster, toaster } from '@/src/components/ui/toaster';
@@ -40,7 +42,7 @@ import {
   HiOutlineInformationCircle,
 } from 'react-icons/hi';
 import { LuUpload, LuSearch } from 'react-icons/lu';
-import { FaCrow, FaLocationDot } from 'react-icons/fa6';
+import { FaCrow, FaLocationDot, FaTrashCan } from 'react-icons/fa6';
 import './App.css';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -89,6 +91,10 @@ const MobileApp = () => {
       return () => clearTimeout(timer);
     };
     navigator.geolocation.getCurrentPosition(successHandler, errorHandler);
+    const value = localStorage.getItem('uid');
+    if (value != null) {
+      setUid(value.replaceAll('\n', ''));
+    }
   }, []);
 
   const getRegionFromLoc = async () => {
@@ -289,7 +295,7 @@ const MobileApp = () => {
     }
     const result = await response.json();
     console.log(typeof result);
-    if (typeof results != "string") {
+    if (typeof result == "string") {
       toaster.create({ description: result, type: 'error' });
       setSubmitBirdLoading(false);
       return;
@@ -315,6 +321,11 @@ const MobileApp = () => {
     }
   };
 
+  const deleteBird = async (id, item) => {
+	await fetch("https://base.sorry.horse:8000/delete/" + id.slice(1));
+	await fetchData();
+  }
+
   const [progress, setProgress] = useState(0);
   return (
     <>
@@ -322,6 +333,7 @@ const MobileApp = () => {
         <Heading size="5xl">Leaderbird</Heading>
         <Accordion.Root collapsible variant="enclosed">
           {users.map((item, index) => (
+            <Show when={item.points > 0} >
             <Accordion.Item key={index} value={item.username}>
               <Accordion.ItemTrigger>
                 <Flex gap="1" width="100%" padding="15px 0">
@@ -390,10 +402,14 @@ const MobileApp = () => {
                             <Dialog.Positioner>
                               <Dialog.Content width="75vw">
                                 <Dialog.Header>
+			    <VStack alignItems="start">
                                   <Dialog.Title>
                                     {item.birds[index].name}
                                   </Dialog.Title>
+			    <Text>
 			    {item.birds[index].sciName}
+			    </Text>
+			    </VStack>
                                 </Dialog.Header>
                                 <Dialog.Body>
                                   <Image
@@ -442,6 +458,13 @@ const MobileApp = () => {
                             Rare
                           </Badge>
                         </Show>
+			    <Show when={uid === item.uid} >
+			    <Float offsetX="4" offsetY="4">
+			    	<IconButton variant="surface" onClick={() => deleteBird(item.birds[index].image, item)}>
+			    		<FaTrashCan />
+			    	</IconButton>
+			    </Float>
+			    </Show>
                       </Card.Root>
                     ))}
                   </Grid>
@@ -449,6 +472,7 @@ const MobileApp = () => {
                 <Accordion.ItemBody />
               </Accordion.ItemContent>
             </Accordion.Item>
+		</Show>
           ))}
         </Accordion.Root>
       </Stack>
