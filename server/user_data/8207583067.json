@@ -1,256 +1,365 @@
-  {
+{
     "birdCounts": {
-      "Australian Magpie": 4,
-      "Common Myna": 3,
-      "Crested Pigeon": 3,
-      "European Starling": 1,
-      "Gray Butcherbird": 1,
-      "Little Raven": 1,
-      "Little Wattlebird": 2,
-      "Magpie-lark": 2,
-      "Noisy Miner": 3,
-      "Red-rumped Parrot": 1,
-      "Rock Pigeon": 2,
-      "Welcome Swallow": 1
+        "Australian Magpie": 4,
+        "Common Myna": 4,
+        "Crested Pigeon": 3,
+        "European Starling": 2,
+        "Gray Butcherbird": 1,
+        "Little Raven": 2,
+        "Little Wattlebird": 2,
+        "Magpie-lark": 3,
+        "Noisy Miner": 3,
+        "Red-rumped Parrot": 1,
+        "Rock Pigeon": 3,
+        "Welcome Swallow": 1,
+        "Rainbow Lorikeet": 1,
+        "Dusky Moorhen": 1,
+        "Pacific Black Duck": 1,
+        "Spotted Dove": 1,
+        "Pied Currawong": 1,
+        "Australian Ibis": 1
     },
     "birds": [
-      {
-        "area": "-37.77,145.0",
-        "image": "/8207583067maglar1-37.77,145.0.jpeg",
-        "isRare": false,
-        "name": "Magpie-lark",
-        "region": "Darebin, Victoria, Australia (AU)"
-      },
-      {
-        "area": "-37.77,145.0",
-        "image": "/8207583067rocpigAU-VIC-MEL.jpeg",
-        "isRare": false,
-        "name": "Rock Pigeon",
-        "region": "Melbourne, Victoria, Australia (AU)",
-        "sciName": "Columba livia"
-      },
-      {
-        "area": "-37.78,145.0",
-        "image": "/8207583067grybut1AU-VIC-DAR.jpeg",
-        "isRare": false,
-        "name": "Gray Butcherbird",
-        "region": "Darebin, Victoria, Australia (AU)"
-      },
-      {
-        "area": "-37.79,144.97",
-        "image": "/8207583067commynAU-VIC-DAR-37.79,144.97.jpeg",
-        "isRare": false,
-        "name": "Common Myna",
-        "region": "Darebin, Victoria, Australia (AU)",
-        "sciName": "Acridotheres tristis"
-      },
-      {
-        "area": "-37.79,144.97",
-        "image": "/8207583067rocpigAU-VIC-DAR-37.79,144.97.jpeg",
-        "isRare": false,
-        "name": "Rock Pigeon",
-        "region": "Darebin, Victoria, Australia (AU)",
-        "sciName": "Columba livia"
-      },
-      {
-        "area": "-37.78,144.99",
-        "image": "/8207583067ausmag2AU-VIC-DAR-37.78,144.99.jpeg",
-        "isRare": false,
-        "name": "Australian Magpie",
-        "region": "Darebin, Victoria, Australia (AU)",
-        "sciName": "Gymnorhina tibicen"
-      },
-      {
-        "area": "-37.78,144.99",
-        "image": "/8207583067crepig1AU-VIC-DAR-37.78,144.99.jpeg",
-        "isRare": false,
-        "name": "Crested Pigeon",
-        "region": "Darebin, Victoria, Australia (AU)",
-        "sciName": "Ocyphaps lophotes"
-      },
-      {
-        "area": "-37.77,145.01",
-        "image": "/8207583067crepig1AU-VIC-DAR-37.77,145.01.jpeg",
-        "isRare": false,
-        "name": "Crested Pigeon",
-        "region": "Darebin, Victoria, Australia (AU)",
-        "sciName": "Ocyphaps lophotes"
-      },
-      {
-        "area": "-37.77,145.02",
-        "image": "/8207583067commynAU-VIC-DAR-37.77,145.02.jpeg",
-        "isRare": false,
-        "name": "Common Myna",
-        "region": "Darebin, Victoria, Australia (AU)",
-        "sciName": "Acridotheres tristis"
-      },
-      {
-        "area": "-37.76,145.02",
-        "image": "/8207583067bruwat1AU-VIC-DAR-37.76,145.02.jpeg",
-        "isRare": false,
-        "name": "Little Wattlebird",
-        "region": "Darebin, Victoria, Australia (AU)",
-        "sciName": "Anthochaera chrysoptera"
-      },
-      {
-        "area": "-37.69,145.01",
-        "image": "/8207583067litrav1AU-VIC-WHI-37.69,145.01.jpeg",
-        "isRare": false,
-        "name": "Little Raven",
-        "region": "Whittlesea, Victoria, Australia (AU)"
-      },
-      {
-        "area": "-37.7,145.01",
-        "image": "/8207583067rerpar1AU-VIC-DAR-37.7,145.01.jpeg",
-        "isRare": false,
-        "name": "Red-rumped Parrot",
-        "region": "Darebin, Victoria, Australia (AU)",
-        "sciName": "Psephotus haematonotus"
-      },
-      {
-        "area": "-37.7,145.01",
-        "image": "/8207583067crepig1AU-VIC-DAR-37.7,145.01.jpeg",
-        "isRare": false,
-        "name": "Crested Pigeon",
-        "region": "Darebin, Victoria, Australia (AU)",
-        "sciName": "Ocyphaps lophotes"
-      },
-      {
-        "area": "-37.7,145.01",
-        "image": "/8207583067maglar1AU-VIC-DAR-37.7,145.01.jpeg",
-        "isRare": false,
-        "name": "Magpie-lark",
-        "region": "Darebin, Victoria, Australia (AU)"
-      },
-      {
-        "area": "-37.7,145.01",
-        "image": "/8207583067ausmag2AU-VIC-DAR-37.7,145.01.jpeg",
-        "isRare": false,
-        "name": "Australian Magpie",
-        "region": "Darebin, Victoria, Australia (AU)",
-        "sciName": "Gymnorhina tibicen"
-      },
-      {
-        "area": "-37.7,145.01",
-        "image": "/8207583067welswa1AU-VIC-DAR-37.7,145.01.jpeg",
-        "isRare": false,
-        "name": "Welcome Swallow",
-        "region": "Darebin, Victoria, Australia (AU)"
-      },
-      {
-        "area": "-37.7,145.01",
-        "image": "/8207583067noimin1AU-VIC-DAR-37.7,145.01.jpeg",
-        "isRare": false,
-        "name": "Noisy Miner",
-        "region": "Darebin, Victoria, Australia (AU)",
-        "sciName": "Manorina melanocephala"
-      },
-      {
-        "area": "-37.7,145.01",
-        "image": "/8207583067eurstaAU-VIC-DAR-37.7,145.01.jpeg",
-        "isRare": false,
-        "name": "European Starling",
-        "region": "Darebin, Victoria, Australia (AU)",
-        "sciName": "Sturnus vulgaris"
-      },
-      {
-        "area": "-37.78,144.99",
-        "image": "/8207583067bruwat1AU-VIC-DAR-37.78,144.99.jpeg",
-        "isRare": false,
-        "name": "Little Wattlebird",
-        "region": "Darebin, Victoria, Australia (AU)",
-        "sciName": "Anthochaera chrysoptera"
-      },
-      {
-        "area": "-37.78,145.0",
-        "image": "/8207583067commynAU-VIC-DAR-37.78,145.0.jpeg",
-        "isRare": false,
-        "name": "Common Myna",
-        "region": "Darebin, Victoria, Australia (AU)",
-        "sciName": "Acridotheres tristis"
-      },
-      {
-        "area": "-37.69,145.01",
-        "image": "/8207583067ausmag2AU-VIC-WHI-37.69,145.01.jpeg",
-        "isRare": false,
-        "name": "Australian Magpie",
-        "region": "Whittlesea, Victoria, Australia (AU)",
-        "sciName": "Gymnorhina tibicen"
-      },
-      {
-        "area": "-37.78,145.0",
-        "image": "/8207583067noimin1AU-VIC-DAR-37.78,145.0.jpeg",
-        "isRare": false,
-        "name": "Noisy Miner",
-        "region": "Darebin, Victoria, Australia (AU)",
-        "sciName": "Manorina melanocephala"
-      },
-      {
-        "area": "-37.78,145.01",
-        "image": "/8207583067noimin1AU-VIC-DAR-37.78,145.01.jpeg",
-        "isRare": false,
-        "name": "Noisy Miner",
-        "region": "Darebin, Victoria, Australia (AU)",
-        "sciName": "Manorina melanocephala"
-      },
-      {
-        "area": "-37.77,145.02",
-        "image": "/8207583067ausmag2AU-VIC-DAR-37.77,145.02.jpeg",
-        "isRare": false,
-        "name": "Australian Magpie",
-        "region": "Darebin, Victoria, Australia (AU)",
-        "sciName": "Gymnorhina tibicen"
-      }
+        {
+            "area": "-37.77,145.0",
+            "image": "/8207583067maglar1-37.77,145.0.jpeg",
+            "isRare": false,
+            "name": "Magpie-lark",
+            "region": "Darebin, Victoria, Australia (AU)"
+        },
+        {
+            "area": "-37.77,145.0",
+            "image": "/8207583067rocpigAU-VIC-MEL.jpeg",
+            "isRare": false,
+            "name": "Rock Pigeon",
+            "region": "Melbourne, Victoria, Australia (AU)",
+            "sciName": "Columba livia"
+        },
+        {
+            "area": "-37.78,145.0",
+            "image": "/8207583067grybut1AU-VIC-DAR.jpeg",
+            "isRare": false,
+            "name": "Gray Butcherbird",
+            "region": "Darebin, Victoria, Australia (AU)"
+        },
+        {
+            "area": "-37.79,144.97",
+            "image": "/8207583067commynAU-VIC-DAR-37.79,144.97.jpeg",
+            "isRare": false,
+            "name": "Common Myna",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "sciName": "Acridotheres tristis"
+        },
+        {
+            "area": "-37.79,144.97",
+            "image": "/8207583067rocpigAU-VIC-DAR-37.79,144.97.jpeg",
+            "isRare": false,
+            "name": "Rock Pigeon",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "sciName": "Columba livia"
+        },
+        {
+            "area": "-37.78,144.99",
+            "image": "/8207583067ausmag2AU-VIC-DAR-37.78,144.99.jpeg",
+            "isRare": false,
+            "name": "Australian Magpie",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "sciName": "Gymnorhina tibicen"
+        },
+        {
+            "area": "-37.78,144.99",
+            "image": "/8207583067crepig1AU-VIC-DAR-37.78,144.99.jpeg",
+            "isRare": false,
+            "name": "Crested Pigeon",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "sciName": "Ocyphaps lophotes"
+        },
+        {
+            "area": "-37.77,145.01",
+            "image": "/8207583067crepig1AU-VIC-DAR-37.77,145.01.jpeg",
+            "isRare": false,
+            "name": "Crested Pigeon",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "sciName": "Ocyphaps lophotes"
+        },
+        {
+            "area": "-37.77,145.02",
+            "image": "/8207583067commynAU-VIC-DAR-37.77,145.02.jpeg",
+            "isRare": false,
+            "name": "Common Myna",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "sciName": "Acridotheres tristis"
+        },
+        {
+            "area": "-37.76,145.02",
+            "image": "/8207583067bruwat1AU-VIC-DAR-37.76,145.02.jpeg",
+            "isRare": false,
+            "name": "Little Wattlebird",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "sciName": "Anthochaera chrysoptera"
+        },
+        {
+            "area": "-37.69,145.01",
+            "image": "/8207583067litrav1AU-VIC-WHI-37.69,145.01.jpeg",
+            "isRare": false,
+            "name": "Little Raven",
+            "region": "Whittlesea, Victoria, Australia (AU)"
+        },
+        {
+            "area": "-37.7,145.01",
+            "image": "/8207583067rerpar1AU-VIC-DAR-37.7,145.01.jpeg",
+            "isRare": false,
+            "name": "Red-rumped Parrot",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "sciName": "Psephotus haematonotus"
+        },
+        {
+            "area": "-37.7,145.01",
+            "image": "/8207583067crepig1AU-VIC-DAR-37.7,145.01.jpeg",
+            "isRare": false,
+            "name": "Crested Pigeon",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "sciName": "Ocyphaps lophotes"
+        },
+        {
+            "area": "-37.7,145.01",
+            "image": "/8207583067maglar1AU-VIC-DAR-37.7,145.01.jpeg",
+            "isRare": false,
+            "name": "Magpie-lark",
+            "region": "Darebin, Victoria, Australia (AU)"
+        },
+        {
+            "area": "-37.7,145.01",
+            "image": "/8207583067ausmag2AU-VIC-DAR-37.7,145.01.jpeg",
+            "isRare": false,
+            "name": "Australian Magpie",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "sciName": "Gymnorhina tibicen"
+        },
+        {
+            "area": "-37.7,145.01",
+            "image": "/8207583067welswa1AU-VIC-DAR-37.7,145.01.jpeg",
+            "isRare": false,
+            "name": "Welcome Swallow",
+            "region": "Darebin, Victoria, Australia (AU)"
+        },
+        {
+            "area": "-37.7,145.01",
+            "image": "/8207583067noimin1AU-VIC-DAR-37.7,145.01.jpeg",
+            "isRare": false,
+            "name": "Noisy Miner",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "sciName": "Manorina melanocephala"
+        },
+        {
+            "area": "-37.7,145.01",
+            "image": "/8207583067eurstaAU-VIC-DAR-37.7,145.01.jpeg",
+            "isRare": false,
+            "name": "European Starling",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "sciName": "Sturnus vulgaris"
+        },
+        {
+            "area": "-37.78,144.99",
+            "image": "/8207583067bruwat1AU-VIC-DAR-37.78,144.99.jpeg",
+            "isRare": false,
+            "name": "Little Wattlebird",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "sciName": "Anthochaera chrysoptera"
+        },
+        {
+            "area": "-37.78,145.0",
+            "image": "/8207583067commynAU-VIC-DAR-37.78,145.0.jpeg",
+            "isRare": false,
+            "name": "Common Myna",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "sciName": "Acridotheres tristis"
+        },
+        {
+            "area": "-37.69,145.01",
+            "image": "/8207583067ausmag2AU-VIC-WHI-37.69,145.01.jpeg",
+            "isRare": false,
+            "name": "Australian Magpie",
+            "region": "Whittlesea, Victoria, Australia (AU)",
+            "sciName": "Gymnorhina tibicen"
+        },
+        {
+            "area": "-37.78,145.0",
+            "image": "/8207583067noimin1AU-VIC-DAR-37.78,145.0.jpeg",
+            "isRare": false,
+            "name": "Noisy Miner",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "sciName": "Manorina melanocephala"
+        },
+        {
+            "area": "-37.78,145.01",
+            "image": "/8207583067noimin1AU-VIC-DAR-37.78,145.01.jpeg",
+            "isRare": false,
+            "name": "Noisy Miner",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "sciName": "Manorina melanocephala"
+        },
+        {
+            "area": "-37.77,145.02",
+            "image": "/8207583067ausmag2AU-VIC-DAR-37.77,145.02.jpeg",
+            "isRare": false,
+            "name": "Australian Magpie",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "sciName": "Gymnorhina tibicen"
+        },
+        {
+            "name": "Rainbow Lorikeet",
+            "sciName": "Trichoglossus moluccanus",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067railor5AU-VIC-DAR-37.78,144.99.jpeg",
+            "area": "-37.78,144.99"
+        },
+        {
+            "name": "Magpie-lark",
+            "sciName": "Grallina cyanoleuca",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067maglar1AU-VIC-DAR-37.78,144.99.jpeg",
+            "area": "-37.78,144.99"
+        },
+        {
+            "name": "Dusky Moorhen",
+            "sciName": "Gallinula tenebrosa",
+            "region": "Merri-bek, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067dusmoo1AU-VIC-MOR-37.78,144.99.jpeg",
+            "area": "-37.78,144.99"
+        },
+        {
+            "name": "Pacific Black Duck",
+            "sciName": "Anas superciliosa",
+            "region": "Merri-bek, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067pabduc1AU-VIC-MOR-37.78,144.99.jpeg",
+            "area": "-37.78,144.99"
+        },
+        {
+            "name": "Spotted Dove",
+            "sciName": "Spilopelia chinensis",
+            "region": "Merri-bek, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067spodovAU-VIC-MOR-37.78,144.99.jpeg",
+            "area": "-37.78,144.99"
+        },
+        {
+            "name": "European Starling",
+            "sciName": "Sturnus vulgaris",
+            "region": "Merri-bek, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067eurstaAU-VIC-MOR-37.78,144.99.jpeg",
+            "area": "-37.78,144.99"
+        },
+        {
+            "name": "Pied Currawong",
+            "sciName": "Strepera graculina",
+            "region": "Merri-bek, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067piecur1AU-VIC-MOR-37.78,144.99.jpeg",
+            "area": "-37.78,144.99"
+        },
+        {
+            "name": "Common Myna",
+            "sciName": "Acridotheres tristis",
+            "region": "Merri-bek, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067commynAU-VIC-MOR-37.78,144.99.jpeg",
+            "area": "-37.78,144.99"
+        },
+        {
+            "name": "Australian Ibis",
+            "sciName": "Threskiornis molucca",
+            "region": "Whittlesea, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067ausibi1AU-VIC-WHI-37.69,145.0.jpeg",
+            "area": "-37.69,145.0"
+        },
+        {
+            "name": "Rock Pigeon",
+            "sciName": "Columba livia",
+            "region": "Boroondara, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067rocpigAU-VIC-BOR-37.82,145.04.jpeg",
+            "area": "-37.82,145.04"
+        },
+        {
+            "name": "Little Raven",
+            "sciName": "Corvus mellori",
+            "region": "Boroondara, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067litrav1AU-VIC-BOR-37.82,145.04.jpeg",
+            "area": "-37.82,145.04"
+        }
     ],
     "locations": {
-      "-37.69,145.01": [
-        "Little Raven",
-        "Australian Magpie"
-      ],
-      "-37.7,145.01": [
-        "Red-rumped Parrot",
-        "Crested Pigeon",
-        "Magpie-lark",
-        "Australian Magpie",
-        "Welcome Swallow",
-        "Noisy Miner",
-        "European Starling"
-      ],
-      "-37.76,145.02": [
-        "Little Wattlebird"
-      ],
-      "-37.77,145.0": [
-        "Magpie-lark"
-      ],
-      "-37.77,145.01": [
-        "Crested Pigeon"
-      ],
-      "-37.77,145.02": [
-        "Common Myna",
-        "Australian Magpie"
-      ],
-      "-37.78,144.99": [
-        "Australian Magpie",
-        "Crested Pigeon",
-        "Little Wattlebird"
-      ],
-      "-37.78,145.0": [
-        "Gray Butcherbird",
-        "Common Myna",
-        "Noisy Miner"
-      ],
-      "-37.78,145.01": [
-        "Noisy Miner"
-      ],
-      "-37.79,144.97": [
-        "Common Myna",
-        "Rock Pigeon"
-      ],
-      "-37.84,144.99": [
-        "Rock Pigeon"
-      ]
+        "-37.69,145.01": [
+            "Little Raven",
+            "Australian Magpie"
+        ],
+        "-37.7,145.01": [
+            "Red-rumped Parrot",
+            "Crested Pigeon",
+            "Magpie-lark",
+            "Australian Magpie",
+            "Welcome Swallow",
+            "Noisy Miner",
+            "European Starling"
+        ],
+        "-37.76,145.02": [
+            "Little Wattlebird"
+        ],
+        "-37.77,145.0": [
+            "Magpie-lark"
+        ],
+        "-37.77,145.01": [
+            "Crested Pigeon"
+        ],
+        "-37.77,145.02": [
+            "Common Myna",
+            "Australian Magpie"
+        ],
+        "-37.78,144.99": [
+            "Australian Magpie",
+            "Crested Pigeon",
+            "Little Wattlebird",
+            "Rainbow Lorikeet",
+            "Magpie-lark",
+            "Dusky Moorhen",
+            "Pacific Black Duck",
+            "Spotted Dove",
+            "European Starling",
+            "Pied Currawong",
+            "Common Myna"
+        ],
+        "-37.78,145.0": [
+            "Gray Butcherbird",
+            "Common Myna",
+            "Noisy Miner"
+        ],
+        "-37.78,145.01": [
+            "Noisy Miner"
+        ],
+        "-37.79,144.97": [
+            "Common Myna",
+            "Rock Pigeon"
+        ],
+        "-37.84,144.99": [
+            "Rock Pigeon"
+        ],
+        "-37.69,145.0": [
+            "Australian Ibis"
+        ],
+        "-37.82,145.04": [
+            "Rock Pigeon",
+            "Little Raven"
+        ]
     },
-    "points": 24,
+    "points": 35,
     "uid": 8207583067,
     "username": "Simon"
-  }
+}
