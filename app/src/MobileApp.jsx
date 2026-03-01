@@ -64,9 +64,10 @@ const MobileApp = () => {
   const [uid, setUid] = useState('');
 
   const fetchData = async () => {
-    const response = await fetch('https://base.sorry.horse:8000');
+    const response = await fetch('https://birdserver.sorry.horse');
     const result = await response.json();
     result.sort((a, b) => b.points - a.points);
+    result.map(user => user.birds.reverse());
     setUsers(result);
   };
 
@@ -99,7 +100,7 @@ const MobileApp = () => {
 
   const getRegionFromLoc = async () => {
     const req = await fetch(
-     `https://base.sorry.horse:8000/region?latitude=${location.latitude}&longitude=${location.longitude}`
+     `https://birdserver.sorry.horse/region?latitude=${location.latitude}&longitude=${location.longitude}`
     );
     const council = (await req.json())['council'];
     if (council == null) {
@@ -141,7 +142,6 @@ const MobileApp = () => {
 
   useEffect(() => {
     setBird('');
-    setProgress(0);
     setImage('');
     setRegionInput('');
     setBirdInput('');
@@ -282,7 +282,7 @@ const MobileApp = () => {
       image: image,
       uid: uid,
     };
-    const response = await fetch('https://base.sorry.horse:8000', {
+    const response = await fetch('https://birdserver.sorry.horse', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
@@ -301,6 +301,7 @@ const MobileApp = () => {
       return;
     }
     result.sort((a, b) => b.points - a.points);
+    result.map(user => user.birds.reverse());
     setUsers(result);
 
     setOpenBird(false);
@@ -322,7 +323,7 @@ const MobileApp = () => {
   };
 
   const deleteBird = async (id, item) => {
-	await fetch("https://base.sorry.horse:8000/delete/" + id.slice(1));
+	await fetch("https://birdserver.sorry.horse/delete/" + id.slice(1));
 	await fetchData();
   }
 
@@ -376,7 +377,7 @@ const MobileApp = () => {
                     </div>
                   </Box>
                   <Grid templateColumns="repeat(1, 1fr)" gap="6" width="100%">
-                    {Object.keys(item.birds).map((bird, index) => (
+                    {item.birds.map((bird, index) => (
                       <Card.Root
                         flexDirection="column"
                         size="sm"
@@ -388,8 +389,8 @@ const MobileApp = () => {
                             <Box
                               aspectRatio="square"
                               backgroundImage={
-                                'url(https://base.sorry.horse:8002' +
-                                item.birds[index].image +
+                                'url(https://birdfiles.sorry.horse' +
+                                bird.image +
                                 ')'
                               }
                               backgroundPosition="center"
@@ -404,18 +405,18 @@ const MobileApp = () => {
                                 <Dialog.Header>
 			    <VStack alignItems="start">
                                   <Dialog.Title>
-                                    {item.birds[index].name}
+                                    {bird.name}
                                   </Dialog.Title>
 			    <Text>
-			    {item.birds[index].sciName}
+			    {bird.sciName}
 			    </Text>
 			    </VStack>
                                 </Dialog.Header>
                                 <Dialog.Body>
                                   <Image
                                     src={
-                                      'https://base.sorry.horse:8002' +
-                                      item.birds[index].image
+                                      'https://birdfiles.sorry.horse' +
+                                      bird.image
                                     }
                                   />
                                 </Dialog.Body>
@@ -432,7 +433,7 @@ const MobileApp = () => {
                             textOverflow="ellipsis"
                             width="auto"
                           >
-                            {item.birds[index].name}
+                            {bird.name}
                           </Card.Title>
                           <Card.Description
                             whiteSpace="nowrap"
@@ -441,10 +442,10 @@ const MobileApp = () => {
                             textOverflow="ellipsis"
                             width="auto"
                           >
-                            {item.birds[index].region}
+                            {bird.region}
                           </Card.Description>
                         </Card.Body>
-                        <Show when={item.birds[index].isRare}>
+                        <Show when={bird.isRare}>
                           <Badge
                             variant="solid"
                             colorPalette="blue"
@@ -458,9 +459,9 @@ const MobileApp = () => {
                             Rare
                           </Badge>
                         </Show>
-			    <Show when={uid === item.uid} >
+			    <Show when={uid == item.uid} >
 			    <Float offsetX="4" offsetY="4">
-			    	<IconButton variant="surface" onClick={() => deleteBird(item.birds[index].image, item)}>
+			    	<IconButton variant="surface" onClick={() => deleteBird(bird.image, item)}>
 			    		<FaTrashCan />
 			    	</IconButton>
 			    </Float>

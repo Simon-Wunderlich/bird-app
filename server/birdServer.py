@@ -193,4 +193,4 @@ def getFiles():
 
 
 if __name__ == "__main__":
-    app.run(port = 8000, host='0.0.0.0', ssl_context=("../app/certs/certificate.crt","../app/certs/private.key"))
+    app.run(port = 4174, host='0.0.0.0')

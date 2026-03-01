@@ -52,9 +52,9 @@ const Login = ({ setUid, setOpenBird }) => {
     }
     setLoading(true);
     const response = await fetch(
-      'https://base.sorry.horse:8000/register/' + name
+      'https://birdserver.sorry.horse/register/' + name
     );
-    const result = await response.text();
+    const result = (await response.text()).replaceAll("\n", "");
     localStorage.setItem('uid', result);
     setUid(result);
     setOpen(false);

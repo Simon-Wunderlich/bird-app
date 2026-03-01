@@ -59,9 +59,10 @@ const DesktopApp = () => {
   const [uid, setUid] = useState('');
 
   const fetchData = async () => {
-    const response = await fetch('https://base.sorry.horse:8000');
+    const response = await fetch('https://birdserver.sorry.horse');
     const result = await response.json();
     result.sort((a, b) => b.points - a.points);
+    result.map(user => user.birds.reverse());
     setUsers(result);
   };
 
@@ -274,7 +275,7 @@ const DesktopApp = () => {
   };
 
   const deleteBird = async (id, item) => {
-	await fetch("https://base.sorry.horse:8000/delete/" + id.slice(1));
+	await fetch("https://birdserver.sorry.horse/delete/" + id.slice(1));
 	await fetchData();
   }
   return (
@@ -326,7 +327,7 @@ const DesktopApp = () => {
                     </div>
                   </Box>
                   <Grid templateColumns="repeat(3, 1fr)" gap="6" width="100%">
-                    {Object.keys(item.birds).map((bird, index) => (
+                    {item.birds.map((bird, index) => (
                       <Card.Root
                         flexDirection="row"
                         size="sm"
@@ -338,7 +339,7 @@ const DesktopApp = () => {
                           <Dialog.Trigger asChild>
                             <Box
                               aspectRatio="square"
-                              backgroundImage={`url(https://base.sorry.horse:8002${item.birds[index].image})`}
+                              backgroundImage={`url(https://birdfiles.sorry.horse${item.birds[index].image})`}
                               backgroundPosition="center"
                               backgroundSize="cover"
                               borderRadius="0.375rem 0 0 0.375rem"
@@ -351,18 +352,18 @@ const DesktopApp = () => {
                                 <Dialog.Header>
 			    <VStack alignItems="start">
                                   <Dialog.Title>
-                                    {item.birds[index].name}
+                                    {bird.name}
                                   </Dialog.Title>
 			    <Text>
-			    {item.birds[index].sciName}
+			    {bird.sciName}
 			    </Text>
 			    </VStack>
                                 </Dialog.Header>
                                 <Dialog.Body>
                                   <Image
                                     src={
-                                      'https://base.sorry.horse:8002' +
-                                      item.birds[index].image
+                                      'https://birdfiles.sorry.horse' +
+                                      bird.image
                                     }
                                   />
                                 </Dialog.Body>
@@ -379,7 +380,7 @@ const DesktopApp = () => {
                             textOverflow="ellipsis"
                             width="250px"
                           >
-                            {item.birds[index].name}
+                            {bird.name}
                           </Card.Title>
                           <Card.Description
                             whiteSpace="nowrap"
@@ -388,10 +389,10 @@ const DesktopApp = () => {
                             textOverflow="ellipsis"
                             width="250px"
                           >
-                            {item.birds[index].region}
+                            {bird.region}
                           </Card.Description>
                         </Card.Body>
-                        <Show when={item.birds[index].isRare}>
+                        <Show when={bird.isRare}>
                           <Badge
                             variant="solid"
                             colorPalette="blue"
@@ -405,7 +406,7 @@ const DesktopApp = () => {
                         </Show>
 			    <Show when = {uid == item.uid} >
 			    <Float offsetX="4" offsetY="4">
-			    	<IconButton variant="surface" onClick={() => deleteBird(item.birds[index].image, item)}>
+			    	<IconButton variant="surface" onClick={() => deleteBird(bird.image, item)}>
 			    		<FaTrashCan />
 			    	</IconButton>
 			    </Float>

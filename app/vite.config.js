@@ -18,12 +18,12 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   server: {
-    port: 8001, // Set your desired port number here
-    allowedHosts: ["base.sorry.horse"],
-    https : {
-	    key : fs.readFileSync(path.resolve(__dirname, "certs/private.key")),
-	    cert : fs.readFileSync(path.resolve(__dirname, "certs/certificate.crt")),
-    }
+    port: 444, // Set your desired port number here
+    allowedHosts: ["birds.sorry.horse"],
+//    https : {
+//	    key : fs.readFileSync(path.resolve(__dirname, "certs/private.key")),
+//	    cert : fs.readFileSync(path.resolve(__dirname, "certs/certificate.crt")),
+//    }
   },
   plugins: [react(), VitePWA({
       registerType: "autoUpdate",
