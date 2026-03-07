@@ -7,7 +7,7 @@
         "Eurasian Coot": 1,
         "House Sparrow": 2,
         "Little Wattlebird": 1,
-        "Magpie-lark": 3,
+        "Magpie-lark": 4,
         "Maned Duck": 1,
         "Noisy Miner": 3,
         "Pacific Black Duck": 1,
@@ -18,8 +18,12 @@
         "Spotted Dove": 1,
         "Straw-necked Ibis": 1,
         "Australian Ibis": 1,
-        "Little Raven": 2,
-        "Dusky Moorhen": 1
+        "Little Raven": 3,
+        "Dusky Moorhen": 1,
+        "Pied Currawong": 1,
+        "Galah": 1,
+        "Sulphur-crested Cockatoo": 1,
+        "Welcome Swallow": 1
     },
     "birds": [
         {
@@ -341,11 +345,60 @@
             "isRare": false,
             "image": "/8319955771railor5AU-VIC-DAR-37.78,145.01.jpeg",
             "area": "-37.78,145.01"
+        },
+        {
+            "name": "Pied Currawong",
+            "sciName": "Strepera graculina",
+            "region": "Boroondara, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8319955771piecur1AU-VIC-BOR-37.82,145.04.jpeg",
+            "area": "-37.82,145.04"
+        },
+        {
+            "name": "Galah",
+            "sciName": "Eolophus roseicapilla",
+            "region": "Boroondara, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8319955771galahAU-VIC-BOR-37.8,145.04.jpeg",
+            "area": "-37.8,145.04"
+        },
+        {
+            "name": "Magpie-lark",
+            "sciName": "Grallina cyanoleuca",
+            "region": "Boroondara, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8319955771maglar1AU-VIC-BOR-37.8,145.04.jpeg",
+            "area": "-37.8,145.04"
+        },
+        {
+            "name": "Sulphur-crested Cockatoo",
+            "sciName": "Cacatua galerita",
+            "region": "Boroondara, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8319955771succocAU-VIC-BOR-37.8,145.05.jpeg",
+            "area": "-37.8,145.05"
+        },
+        {
+            "name": "Welcome Swallow",
+            "sciName": "Hirundo neoxena",
+            "region": "Boroondara, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8319955771welswa1AU-VIC-BOR-37.8,145.05.jpeg",
+            "area": "-37.8,145.05"
+        },
+        {
+            "name": "Little Raven",
+            "sciName": "Corvus mellori",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8319955771litrav1AU-VIC-DAR-37.75,145.0.jpeg",
+            "area": "-37.75,145.0"
         }
     ],
     "locations": {
         "-37.75,145.0": [
-            "Red-rumped Parrot"
+            "Red-rumped Parrot",
+            "Little Raven"
         ],
         "-37.78,144.96": [
             "Common Myna",
@@ -402,7 +455,8 @@
         "-37.82,145.04": [
             "Rock Pigeon",
             "Australian Magpie",
-            "Little Raven"
+            "Little Raven",
+            "Pied Currawong"
         ],
         "-37.77,145.03": [
             "Dusky Moorhen"
@@ -412,9 +466,17 @@
             "Silver Gull",
             "Magpie-lark",
             "Australian Magpie"
+        ],
+        "-37.8,145.04": [
+            "Galah",
+            "Magpie-lark"
+        ],
+        "-37.8,145.05": [
+            "Sulphur-crested Cockatoo",
+            "Welcome Swallow"
         ]
     },
-    "points": 48,
+    "points": 54,
     "uid": 8319955771,
     "username": "Akira"
 }

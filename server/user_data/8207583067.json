@@ -10,14 +10,18 @@
         "Magpie-lark": 3,
         "Noisy Miner": 3,
         "Red-rumped Parrot": 1,
-        "Rock Pigeon": 3,
+        "Rock Pigeon": 4,
         "Welcome Swallow": 1,
         "Rainbow Lorikeet": 1,
         "Dusky Moorhen": 1,
         "Pacific Black Duck": 1,
         "Spotted Dove": 1,
         "Pied Currawong": 1,
-        "Australian Ibis": 1
+        "Australian Ibis": 1,
+        "Chilean Flamingo": 1,
+        "Silver Gull": 1,
+        "Straw-necked Ibis": 1,
+        "Sulphur-crested Cockatoo": 1
     },
     "birds": [
         {
@@ -294,6 +298,38 @@
             "isRare": false,
             "image": "/8207583067litrav1AU-VIC-BOR-37.82,145.04.jpeg",
             "area": "-37.82,145.04"
+        },
+        {
+            "name": "Silver Gull",
+            "sciName": "Chroicocephalus novaehollandiae",
+            "region": "Melbourne, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067silgul2AU-VIC-MEL-37.81,144.96.jpeg",
+            "area": "-37.81,144.96"
+        },
+        {
+            "name": "Rock Pigeon",
+            "sciName": "Columba livia",
+            "region": "Melbourne, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067rocpigAU-VIC-MEL-37.8,144.96.jpeg",
+            "area": "-37.8,144.96"
+        },
+        {
+            "name": "Straw-necked Ibis",
+            "sciName": "Threskiornis spinicollis",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067stnibi1AU-VIC-DAR-37.7,145.01.jpeg",
+            "area": "-37.7,145.01"
+        },
+        {
+            "name": "Sulphur-crested Cockatoo",
+            "sciName": "Cacatua galerita",
+            "region": "Surf Coast, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067succocAU-VIC-SUR-38.54,143.98.jpeg",
+            "area": "-38.54,143.98"
         }
     ],
     "locations": {
@@ -308,7 +344,8 @@
             "Australian Magpie",
             "Welcome Swallow",
             "Noisy Miner",
-            "European Starling"
+            "European Starling",
+            "Straw-necked Ibis"
         ],
         "-37.76,145.02": [
             "Little Wattlebird"
@@ -357,9 +394,18 @@
         "-37.82,145.04": [
             "Rock Pigeon",
             "Little Raven"
+        ],
+        "-37.81,144.96": [
+            "Silver Gull"
+        ],
+        "-37.8,144.96": [
+            "Rock Pigeon"
+        ],
+        "-38.54,143.98": [
+            "Sulphur-crested Cockatoo"
         ]
     },
-    "points": 35,
+    "points": 39,
     "uid": 8207583067,
     "username": "Simon"
 }
