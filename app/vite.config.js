@@ -1,17 +1,8 @@
-// import { defineConfig } from 'vite'
-// import react from '@vitejs/plugin-react'
-//
-// // https://vite.dev/config/
-// export default defineConfig({
-//   plugins: [react()],
-
-// })
 import { fileURLToPath } from "url";
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 import { VitePWA } from 'vite-plugin-pwa'
-import fs from 'fs'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -20,10 +11,6 @@ export default defineConfig({
   server: {
     port: 444, // Set your desired port number here
     allowedHosts: ["birds.sorry.horse"],
-//    https : {
-//	    key : fs.readFileSync(path.resolve(__dirname, "certs/private.key")),
-//	    cert : fs.readFileSync(path.resolve(__dirname, "certs/certificate.crt")),
-//    }
   },
   plugins: [react(), VitePWA({
       registerType: "autoUpdate",
