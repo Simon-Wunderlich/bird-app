@@ -1,27 +1,45 @@
 {
     "birdCounts": {
-        "Australian Magpie": 4,
+        "Australian Magpie": 6,
         "Common Myna": 4,
         "Crested Pigeon": 3,
-        "European Starling": 2,
+        "European Starling": 4,
         "Gray Butcherbird": 1,
-        "Little Raven": 2,
+        "Little Raven": 3,
         "Little Wattlebird": 2,
-        "Magpie-lark": 3,
+        "Magpie-lark": 4,
         "Noisy Miner": 3,
-        "Red-rumped Parrot": 1,
+        "Red-rumped Parrot": 2,
         "Rock Pigeon": 4,
         "Welcome Swallow": 1,
         "Rainbow Lorikeet": 1,
         "Dusky Moorhen": 1,
         "Pacific Black Duck": 1,
         "Spotted Dove": 1,
-        "Pied Currawong": 1,
+        "Pied Currawong": 4,
         "Australian Ibis": 1,
         "Chilean Flamingo": 1,
-        "Silver Gull": 1,
+        "Silver Gull": 2,
         "Straw-necked Ibis": 1,
-        "Sulphur-crested Cockatoo": 1
+        "Sulphur-crested Cockatoo": 2,
+        "Superb Fairywren": 1,
+        "New Holland Honeyeater": 1,
+        "Sooty Oystercatcher": 1,
+        "Pacific Gull": 1,
+        "Great Crested Tern": 1,
+        "House Sparrow": 1,
+        "Eurasian Blackbird": 1,
+        "Galah": 1,
+        "Eastern Spinebill": 1,
+        "Tawny Frogmouth": 1,
+        "Scarlet Robin": 3,
+        "Spotted Pardalote": 1,
+        "Australian Raven": 1,
+        "Eastern Yellow Robin": 1,
+        "Crimson Rosella": 1,
+        "Gray Currawong": 1,
+        "Gang-gang Cockatoo": 1,
+        "Masked Lapwing": 1
     },
     "birds": [
         {
@@ -330,12 +348,269 @@
             "isRare": false,
             "image": "/8207583067succocAU-VIC-SUR-38.54,143.98.jpeg",
             "area": "-38.54,143.98"
+        },
+        {
+            "name": "Silver Gull",
+            "sciName": "Chroicocephalus novaehollandiae",
+            "region": "Surf Coast, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067silgul2AU-VIC-SUR-38.54,143.98.jpeg",
+            "area": "-38.54,143.98"
+        },
+        {
+            "name": "Superb Fairywren",
+            "sciName": "Malurus cyaneus",
+            "region": "Surf Coast, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067supfai1AU-VIC-SUR-38.54,143.98.jpeg",
+            "area": "-38.54,143.98"
+        },
+        {
+            "name": "New Holland Honeyeater",
+            "sciName": "Phylidonyris novaehollandiae",
+            "region": "Surf Coast, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067nehhon2AU-VIC-SUR-38.55,143.99.jpeg",
+            "area": "-38.55,143.99"
+        },
+        {
+            "name": "Sooty Oystercatcher",
+            "sciName": "Haematopus fuliginosus",
+            "region": "Surf Coast, Victoria, Australia (AU)",
+            "isRare": true,
+            "image": "/8207583067soooys1AU-VIC-SUR-38.55,143.98.jpeg",
+            "area": "-38.55,143.98"
+        },
+        {
+            "name": "Pacific Gull",
+            "sciName": "Larus pacificus",
+            "region": "Surf Coast, Victoria, Australia (AU)",
+            "isRare": true,
+            "image": "/8207583067pacgul1AU-VIC-SUR-38.55,143.98.jpeg",
+            "area": "-38.55,143.98"
+        },
+        {
+            "name": "Great Crested Tern",
+            "sciName": "Thalasseus bergii",
+            "region": "Surf Coast, Victoria, Australia (AU)",
+            "isRare": true,
+            "image": "/8207583067grcter1AU-VIC-SUR-38.55,143.99.jpeg",
+            "area": "-38.55,143.99"
+        },
+        {
+            "name": "European Starling",
+            "sciName": "Sturnus vulgaris",
+            "region": "Surf Coast, Victoria, Australia (AU)",
+            "isRare": true,
+            "image": "/8207583067eurstaAU-VIC-SUR-38.55,143.99.jpeg",
+            "area": "-38.55,143.99"
+        },
+        {
+            "name": "House Sparrow",
+            "sciName": "Passer domesticus",
+            "region": "Surf Coast, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067houspaAU-VIC-SUR-38.54,143.98.jpeg",
+            "area": "-38.54,143.98"
+        },
+        {
+            "name": "Australian Magpie",
+            "sciName": "Gymnorhina tibicen",
+            "region": "Surf Coast, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067ausmag2AU-VIC-SUR-38.54,143.97.jpeg",
+            "area": "-38.54,143.97"
+        },
+        {
+            "name": "Sulphur-crested Cockatoo",
+            "sciName": "Cacatua galerita",
+            "region": "Surf Coast, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067succocAU-VIC-SUR-38.24,143.99.jpeg",
+            "area": "-38.24,143.99"
+        },
+        {
+            "name": "Eurasian Blackbird",
+            "sciName": "Turdus merula",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067eurblaAU-VIC-DAR-37.78,145.01.jpeg",
+            "area": "-37.78,145.01"
+        },
+        {
+            "name": "Galah",
+            "sciName": "Eolophus roseicapilla",
+            "region": "Whittlesea, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067galahAU-VIC-WHI-37.69,144.99.jpeg",
+            "area": "-37.69,144.99"
+        },
+        {
+            "name": "Red-rumped Parrot",
+            "sciName": "Psephotus haematonotus",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067rerpar1AU-VIC-DAR-37.78,145.01.jpeg",
+            "area": "-37.78,145.01"
+        },
+        {
+            "name": "Eastern Spinebill",
+            "sciName": "Acanthorhynchus tenuirostris",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "isRare": true,
+            "image": "/8207583067easspi1AU-VIC-DAR-37.78,145.0.jpeg",
+            "area": "-37.78,145.0"
+        },
+        {
+            "name": "Tawny Frogmouth",
+            "sciName": "Podargus strigoides",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "isRare": true,
+            "image": "/8207583067tawfro1AU-VIC-DAR-37.78,145.0.jpeg",
+            "area": "-37.78,145.0"
+        },
+        {
+            "name": "Little Raven",
+            "sciName": "Corvus mellori",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067litrav1AU-VIC-DAR-37.78,145.0.jpeg",
+            "area": "-37.78,145.0"
+        },
+        {
+            "name": "Magpie-lark",
+            "sciName": "Grallina cyanoleuca",
+            "region": "Alpine, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067maglar1-37.01,147.08.jpeg",
+            "area": "-37.01,147.08"
+        },
+        {
+            "name": "Pied Currawong",
+            "sciName": "Strepera graculina",
+            "region": "Alpine, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067piecur1-36.97,147.14.jpeg",
+            "area": "-36.97,147.14"
+        },
+        {
+            "name": "Scarlet Robin",
+            "sciName": "Petroica boodang",
+            "region": "Alpine, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067scarob2-36.97,147.14.jpeg",
+            "area": "-36.97,147.14"
+        },
+        {
+            "name": "Spotted Pardalote",
+            "sciName": "Pardalotus punctatus",
+            "region": "Alpine, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067spopar1-36.92,147.13.jpeg",
+            "area": "-36.92,147.13"
+        },
+        {
+            "name": "Australian Raven",
+            "sciName": "Corvus coronoides",
+            "region": "Alpine, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067ausrav1-36.92,147.13.jpeg",
+            "area": "-36.92,147.13"
+        },
+        {
+            "name": "Pied Currawong",
+            "sciName": "Strepera graculina",
+            "region": "Alpine, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067piecur1-36.9,147.13.jpeg",
+            "area": "-36.9,147.13"
+        },
+        {
+            "name": "Australian Magpie",
+            "sciName": "Gymnorhina tibicen",
+            "region": "Alpine, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067ausmag2-36.9,147.13.jpeg",
+            "area": "-36.9,147.13"
+        },
+        {
+            "name": "Scarlet Robin",
+            "sciName": "Petroica boodang",
+            "region": "Alpine, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067scarob2-36.9,147.12.jpeg",
+            "area": "-36.9,147.12"
+        },
+        {
+            "name": "Scarlet Robin",
+            "sciName": "Petroica boodang",
+            "region": "Alpine, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067scarob2-36.95,147.19.jpeg",
+            "area": "-36.95,147.19"
+        },
+        {
+            "name": "Eastern Yellow Robin",
+            "sciName": "Eopsaltria australis",
+            "region": "Alpine, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067yelrob1-36.95,147.19.jpeg",
+            "area": "-36.95,147.19"
+        },
+        {
+            "name": "Crimson Rosella",
+            "sciName": "Platycercus elegans",
+            "region": "Alpine, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067criros2-36.95,147.19.jpeg",
+            "area": "-36.95,147.19"
+        },
+        {
+            "name": "Gray Currawong",
+            "sciName": "Strepera versicolor",
+            "region": "Alpine, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067grycur1-36.95,147.18.jpeg",
+            "area": "-36.95,147.18"
+        },
+        {
+            "name": "Gang-gang Cockatoo",
+            "sciName": "Callocephalon fimbriatum",
+            "region": "Alpine, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067gagcoc1-36.95,147.18.jpeg",
+            "area": "-36.95,147.18"
+        },
+        {
+            "name": "Pied Currawong",
+            "sciName": "Strepera graculina",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067piecur1AU-VIC-DAR-37.78,145.01.jpeg",
+            "area": "-37.78,145.01"
+        },
+        {
+            "name": "Masked Lapwing",
+            "sciName": "Vanellus miles",
+            "region": "Whittlesea, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067maslap1AU-VIC-WHI-37.69,145.01.jpeg",
+            "area": "-37.69,145.01"
+        },
+        {
+            "name": "European Starling",
+            "sciName": "Sturnus vulgaris",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067eurstaAU-VIC-DAR-37.78,145.0.jpeg",
+            "area": "-37.78,145.0"
         }
     ],
     "locations": {
         "-37.69,145.01": [
             "Little Raven",
-            "Australian Magpie"
+            "Australian Magpie",
+            "Masked Lapwing"
         ],
         "-37.7,145.01": [
             "Red-rumped Parrot",
@@ -376,10 +651,17 @@
         "-37.78,145.0": [
             "Gray Butcherbird",
             "Common Myna",
-            "Noisy Miner"
+            "Noisy Miner",
+            "Eastern Spinebill",
+            "Tawny Frogmouth",
+            "Little Raven",
+            "European Starling"
         ],
         "-37.78,145.01": [
-            "Noisy Miner"
+            "Noisy Miner",
+            "Eurasian Blackbird",
+            "Red-rumped Parrot",
+            "Pied Currawong"
         ],
         "-37.79,144.97": [
             "Common Myna",
@@ -402,10 +684,59 @@
             "Rock Pigeon"
         ],
         "-38.54,143.98": [
+            "Sulphur-crested Cockatoo",
+            "Silver Gull",
+            "Superb Fairywren",
+            "House Sparrow"
+        ],
+        "-38.55,143.99": [
+            "New Holland Honeyeater",
+            "Great Crested Tern",
+            "European Starling"
+        ],
+        "-38.55,143.98": [
+            "Sooty Oystercatcher",
+            "Pacific Gull"
+        ],
+        "-38.54,143.97": [
+            "Australian Magpie"
+        ],
+        "-38.24,143.99": [
             "Sulphur-crested Cockatoo"
-        ]
+        ],
+        "-37.69,144.99": [
+            "Galah"
+        ],
+        "-37.01,147.08": [
+            "Magpie-lark"
+        ],
+        "-36.97,147.14": [
+            "Pied Currawong",
+            "Scarlet Robin"
+        ],
+        "-36.92,147.13": [
+            "Spotted Pardalote",
+            "Australian Raven"
+        ],
+        "-36.9,147.13": [
+            "Pied Currawong",
+            "Australian Magpie"
+        ],
+        "-36.9,147.12": [
+            "Scarlet Robin"
+        ],
+        "-36.95,147.19": [
+            "Scarlet Robin",
+            "Eastern Yellow Robin",
+            "Crimson Rosella"
+        ],
+        "-36.95,147.18": [
+            "Gray Currawong",
+            "Gang-gang Cockatoo"
+        ],
+        "-37.81,144.97": []
     },
-    "points": 39,
+    "points": 95,
     "uid": 8207583067,
     "username": "Simon"
 }

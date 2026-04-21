@@ -105,38 +105,46 @@ const AddBird = ({setUid, uid, setUsers}) => {
     }
 
     setSubmitBirdLoading(true);
-    const data = {
-      bird: [birdCode, bird[0], sciName],
-      region: regCode,
-      regionName: region,
-      lat: location.latitude,
-      long: location.longitude,
-      image: image,
-      uid: uid,
-    };
-    const response = await fetch('https://birdserver.sorry.horse', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-    if (!response.ok) {
-      toaster.create({
-        description: 'An error has occured, please refresh the page',
-        type: 'error',
-      });
-    }
-    const result = await response.json();
-    console.log(typeof result);
-    if (typeof result == "string") {
-      toaster.create({ description: result, type: 'error' });
-      setSubmitBirdLoading(false);
-      return;
-    }
-    result.sort((a, b) => b.points - a.points);
-    result.map(user => user.birds.reverse());
-    setUsers(result);
+    try {
+	    const data = {
+	      bird: [birdCode, bird[0], sciName],
+	      region: regCode,
+	      regionName: region,
+	      lat: location.latitude,
+	      long: location.longitude,
+	      image: image,
+	      uid: uid,
+	    };
+	    const response = await fetch('https://birdserver.sorry.horse', {
+	      method: 'POST',
+	      headers: { 'Content-Type': 'application/json' },
+	      body: JSON.stringify(data),
+	    });
+	    if (!response.ok) {
+	      toaster.create({
+		description: 'An error has occured, please refresh the page',
+		type: 'error',
+	      });
+	    }
+	    const result = await response.json();
+	    console.log(typeof result);
+	    if (typeof result == "string") {
+	      toaster.create({ description: result, type: 'error' });
+	      setSubmitBirdLoading(false);
+	      return;
+	    }
+	    result.sort((a, b) => b.points - a.points);
+	    result.map(user => user.birds.reverse());
+	    setUsers(result);
 
-    setOpenBird(false);
+	    setOpenBird(false);
+    }
+    catch {
+	      toaster.create({
+		description: 'An error has occured, please refresh the page',
+		type: 'error',
+	      });
+    }
     setSubmitBirdLoading(false);
   };
     return (

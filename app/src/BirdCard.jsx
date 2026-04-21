@@ -48,19 +48,19 @@ const BirdCard = ({ bird, uid, fetchData, index, item }) => {
   }
     return (
     <>
+        <Dialog.Root placement="center" size="xs">
+        <Dialog.Trigger asChild>
         <Card.Root
-        flexDirection={["column", "row"]}
+        flexDirection={"row"}
     size="sm"
         align="center"
         key={index}
     position="relative"
         >
-        <Dialog.Root placement="center" size="xs">
-        <Dialog.Trigger asChild>
         <Box
         aspectRatio="square"
         backgroundImage={
-            'url(https://birdfiles.sorry.horse' +
+            'url(https://birdfiles.sorry.horse/thumb' +
                     bird.image +
                     ')'
                     }
@@ -68,6 +68,49 @@ const BirdCard = ({ bird, uid, fetchData, index, item }) => {
                     backgroundSize="cover"
                     borderRadius={["0.375rem 0.375rem 0 0", "0.375rem 0 0 0.375rem"]}
                     />
+                        <Card.Body>
+                        <Card.Title
+                        mb="2"
+                        whiteSpace="nowrap"
+                        overflow="hidden"
+                        display="block"
+                        textOverflow="ellipsis"
+                        width={uid == item.uid ? [ "30vw", "auto"] : [ "40vw", "auto"]}
+                        >
+                        {bird.name}
+                    </Card.Title>
+                        <Card.Description
+                        whiteSpace="nowrap"
+                        overflow="hidden"
+                        display="block"
+                        textOverflow="ellipsis"
+                        width={["40vw", "auto"]}
+                        >
+                        {bird.region}
+                    </Card.Description>
+                        </Card.Body>
+                        <Show when={bird.isRare}>
+                        <Badge
+                        variant="solid"
+                        colorPalette="blue"
+                        padding="5px"
+                        width="fit-content"
+                        position="absolute"
+                        top="0"
+                        left="0"
+                        >
+                        <HiStar />
+                        Rare
+                        </Badge>
+                        </Show>
+                        <Show when={uid == item.uid} >
+                        <Float offsetX="4" offsetY="4">
+                        <IconButton variant="surface" onClick={() => deleteBird(bird.image)}>
+                        <FaTrashCan />
+                        </IconButton>
+                        </Float>
+                        </Show>
+                        </Card.Root>
                     </Dialog.Trigger>
                     <Portal>
                     <Dialog.Backdrop />
@@ -95,49 +138,6 @@ const BirdCard = ({ bird, uid, fetchData, index, item }) => {
                         </Dialog.Positioner>
                         </Portal>
                         </Dialog.Root>
-                        <Card.Body>
-                        <Card.Title
-                        mb="2"
-                        whiteSpace="wrap"
-                        overflow="hidden"
-                        display="block"
-                        textOverflow="ellipsis"
-                        width="auto"
-                        >
-                        {bird.name}
-                    </Card.Title>
-                        <Card.Description
-                        whiteSpace="nowrap"
-                        overflow="hidden"
-                        display="block"
-                        textOverflow="ellipsis"
-                        width="auto"
-                        >
-                        {bird.region}
-                    </Card.Description>
-                        </Card.Body>
-                        <Show when={bird.isRare}>
-                        <Badge
-                        variant="solid"
-                        colorPalette="blue"
-                        padding="5px"
-                        width="fit-content"
-                        position="absolute"
-                        top="0"
-                        left="0"
-                        >
-                        <HiStar />
-                        Rare
-                        </Badge>
-                        </Show>
-                        <Show when={uid == item.uid} >
-                        <Float offsetX="4" offsetY="4">
-                        <IconButton variant="surface" onClick={() => deleteBird(bird.image)}>
-                        <FaTrashCan />
-                        </IconButton>
-                        </Float>
-                        </Show>
-                        </Card.Root>
     </>
     );
     };

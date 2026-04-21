@@ -1,4 +1,5 @@
 import json
+from PIL import Image
 import os
 import random
 import urllib.request
@@ -143,14 +144,16 @@ def submitBird():
 
     # Rarity (needs bird code)
     headers = {"X-eBirdApiToken" : "jfekjedvescr"}
-    r = requests.get(f"https://api.ebird.org/v2/product/barchart?spp={birdInfo['bird'][0]}&regionCodes={birdInfo['region']}", headers = headers)
-    freqs =r.json()["dataRows"][0]["values"] 
+    try:
+        r = requests.get(f"https://api.ebird.org/v2/product/barchart?spp={birdInfo['bird'][0]}&regionCodes={birdInfo['region']}", headers = headers)
+        freqs =r.json()["dataRows"][0]["values"] 
 
-    yrPercent = float(datetime.now().strftime('%-j'))/365
-    index = round((len(freqs) - 1) * yrPercent)
-    
-    rarity = freqs[index]
-    isRare = rarity < 0.1
+        yrPercent = float(datetime.now().strftime('%-j'))/365
+        index = round((len(freqs) - 1) * yrPercent)
+        rarity = freqs[index]
+        isRare = rarity < 0.1
+    except:
+        isRare = False
     data["points"] += 5 if isRare else 1
 
     pattern = "data:image/(.+?);base64"
@@ -159,6 +162,21 @@ def submitBird():
     fileName = f"/{uid}{birdInfo['bird'][0]}{birdInfo['region']}{area}.{ftype}"
     with open(f"images{fileName}", "wb") as f:
         f.write(response.file.read())
+
+    try:
+        img = Image.open("./images" + fileName)
+        w, h = img.size
+        new_w = 200
+        new_h = int(h * (new_w / w))
+        out = img.resize((new_w, new_h), Image.BICUBIC)
+        if img.info.get("exif") is not None:
+            out.save("images/thumb" + fileName, exif=img.info.get("exif"))
+        else:
+            out.save("images/thumb" + fileName)
+    except Exception as e:
+        print(e)
+        with open(f"images/thumb{fileName}", "wb") as f:
+            f.write(response.file.read())
     
     #Bird list
     data["birds"].append({
