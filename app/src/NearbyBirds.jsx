@@ -15,7 +15,7 @@ import { HiOutlineStatusOnline } from 'react-icons/hi';
 import { LuChevronLeft, LuChevronRight, LuSearch } from 'react-icons/lu';
 import {search} from "fast-fuzzy"
 
-const pageSize = 20;
+const pageSize = 10;
 
 let formatter = new Intl.NumberFormat('en-US', {
   minimumFractionDigits: 1,
@@ -24,7 +24,7 @@ let formatter = new Intl.NumberFormat('en-US', {
 
 const NearbyBirds = ({user}) => {
   const [birdList, setBirdList] = useState([])
-  const [pagedBirdList, setPagedBirdList] = useState([])
+  const [searchResult, setSearchResult] = useState([])
   const [error, setError] = useState(null)
   const [input, setInput] = useState("")
   const [page, setPage] = useState(1)
@@ -38,10 +38,10 @@ const NearbyBirds = ({user}) => {
     const nearbyBirds = user.birds
       .filter((_) => _.area == area)
       .map((_) => _.name);
+    console.log(position.coords.longitude)
+    console.log(user.birds)
     setBirdList(nearbyBirds)
-    console.log(area)
-    const slicedBirds = nearbyBirds.slice(startRange, endRange)
-    setPagedBirdList(slicedBirds)
+    setSearchResult(nearbyBirds)
   }
 
   const errorHandler = async () => {
@@ -55,17 +55,14 @@ const NearbyBirds = ({user}) => {
   useEffect(() => {
     console.log(input)
     if (input == ""){
-      console.log(birdList)
-      const slicedBirds = birdList.slice(0, pageSize);
-      setPagedBirdList(slicedBirds);
+      setPage(1)
+      setSearchResult(birdList);
       return;
     }
 
-    console.log(birdList)
+    setPage(1);
     const searchedBirds = search(input, birdList)
-    console.log(birdList)
-    const slicedBirds = searchedBirds.slice(0, pageSize);
-    setPagedBirdList(slicedBirds);
+    setSearchResult(searchedBirds);
   }, [input]);
 
   const [openInfo, setOpenInfo] = useState(false);
@@ -93,7 +90,6 @@ const NearbyBirds = ({user}) => {
                   <Dialog.Title>My birds in this area</Dialog.Title>
                 </Dialog.Header>
                 <Dialog.Body>
-                  {' '}
                   {error ? (
                     <Alert.Root status="error">
                       <Alert.Indicator />
@@ -106,12 +102,13 @@ const NearbyBirds = ({user}) => {
                       </InputGroup>
                       <Stack gap="2" padding={"15px"}>
                         <Stack gap="4">
-                          {pagedBirdList.map((bird) => (
+                          {searchResult.length > 0 ? searchResult.slice(startRange, endRange).map((bird) => (
                             <Text key={bird}>{bird}</Text>
-                          ))}
+                          )) :
+                            <Text>No birds :(</Text>}
                         </Stack>
                       <Pagination.Root
-                        count={pagedBirdList.length}
+                        count={searchResult.length}
                         pageSize={pageSize}
                         page={page}
                         onPageChange={(e) => setPage(e.page)}
