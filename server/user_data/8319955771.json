@@ -47,7 +47,8 @@
             "isRare": false,
             "name": "Noisy Miner",
             "region": "Darebin, Victoria, Australia (AU)",
-            "sciName": "Manorina melanocephala"
+            "sciName": "Manorina melanocephala",
+            "isNew": true
         },
         {
             "area": "-37.78,145.01",
@@ -55,7 +56,8 @@
             "isRare": false,
             "name": "House Sparrow",
             "region": "Melbourne, Victoria, Australia (AU)",
-            "sciName": "Passer domesticus"
+            "sciName": "Passer domesticus",
+            "isNew": true
         },
         {
             "area": "-37.78,145.01",
@@ -63,7 +65,8 @@
             "isRare": false,
             "name": "Australian Magpie",
             "region": "Darebin, Victoria, Australia (AU)",
-            "sciName": "Gymnorhina tibicen"
+            "sciName": "Gymnorhina tibicen",
+            "isNew": true
         },
         {
             "area": "-37.81,144.96",
@@ -71,7 +74,8 @@
             "isRare": false,
             "name": "Silver Gull",
             "region": "Melbourne, Victoria, Australia (AU)",
-            "sciName": "Chroicocephalus novaehollandiae"
+            "sciName": "Chroicocephalus novaehollandiae",
+            "isNew": true
         },
         {
             "area": "-37.78,145.0",
@@ -79,7 +83,8 @@
             "isRare": false,
             "name": "Little Wattlebird",
             "region": "Darebin, Victoria, Australia (AU)",
-            "sciName": "Anthochaera chrysoptera"
+            "sciName": "Anthochaera chrysoptera",
+            "isNew": true
         },
         {
             "area": "-37.81,144.96",
@@ -87,7 +92,8 @@
             "isRare": false,
             "name": "Rock Pigeon",
             "region": "Melbourne, Victoria, Australia (AU)",
-            "sciName": "Columba livia"
+            "sciName": "Columba livia",
+            "isNew": true
         },
         {
             "area": "-37.81,144.96",
@@ -95,7 +101,8 @@
             "isRare": false,
             "name": "Common Myna",
             "region": "Melbourne, Victoria, Australia (AU)",
-            "sciName": "Acridotheres tristis"
+            "sciName": "Acridotheres tristis",
+            "isNew": true
         },
         {
             "area": "-37.78,145.01",
@@ -103,7 +110,8 @@
             "isRare": false,
             "name": "Eurasian Blackbird",
             "region": "Darebin, Victoria, Australia (AU)",
-            "sciName": "Turdus merula"
+            "sciName": "Turdus merula",
+            "isNew": true
         },
         {
             "area": "-37.78,145.01",
@@ -111,7 +119,8 @@
             "isRare": false,
             "name": "Australian Magpie",
             "region": "Greater Dandenong, Victoria, Australia (AU)",
-            "sciName": "Gymnorhina tibicen"
+            "sciName": "Gymnorhina tibicen",
+            "isNew": false
         },
         {
             "area": "-37.82,144.98",
@@ -119,7 +128,8 @@
             "isRare": false,
             "name": "Silver Gull",
             "region": "Yarra, Victoria, Australia (AU)",
-            "sciName": "Gymnorhina tibicen"
+            "sciName": "Gymnorhina tibicen",
+            "isNew": false
         },
         {
             "area": "-37.82,144.99",
@@ -127,7 +137,8 @@
             "isRare": false,
             "name": "Noisy Miner",
             "region": "Yarra, Victoria, Australia (AU)",
-            "sciName": "Manorina melanocephala"
+            "sciName": "Manorina melanocephala",
+            "isNew": false
         },
         {
             "area": "-37.82,144.99",
@@ -135,7 +146,8 @@
             "isRare": false,
             "name": "Rainbow Lorikeet",
             "region": "Yarra, Victoria, Australia (AU)",
-            "sciName": "Trichoglossus moluccanus"
+            "sciName": "Trichoglossus moluccanus",
+            "isNew": true
         },
         {
             "area": "-37.78,144.96",
@@ -143,7 +155,8 @@
             "isRare": false,
             "name": "Common Myna",
             "region": "Darebin, Victoria, Australia (AU)",
-            "sciName": "Acridotheres tristis"
+            "sciName": "Acridotheres tristis",
+            "isNew": false
         },
         {
             "area": "-37.78,144.96",
@@ -151,7 +164,8 @@
             "isRare": false,
             "name": "Rock Pigeon",
             "region": "Darebin, Victoria, Australia (AU)",
-            "sciName": "Columba livia"
+            "sciName": "Columba livia",
+            "isNew": false
         },
         {
             "area": "-37.78,145.01",
@@ -159,7 +173,8 @@
             "isRare": false,
             "name": "Spotted Dove",
             "region": "Darebin, Victoria, Australia (AU)",
-            "sciName": "Spilopelia chinensis"
+            "sciName": "Spilopelia chinensis",
+            "isNew": true
         },
         {
             "area": "-37.82,144.97",
@@ -167,7 +182,8 @@
             "isRare": false,
             "name": "Rock Pigeon",
             "region": "Melbourne, Victoria, Australia (AU)",
-            "sciName": "Columba livia"
+            "sciName": "Columba livia",
+            "isNew": false
         },
         {
             "area": "-37.82,144.97",
@@ -175,7 +191,8 @@
             "isRare": false,
             "name": "Silver Gull",
             "region": "Melbourne, Victoria, Australia (AU)",
-            "sciName": "Gymnorhina tibicen"
+            "sciName": "Gymnorhina tibicen",
+            "isNew": false
         },
         {
             "area": "-37.82,144.97",
@@ -183,7 +200,8 @@
             "isRare": false,
             "name": "Magpie-lark",
             "region": "Melbourne, Victoria, Australia (AU)",
-            "sciName": "Grallina cyanoleuca"
+            "sciName": "Grallina cyanoleuca",
+            "isNew": true
         },
         {
             "area": "-37.82,144.97",
@@ -191,7 +209,8 @@
             "isRare": false,
             "name": "Noisy Miner",
             "region": "Melbourne, Victoria, Australia (AU)",
-            "sciName": "Manorina melanocephala"
+            "sciName": "Manorina melanocephala",
+            "isNew": false
         },
         {
             "area": "-37.82,144.97",
@@ -199,7 +218,8 @@
             "isRare": false,
             "name": "Common Myna",
             "region": "Melbourne, Victoria, Australia (AU)",
-            "sciName": "Acridotheres tristis"
+            "sciName": "Acridotheres tristis",
+            "isNew": false
         },
         {
             "area": "-37.82,144.97",
@@ -207,7 +227,8 @@
             "isRare": false,
             "name": "House Sparrow",
             "region": "Melbourne, Victoria, Australia (AU)",
-            "sciName": "Passer domesticus"
+            "sciName": "Passer domesticus",
+            "isNew": false
         },
         {
             "area": "-37.82,144.97",
@@ -215,7 +236,8 @@
             "isRare": false,
             "name": "Pacific Black Duck",
             "region": "Melbourne, Victoria, Australia (AU)",
-            "sciName": "Anas superciliosa"
+            "sciName": "Anas superciliosa",
+            "isNew": true
         },
         {
             "area": "-37.82,144.97",
@@ -223,7 +245,8 @@
             "isRare": false,
             "name": "Eurasian Coot",
             "region": "Melbourne, Victoria, Australia (AU)",
-            "sciName": "Fulica atra"
+            "sciName": "Fulica atra",
+            "isNew": true
         },
         {
             "area": "-37.82,144.98",
@@ -231,7 +254,8 @@
             "isRare": false,
             "name": "Australian Magpie",
             "region": "Melbourne, Victoria, Australia (AU)",
-            "sciName": "Gymnorhina tibicen"
+            "sciName": "Gymnorhina tibicen",
+            "isNew": false
         },
         {
             "area": "-37.82,144.98",
@@ -239,7 +263,8 @@
             "isRare": false,
             "name": "Maned Duck",
             "region": "Melbourne, Victoria, Australia (AU)",
-            "sciName": "Chenonetta jubata"
+            "sciName": "Chenonetta jubata",
+            "isNew": true
         },
         {
             "area": "-37.78,145.01",
@@ -247,7 +272,8 @@
             "isRare": false,
             "name": "Magpie-lark",
             "region": "Darebin, Victoria, Australia (AU)",
-            "sciName": "Grallina cyanoleuca"
+            "sciName": "Grallina cyanoleuca",
+            "isNew": false
         },
         {
             "area": "-37.78,145.01",
@@ -255,7 +281,8 @@
             "isRare": false,
             "name": "Crested Pigeon",
             "region": "Darebin, Victoria, Australia (AU)",
-            "sciName": "Ocyphaps lophotes"
+            "sciName": "Ocyphaps lophotes",
+            "isNew": true
         },
         {
             "area": "-37.75,145.0",
@@ -263,7 +290,8 @@
             "isRare": false,
             "name": "Red-rumped Parrot",
             "region": "Darebin, Victoria, Australia (AU)",
-            "sciName": "Psephotus haematonotus"
+            "sciName": "Psephotus haematonotus",
+            "isNew": true
         },
         {
             "name": "Straw-necked Ibis",
@@ -271,7 +299,8 @@
             "region": "Yarra, Victoria, Australia (AU)",
             "isRare": true,
             "image": "/8319955771stnibi1AU-VIC-YAR-37.78,145.04.jpeg",
-            "area": "-37.78,145.04"
+            "area": "-37.78,145.04",
+            "isNew": true
         },
         {
             "name": "Australian Ibis",
@@ -279,7 +308,8 @@
             "region": "Yarra, Victoria, Australia (AU)",
             "isRare": true,
             "image": "/8319955771ausibi1AU-VIC-YAR-37.78,145.04.jpeg",
-            "area": "-37.78,145.04"
+            "area": "-37.78,145.04",
+            "isNew": true
         },
         {
             "name": "Rock Pigeon",
@@ -287,7 +317,8 @@
             "region": "Boroondara, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771rocpigAU-VIC-BOR-37.82,145.04.jpeg",
-            "area": "-37.82,145.04"
+            "area": "-37.82,145.04",
+            "isNew": false
         },
         {
             "name": "Australian Magpie",
@@ -295,7 +326,8 @@
             "region": "Boroondara, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771ausmag2AU-VIC-BOR-37.82,145.04.jpeg",
-            "area": "-37.82,145.04"
+            "area": "-37.82,145.04",
+            "isNew": false
         },
         {
             "name": "Little Raven",
@@ -303,7 +335,8 @@
             "region": "Boroondara, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771litrav1AU-VIC-BOR-37.82,145.04.jpeg",
-            "area": "-37.82,145.04"
+            "area": "-37.82,145.04",
+            "isNew": true
         },
         {
             "name": "Dusky Moorhen",
@@ -311,7 +344,8 @@
             "region": "Darebin, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771dusmoo1AU-VIC-DAR-37.77,145.03.jpeg",
-            "area": "-37.77,145.03"
+            "area": "-37.77,145.03",
+            "isNew": true
         },
         {
             "name": "Crested Pigeon",
@@ -319,7 +353,8 @@
             "region": "Darebin, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771crepig1AU-VIC-DAR-37.77,145.0.jpeg",
-            "area": "-37.77,145.0"
+            "area": "-37.77,145.0",
+            "isNew": false
         },
         {
             "name": "Silver Gull",
@@ -327,7 +362,8 @@
             "region": "Darebin, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771silgul2AU-VIC-DAR-37.77,145.0.jpeg",
-            "area": "-37.77,145.0"
+            "area": "-37.77,145.0",
+            "isNew": false
         },
         {
             "name": "Magpie-lark",
@@ -335,7 +371,8 @@
             "region": "Darebin, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771maglar1AU-VIC-DAR-37.77,145.0.jpeg",
-            "area": "-37.77,145.0"
+            "area": "-37.77,145.0",
+            "isNew": false
         },
         {
             "name": "Australian Magpie",
@@ -343,7 +380,8 @@
             "region": "Darebin, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771ausmag2AU-VIC-DAR-37.77,145.0.jpeg",
-            "area": "-37.77,145.0"
+            "area": "-37.77,145.0",
+            "isNew": false
         },
         {
             "name": "Little Raven",
@@ -351,7 +389,8 @@
             "region": "Darebin, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771litrav1AU-VIC-DAR-37.78,145.01.jpeg",
-            "area": "-37.78,145.01"
+            "area": "-37.78,145.01",
+            "isNew": false
         },
         {
             "name": "Rainbow Lorikeet",
@@ -359,7 +398,8 @@
             "region": "Darebin, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771railor5AU-VIC-DAR-37.78,145.01.jpeg",
-            "area": "-37.78,145.01"
+            "area": "-37.78,145.01",
+            "isNew": false
         },
         {
             "name": "Pied Currawong",
@@ -367,7 +407,8 @@
             "region": "Boroondara, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771piecur1AU-VIC-BOR-37.82,145.04.jpeg",
-            "area": "-37.82,145.04"
+            "area": "-37.82,145.04",
+            "isNew": true
         },
         {
             "name": "Galah",
@@ -375,7 +416,8 @@
             "region": "Boroondara, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771galahAU-VIC-BOR-37.8,145.04.jpeg",
-            "area": "-37.8,145.04"
+            "area": "-37.8,145.04",
+            "isNew": true
         },
         {
             "name": "Magpie-lark",
@@ -383,7 +425,8 @@
             "region": "Boroondara, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771maglar1AU-VIC-BOR-37.8,145.04.jpeg",
-            "area": "-37.8,145.04"
+            "area": "-37.8,145.04",
+            "isNew": false
         },
         {
             "name": "Sulphur-crested Cockatoo",
@@ -391,7 +434,8 @@
             "region": "Boroondara, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771succocAU-VIC-BOR-37.8,145.05.jpeg",
-            "area": "-37.8,145.05"
+            "area": "-37.8,145.05",
+            "isNew": true
         },
         {
             "name": "Welcome Swallow",
@@ -399,7 +443,8 @@
             "region": "Boroondara, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771welswa1AU-VIC-BOR-37.8,145.05.jpeg",
-            "area": "-37.8,145.05"
+            "area": "-37.8,145.05",
+            "isNew": true
         },
         {
             "name": "Little Raven",
@@ -407,7 +452,8 @@
             "region": "Darebin, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771litrav1AU-VIC-DAR-37.75,145.0.jpeg",
-            "area": "-37.75,145.0"
+            "area": "-37.75,145.0",
+            "isNew": false
         },
         {
             "name": "Galah",
@@ -415,7 +461,8 @@
             "region": "Darebin, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771galahAU-VIC-DAR-37.78,145.01.jpeg",
-            "area": "-37.78,145.01"
+            "area": "-37.78,145.01",
+            "isNew": false
         },
         {
             "name": "Noisy Miner",
@@ -423,7 +470,8 @@
             "region": "Darebin, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771noimin1AU-VIC-DAR-37.82,145.04.jpeg",
-            "area": "-37.82,145.04"
+            "area": "-37.82,145.04",
+            "isNew": false
         },
         {
             "name": "Sulphur-crested Cockatoo",
@@ -431,7 +479,8 @@
             "region": "Boroondara, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771succocAU-VIC-BOR-37.79,145.04.jpeg",
-            "area": "-37.79,145.04"
+            "area": "-37.79,145.04",
+            "isNew": false
         },
         {
             "name": "Magpie-lark",
@@ -439,7 +488,8 @@
             "region": "Boroondara, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771maglar1AU-VIC-BOR-37.82,145.02.jpeg",
-            "area": "-37.82,145.02"
+            "area": "-37.82,145.02",
+            "isNew": false
         },
         {
             "name": "Australian Magpie",
@@ -447,7 +497,8 @@
             "region": "Yarra, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771ausmag2AU-VIC-YAR-37.8,145.01.jpeg",
-            "area": "-37.8,145.01"
+            "area": "-37.8,145.01",
+            "isNew": false
         },
         {
             "name": "Eastern Rosella",
@@ -455,7 +506,8 @@
             "region": "Boroondara, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771easros1AU-VIC-BOR-37.8,145.01.jpeg",
-            "area": "-37.8,145.01"
+            "area": "-37.8,145.01",
+            "isNew": true
         },
         {
             "name": "Pied Currawong",
@@ -463,7 +515,8 @@
             "region": "Boroondara, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771piecur1AU-VIC-BOR-37.8,145.01.jpeg",
-            "area": "-37.8,145.01"
+            "area": "-37.8,145.01",
+            "isNew": false
         },
         {
             "name": "White-faced Heron",
@@ -471,7 +524,8 @@
             "region": "Moira, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771whfher1AU-VIC-MOI-36.01,145.96.jpeg",
-            "area": "-36.01,145.96"
+            "area": "-36.01,145.96",
+            "isNew": true
         },
         {
             "name": "Magpie-lark",
@@ -479,7 +533,8 @@
             "region": "Moira, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771maglar1AU-VIC-MOI-36.01,145.96.jpeg",
-            "area": "-36.01,145.96"
+            "area": "-36.01,145.96",
+            "isNew": false
         },
         {
             "name": "Australian Magpie",
@@ -487,7 +542,8 @@
             "region": "Moira, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771ausmag2AU-VIC-MOI-36.01,145.96.jpeg",
-            "area": "-36.01,145.96"
+            "area": "-36.01,145.96",
+            "isNew": false
         },
         {
             "name": "Superb Fairywren",
@@ -495,7 +551,8 @@
             "region": "Moira, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771supfai1AU-VIC-MOI-36.01,145.96.jpeg",
-            "area": "-36.01,145.96"
+            "area": "-36.01,145.96",
+            "isNew": true
         },
         {
             "name": "Willie-wagtail",
@@ -503,7 +560,8 @@
             "region": "Moira, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771wilwag1AU-VIC-MOI-36.01,145.96.jpeg",
-            "area": "-36.01,145.96"
+            "area": "-36.01,145.96",
+            "isNew": true
         },
         {
             "name": "Red-rumped Parrot",
@@ -511,7 +569,8 @@
             "region": "Darebin, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771rerpar1AU-VIC-DAR-37.77,145.01.jpeg",
-            "area": "-37.77,145.01"
+            "area": "-37.77,145.01",
+            "isNew": false
         },
         {
             "name": "Sulphur-crested Cockatoo",
@@ -519,7 +578,8 @@
             "region": "Darebin, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771succocAU-VIC-DAR-36.01,145.96.jpeg",
-            "area": "-36.01,145.96"
+            "area": "-36.01,145.96",
+            "isNew": false
         },
         {
             "name": "Laughing Kookaburra",
@@ -527,7 +587,8 @@
             "region": "Moira, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771laukoo1AU-VIC-MOI-36.01,145.96.jpeg",
-            "area": "-36.01,145.96"
+            "area": "-36.01,145.96",
+            "isNew": true
         },
         {
             "name": "Maned Duck",
@@ -535,7 +596,8 @@
             "region": "Moira, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771manduc1AU-VIC-MOI-36.01,145.96.jpeg",
-            "area": "-36.01,145.96"
+            "area": "-36.01,145.96",
+            "isNew": false
         },
         {
             "name": "Red-browed Firetail",
@@ -543,7 +605,8 @@
             "region": "Moira, Victoria, Australia (AU)",
             "isRare": true,
             "image": "/8319955771rebfir1AU-VIC-MOI-36.01,145.96.jpeg",
-            "area": "-36.01,145.96"
+            "area": "-36.01,145.96",
+            "isNew": true
         },
         {
             "name": "Blue-faced Honeyeater",
@@ -551,7 +614,8 @@
             "region": "Moira, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771blfhon1AU-VIC-MOI-36.01,145.96.jpeg",
-            "area": "-36.01,145.96"
+            "area": "-36.01,145.96",
+            "isNew": true
         },
         {
             "name": "Little Corella",
@@ -559,7 +623,8 @@
             "region": "Boroondara, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771litcor2AU-VIC-BOR-37.82,145.04.jpeg",
-            "area": "-37.82,145.04"
+            "area": "-37.82,145.04",
+            "isNew": true
         },
         {
             "name": "Welcome Swallow",
@@ -567,7 +632,8 @@
             "region": "Boroondara, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771welswa1AU-VIC-BOR-37.78,145.01.jpeg",
-            "area": "-37.78,145.01"
+            "area": "-37.78,145.01",
+            "isNew": false
         },
         {
             "name": "Noisy Miner",
@@ -575,7 +641,8 @@
             "region": "Yarra, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771noimin1AU-VIC-YAR-37.78,144.98.jpeg",
-            "area": "-37.78,144.98"
+            "area": "-37.78,144.98",
+            "isNew": false
         },
         {
             "name": "Australian Magpie",
@@ -583,7 +650,8 @@
             "region": "Yarra, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771ausmag2AU-VIC-YAR-37.78,144.98.jpeg",
-            "area": "-37.78,144.98"
+            "area": "-37.78,144.98",
+            "isNew": false
         },
         {
             "name": "Gray Currawong",
@@ -591,7 +659,8 @@
             "region": "Alpine, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771grycur1-37.02,147.24.jpeg",
-            "area": "-37.02,147.24"
+            "area": "-37.02,147.24",
+            "isNew": true
         },
         {
             "name": "Gang-gang Cockatoo",
@@ -599,7 +668,8 @@
             "region": "Alpine, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771gagcoc1-37.04,147.25.jpeg",
-            "area": "-37.04,147.25"
+            "area": "-37.04,147.25",
+            "isNew": true
         },
         {
             "name": "Scarlet Robin",
@@ -607,7 +677,8 @@
             "region": "Alpine, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771scarob2-36.97,147.15.jpeg",
-            "area": "-36.97,147.15"
+            "area": "-36.97,147.15",
+            "isNew": true
         },
         {
             "name": "Striated Thornbill",
@@ -615,7 +686,8 @@
             "region": "Alpine, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771strtho1-36.95,147.18.jpeg",
-            "area": "-36.95,147.18"
+            "area": "-36.95,147.18",
+            "isNew": true
         },
         {
             "name": "Little Raven",
@@ -623,7 +695,8 @@
             "region": "Alpine, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771litrav1-36.95,147.18.jpeg",
-            "area": "-36.95,147.18"
+            "area": "-36.95,147.18",
+            "isNew": false
         },
         {
             "name": "Gang-gang Cockatoo",
@@ -631,7 +704,8 @@
             "region": "Alpine, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771gagcoc1-36.95,147.19.jpeg",
-            "area": "-36.95,147.19"
+            "area": "-36.95,147.19",
+            "isNew": false
         },
         {
             "name": "Gray Currawong",
@@ -639,7 +713,8 @@
             "region": "Alpine, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771grycur1-36.95,147.18.jpeg",
-            "area": "-36.95,147.18"
+            "area": "-36.95,147.18",
+            "isNew": false
         },
         {
             "name": "Australian Magpie",
@@ -647,7 +722,8 @@
             "region": "Alpine, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771ausmag2-36.95,147.18.jpeg",
-            "area": "-36.95,147.18"
+            "area": "-36.95,147.18",
+            "isNew": false
         },
         {
             "name": "Pied Currawong",
@@ -655,7 +731,8 @@
             "region": "Alpine, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771piecur1-36.95,147.18.jpeg",
-            "area": "-36.95,147.18"
+            "area": "-36.95,147.18",
+            "isNew": false
         },
         {
             "name": "Welcome Swallow",
@@ -663,7 +740,8 @@
             "region": "Alpine, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771welswa1-36.77,147.03.jpeg",
-            "area": "-36.77,147.03"
+            "area": "-36.77,147.03",
+            "isNew": false
         },
         {
             "name": "Little Raven",
@@ -671,7 +749,8 @@
             "region": "Alpine, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771litrav1-36.97,147.16.jpeg",
-            "area": "-36.97,147.16"
+            "area": "-36.97,147.16",
+            "isNew": false
         },
         {
             "name": "Pied Currawong",
@@ -679,7 +758,8 @@
             "region": "Alpine, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771piecur1-36.97,147.16.jpeg",
-            "area": "-36.97,147.16"
+            "area": "-36.97,147.16",
+            "isNew": false
         },
         {
             "name": "White-browed Scrubwren",
@@ -687,7 +767,8 @@
             "region": "Alpine, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771whbscr1-36.96,147.18.jpeg",
-            "area": "-36.96,147.18"
+            "area": "-36.96,147.18",
+            "isNew": true
         },
         {
             "name": "Welcome Swallow",
@@ -695,7 +776,8 @@
             "region": "Wangaratta, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771welswa1AU-VIC-WAN-36.42,146.26.jpeg",
-            "area": "-36.42,146.26"
+            "area": "-36.42,146.26",
+            "isNew": false
         },
         {
             "name": "Brown Goshawk",
@@ -703,7 +785,8 @@
             "region": "Hume, Victoria, Australia (AU)",
             "isRare": true,
             "image": "/8319955771brogos1AU-VIC-WHI-37.49,144.96.jpeg",
-            "area": "-37.49,144.96"
+            "area": "-37.49,144.96",
+            "isNew": true
         },
         {
             "name": "Sulphur-crested Cockatoo",
@@ -711,7 +794,8 @@
             "region": "Darebin, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771succocAU-VIC-DAR-37.77,145.01.jpeg",
-            "area": "-37.77,145.01"
+            "area": "-37.77,145.01",
+            "isNew": false
         },
         {
             "name": "Gray Butcherbird",
@@ -719,7 +803,8 @@
             "region": "Darebin, Victoria, Australia (AU)",
             "isRare": false,
             "image": "/8319955771grybut1AU-VIC-DAR-37.76,145.01.jpeg",
-            "area": "-37.76,145.01"
+            "area": "-37.76,145.01",
+            "isNew": true
         }
     ],
     "locations": {
@@ -878,7 +963,7 @@
             "Gray Butcherbird"
         ]
     },
-    "points": 101,
+    "points": 136,
     "uid": 8319955771,
     "username": "Akira"
 }

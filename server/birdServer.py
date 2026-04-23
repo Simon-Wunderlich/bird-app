@@ -154,7 +154,6 @@ def submitBird():
         isRare = rarity < 0.1
     except:
         isRare = False
-    data["points"] += 5 if isRare else 1
 
     pattern = "data:image/(.+?);base64"
     ftype = re.search(pattern, birdInfo["image"]).group(1)
@@ -178,6 +177,17 @@ def submitBird():
         with open(f"images/thumb{fileName}", "wb") as f:
             f.write(response.file.read())
     
+    if birdInfo["bird"][1] not in data["birdCount"]
+        isNew = True
+
+
+    if isRare:
+        data["points"] += 5
+    elif isNew:
+        data += 2
+    else:
+        data += 1
+
     #Bird list
     data["birds"].append({
         "name" : birdInfo["bird"][1],

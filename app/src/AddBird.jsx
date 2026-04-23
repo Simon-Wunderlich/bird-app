@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import ToggleTip from "./PointsToolTip.jsx"
 import RegionSearch from './RegionSearch.jsx';
 import BirdSearch from './BirdSearch.jsx';
 import Map from './Map.jsx';
@@ -10,10 +11,11 @@ import {
   FileUpload,
   HStack,
   Icon,
-  Portal,
+Popover,
+	Portal,
 } from '@chakra-ui/react';
 import { FaCrow } from 'react-icons/fa6';
-import { LuUpload } from 'react-icons/lu';
+import { LuUpload, LuInfo } from 'react-icons/lu';
 import { toaster } from '@/src/components/ui/toaster';
 
 const AddBird = ({ setUid, uid, setUsers }) => {
@@ -166,7 +168,30 @@ const AddBird = ({ setUid, uid, setUsers }) => {
           <Dialog.Positioner>
             <Dialog.Content>
               <Dialog.Header>
-                <Dialog.Title>Submit a bird</Dialog.Title>
+                <Dialog.Title>
+	  		Submit a bird
+	  {/*<ToggleTip>
+			      <Button size="xs" variant="ghost">
+				<LuInfo />
+			      </Button>
+			    </ToggleTip>*/}	
+		  <Popover.Root>
+		  <Popover.Trigger>
+	  <Box  position={"relative"} top={"2px"}left={"5px"}> 
+				<LuInfo/>
+	  </Box>
+		  </Popover.Trigger>
+		  <Popover.Positioner>
+		    <Popover.Content>
+		      <Popover.Body>
+	  		<p>Rare bird: 5 points</p>
+	  		<p>New species: 2 points</p>
+	  		<p>Normal bird: 1 point</p>
+		      </Popover.Body>
+		    </Popover.Content>
+		  </Popover.Positioner>
+		</Popover.Root>
+	  	</Dialog.Title>
               </Dialog.Header>
               <Dialog.Body>
                 <Login setUid={setUid} setOpenBird={setOpenBird} />

@@ -35,6 +35,7 @@ import {
 
 import {
   HiStar,
+  HiPlus,
   HiOutlineRefresh,
   HiOutlinePlus,
   HiOutlineInformationCircle,
@@ -96,11 +97,25 @@ const BirdCard = ({ bird, uid, fetchData, index, item }) => {
                         padding="5px"
                         width="fit-content"
                         position="absolute"
-                        top="0"
-                        left="0"
+                        top="-3px"
+                        left="-3px"
                         >
                         <HiStar />
                         Rare
+                        </Badge>
+                        </Show>
+                        <Show when={bird.isNew && !bird.isRare}>
+                        <Badge
+                        variant="solid"
+                        colorPalette="green"
+                        padding="5px"
+                        width="fit-content"
+                        position="absolute"
+                        top="-3px"
+                        left="-3px"
+                        >
+                        <HiPlus />
+                        New
                         </Badge>
                         </Show>
                         <Show when={uid == item.uid} >
