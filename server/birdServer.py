@@ -48,6 +48,12 @@ def delete(id):
                 data["birdCounts"].pop(x["name"])
             if x["isRare"]:
                 data["points"] -= 4
+            elif x["isNew"]:
+                data["points"] -= 1
+                for i in data["birds"]:
+                    if i["name"] == x["name"]:
+                        i["isNew"] = True
+                        data["points"] += 1
             data["points"] -= 1
             try:
                 data["locations"][x["area"]].remove(x["name"])
@@ -135,7 +141,10 @@ def submitBird():
     else:
         data["locations"][area] = [ birdInfo["bird"][1] ]
 
-
+    if birdInfo["bird"][1] not in data["birdCount"]:
+        isNew = True
+    else:
+        isNew = False
 
     # Bird count
     if birdInfo["bird"][1] not in data["birdCounts"]:
@@ -176,10 +185,6 @@ def submitBird():
         print(e)
         with open(f"images/thumb{fileName}", "wb") as f:
             f.write(response.file.read())
-    
-    if birdInfo["bird"][1] not in data["birdCount"]
-        isNew = True
-
 
     if isRare:
         data["points"] += 5
