@@ -12,34 +12,35 @@
         "Red-rumped Parrot": 2,
         "Rock Pigeon": 4,
         "Welcome Swallow": 1,
-        "Rainbow Lorikeet": 1,
+        "Rainbow Lorikeet": 2,
         "Dusky Moorhen": 1,
         "Pacific Black Duck": 1,
         "Spotted Dove": 1,
         "Pied Currawong": 4,
         "Australian Ibis": 1,
         "Chilean Flamingo": 1,
-        "Silver Gull": 2,
+        "Silver Gull": 3,
         "Straw-necked Ibis": 1,
         "Sulphur-crested Cockatoo": 2,
         "Superb Fairywren": 1,
         "New Holland Honeyeater": 1,
         "Sooty Oystercatcher": 1,
-        "Pacific Gull": 1,
+        "Pacific Gull": 2,
         "Great Crested Tern": 1,
         "House Sparrow": 1,
-        "Eurasian Blackbird": 1,
-        "Galah": 1,
+        "Eurasian Blackbird": 2,
+        "Galah": 2,
         "Eastern Spinebill": 1,
         "Tawny Frogmouth": 1,
         "Scarlet Robin": 3,
         "Spotted Pardalote": 1,
         "Australian Raven": 1,
         "Eastern Yellow Robin": 1,
-        "Crimson Rosella": 1,
+        "Crimson Rosella": 2,
         "Gray Currawong": 1,
         "Gang-gang Cockatoo": 1,
-        "Masked Lapwing": 1
+        "Masked Lapwing": 1,
+        "White-browed Scrubwren": 1
     },
     "birds": [
         {
@@ -604,6 +605,62 @@
             "isRare": false,
             "image": "/8207583067eurstaAU-VIC-DAR-37.78,145.0.jpeg",
             "area": "-37.78,145.0"
+        },
+        {
+            "name": "Galah",
+            "sciName": "Eolophus roseicapilla",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067galahAU-VIC-DAR-37.77,145.01.jpeg",
+            "area": "-37.77,145.01"
+        },
+        {
+            "name": "Rainbow Lorikeet",
+            "sciName": "Trichoglossus moluccanus",
+            "region": "Darebin, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067railor5AU-VIC-DAR-37.78,145.0.jpeg",
+            "area": "-37.78,145.0"
+        },
+        {
+            "name": "Eurasian Blackbird",
+            "sciName": "Turdus merula",
+            "region": "South Gippsland, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067eurblaAU-VIC-SGI-38.43,145.82.jpeg",
+            "area": "-38.43,145.82"
+        },
+        {
+            "name": "Pacific Gull",
+            "sciName": "Larus pacificus",
+            "region": "South Gippsland, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067pacgul1AU-VIC-SGI-39.03,146.32.jpeg",
+            "area": "-39.03,146.32"
+        },
+        {
+            "name": "Crimson Rosella",
+            "sciName": "Platycercus elegans",
+            "region": "South Gippsland, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067criros2AU-VIC-SGI-39.03,146.32.jpeg",
+            "area": "-39.03,146.32"
+        },
+        {
+            "name": "White-browed Scrubwren",
+            "sciName": "Sericornis frontalis",
+            "region": "South Gippsland, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067whbscr1AU-VIC-SGI-39.03,146.32.jpeg",
+            "area": "-39.03,146.32"
+        },
+        {
+            "name": "Silver Gull",
+            "sciName": "Chroicocephalus novaehollandiae",
+            "region": "South Gippsland, Victoria, Australia (AU)",
+            "isRare": false,
+            "image": "/8207583067silgul2AU-VIC-SGI-39.03,146.32.jpeg",
+            "area": "-39.03,146.32"
         }
     ],
     "locations": {
@@ -629,7 +686,8 @@
             "Magpie-lark"
         ],
         "-37.77,145.01": [
-            "Crested Pigeon"
+            "Crested Pigeon",
+            "Galah"
         ],
         "-37.77,145.02": [
             "Common Myna",
@@ -655,7 +713,8 @@
             "Eastern Spinebill",
             "Tawny Frogmouth",
             "Little Raven",
-            "European Starling"
+            "European Starling",
+            "Rainbow Lorikeet"
         ],
         "-37.78,145.01": [
             "Noisy Miner",
@@ -734,9 +793,18 @@
             "Gray Currawong",
             "Gang-gang Cockatoo"
         ],
-        "-37.81,144.97": []
+        "-37.81,144.97": [],
+        "-38.43,145.82": [
+            "Eurasian Blackbird"
+        ],
+        "-39.03,146.32": [
+            "Pacific Gull",
+            "Crimson Rosella",
+            "White-browed Scrubwren",
+            "Silver Gull"
+        ]
     },
-    "points": 95,
+    "points": 102,
     "uid": 8207583067,
     "username": "Simon"
 }
